@@ -1199,79 +1199,335 @@
       display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0;
     }
 
-    /* RAIN MODE STYLES */
-    .rain-mode-bar {
+    /* RESET SCHEDULE BUTTON */
+    .reset-schedule-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+      white-space: nowrap;
+    }
+    .reset-schedule-btn:hover {
+      background: var(--danger-light);
+      color: var(--danger);
+      border-color: rgba(239, 68, 68, 0.4);
+      transform: translateY(-1px);
+    }
+    .reset-schedule-btn:active { transform: scale(0.96); }
+
+    /* DAY BANNER & SLIM PROGRESS */
+    .day-banner-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      margin-bottom: 12px;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.25s ease;
+      gap: 10px;
+      margin-bottom: 6px;
     }
-    .rain-mode-bar.active {
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(37, 99, 235, 0.08));
-      border-color: #06b6d4;
-      box-shadow: 0 0 14px rgba(6, 182, 212, 0.2);
+    .day-banner-title-wrap h2 {
+      margin: 0;
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--text-main);
     }
-    .rain-toggle-left {
+    .day-banner-meta {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 3px;
+      flex-wrap: wrap;
     }
-    .switch-toggle {
-      position: relative;
-      display: inline-block;
-      width: 44px;
-      height: 24px;
+    .progress-rail-slim {
+      height: 4px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+      margin: 8px 0 10px;
+    }
+    .progress-rail-slim .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #06b6d4);
+      border-radius: 99px;
+      transition: width 0.3s ease;
+    }
+
+    /* COLLAPSIBLE GUIDE BRIEF DRAWER */
+    .guide-brief-accordion {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    .guide-brief-accordion[open] {
+      background: var(--surface);
+      border-color: rgba(37, 99, 235, 0.3);
+      box-shadow: var(--shadow-sm);
+    }
+    .guide-brief-summary {
+      padding: 7px 12px;
+      font-size: 0.77rem;
+      font-weight: 700;
+      color: var(--primary-accent);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      list-style: none;
+    }
+    .guide-brief-summary::-webkit-details-marker { display: none; }
+    .guide-brief-content {
+      padding: 0 12px 10px;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--text-main);
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 8px;
+    }
+
+    /* DAY UTILITIES TOOLBAR & CHIPS */
+    .day-tools-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 6px;
+    }
+    .tool-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 5px 11px;
+      border-radius: 20px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tool-chip:hover {
+      background: var(--surface);
+      border-color: var(--text-muted);
+    }
+    .tool-chip.active {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(37, 99, 235, 0.15));
+      border-color: #0284c7;
+      color: #0284c7;
+    }
+    .tool-chip.sintra-chip {
+      background: linear-gradient(135deg, rgba(6, 78, 59, 0.1), rgba(16, 185, 129, 0.1));
+      border-color: #10b981;
+      color: #065f46;
+    }
+    body.dark-mode .tool-chip.sintra-chip { color: #34d399; }
+
+    /* SPOT CARD SUBTLE HIERARCHY & INSIGHTS ACCORDION */
+    .spot-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+      gap: 8px;
+    }
+    .spot-title-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      flex-wrap: wrap;
+    }
+    .spot-title-left h3 {
+      margin: 0;
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .spot-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       flex-shrink: 0;
     }
-    .switch-toggle input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .switch-toggle .slider {
-      position: absolute;
-      cursor: pointer;
-      inset: 0;
-      background-color: var(--border);
-      transition: .3s;
-      border-radius: 24px;
-    }
-    .switch-toggle .slider:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: .3s;
+    .audio-btn-slim {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
       border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.15s ease;
     }
-    .switch-toggle input:checked + .slider {
-      background-color: #0284c7;
+    .audio-btn-slim:hover {
+      background: var(--surface);
+      border-color: var(--primary-accent);
+      transform: scale(1.05);
     }
-    .switch-toggle input:checked + .slider:before {
-      transform: translateX(20px);
+    .visit-check-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
     }
+    .visit-check-circle input {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--surface);
+      margin: 0;
+    }
+    .visit-check-circle input:checked {
+      background: var(--success);
+      border-color: var(--success);
+    }
+    .visit-check-circle .check-mark {
+      position: absolute;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      pointer-events: none;
+      display: none;
+    }
+    .visit-check-circle input:checked + .check-mark {
+      display: block;
+    }
+    .spot-badges-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      align-items: center;
+      margin-bottom: 7px;
+    }
+    .address-chip-slim {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--bg-subtle);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      margin-bottom: 8px;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    .address-chip-slim:hover {
+      border-color: var(--accent);
+      color: var(--text-main);
+    }
+    .actions-grid-slim {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .actions-grid-slim .btn-action {
+      padding: 6px 4px;
+      font-size: 0.72rem;
+      border-radius: 8px;
+    }
+    .spot-insights-accordion {
+      margin-top: 8px;
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 6px;
+    }
+    .spot-insights-summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--primary-accent);
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      padding: 4px 0;
+    }
+    .spot-insights-summary::-webkit-details-marker { display: none; }
+    .spot-insights-summary:hover { opacity: 0.85; }
+    .spot-insights-drawer {
+      margin-top: 6px;
+      animation: fadeIn 0.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SINTRA DAY 4 NAVIGATOR ACCORDION */
+    .sintra-nav-accordion {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      box-shadow: 0 6px 20px rgba(6, 78, 59, 0.2);
+      overflow: hidden;
+    }
+    .sintra-nav-summary {
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+    }
+    .sintra-nav-summary::-webkit-details-marker { display: none; }
+    .sintra-nav-content {
+      padding: 0 14px 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 10px;
+    }
+    .sintra-step-box {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(4px);
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-top: 7px;
+      font-size: 0.78rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    /* RAIN PANEL (COMPACT) */
     .rain-panel {
       background: var(--surface);
       border: 1px solid #0284c7;
       border-radius: var(--radius-md);
-      padding: 14px;
-      margin-bottom: 16px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
       box-shadow: 0 4px 16px rgba(2, 132, 199, 0.12);
     }
     .rain-alt-item {
       background: var(--bg-subtle);
       border-radius: var(--radius-sm);
-      padding: 10px 12px;
-      margin-top: 8px;
+      padding: 8px 10px;
+      margin-top: 6px;
       border-right: 3px solid #0284c7;
     }
     .spot-rain-warning {
@@ -1279,65 +1535,107 @@
       border: 1px solid rgba(2, 132, 199, 0.35);
       color: #0369a1;
       border-radius: 6px;
-      padding: 4px 8px;
-      font-size: 0.72rem;
+      padding: 3px 7px;
+      font-size: 0.7rem;
       font-weight: 700;
-      margin-top: 6px;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
     }
     body.dark-mode .spot-rain-warning {
       color: #38bdf8;
       background: rgba(2, 132, 199, 0.2);
     }
 
-    /* SINTRA DAY 4 NAVIGATOR BANNER */
-    .sintra-nav-card {
-      background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
-      color: #ffffff;
-      border-radius: var(--radius-md);
-      padding: 16px;
-      margin-bottom: 14px;
-      box-shadow: 0 8px 24px rgba(6, 78, 59, 0.25);
-    }
-    .sintra-step-box {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(4px);
-      border-radius: 8px;
-      padding: 8px 10px;
-      margin-top: 8px;
-      font-size: 0.78rem;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    /* COUVERT DINING BANNER */
-    .couvert-dining-banner {
-      background: linear-gradient(135deg, rgba(217, 119, 6, 0.08), rgba(245, 158, 11, 0.04));
-      border: 1px solid rgba(217, 119, 6, 0.3);
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
-      margin-bottom: 16px;
-    }
-
-    /* RESERVATION BADGE & MODAL */
+    /* RESERVATION BADGE */
     .reservation-card-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
       border: 1px solid #10b981;
       color: #065f46;
       font-weight: 800;
-      font-size: 0.75rem;
-      padding: 4px 10px;
+      font-size: 0.72rem;
+      padding: 3px 8px;
       border-radius: 20px;
-      margin-top: 6px;
-      box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.12);
     }
     body.dark-mode .reservation-card-badge {
       color: #34d399;
       background: rgba(16, 185, 129, 0.18);
+    }
+
+    /* RESERVATIONS MODAL MOBILE OPTIMIZATION */
+    .res-ticket-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-right: 4px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .res-copy-code-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 0.68rem;
+      cursor: pointer;
+      margin-right: 4px;
+    }
+    .res-preset-pills {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .res-preset-pill {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 3px 9px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-main);
+      transition: all 0.15s;
+    }
+    .res-preset-pill:hover {
+      background: var(--primary-accent);
+      color: #fff;
+    }
+
+    @media (max-width: 520px) {
+      #reservationsModal.modal-backdrop {
+        padding: 0;
+        align-items: flex-end;
+      }
+      #reservationsModal .modal-box {
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 20px 20px 0 0 !important;
+        padding: 20px 16px 28px !important;
+        max-height: 88vh !important;
+        box-sizing: border-box;
+      }
+      .res-form-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .res-ticket-card {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+      }
+      .res-ticket-del-btn {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+      }
     }
 
     /* GUIDE HERO & QUICK PILLS */
@@ -2209,10 +2507,19 @@
       </div>
 
       <!-- Add New Reservation Form -->
-      <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px; margin-top:8px;">
+      <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px; margin-top:8px;">
         <div style="font-size:0.82rem; font-weight:800; margin-bottom:8px; color:var(--primary-accent);">➕ הוספת / עדכון שעת הזמנה:</div>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
-          <select id="resTargetSpot" onchange="handleResSpotSelect(this.value)" style="padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);">
+        
+        <div class="res-preset-pills">
+          <span style="font-size:0.72rem; color:var(--text-muted); align-self:center;">קיצורי דרך:</span>
+          <button type="button" class="res-preset-pill" onclick="quickFillReservation('d4_pena', '10:30')">🏰 פנה (10:30)</button>
+          <button type="button" class="res-preset-pill" onclick="quickFillReservation('d4_regaleira', '14:30')">🌀 רגאליירה (14:30)</button>
+          <button type="button" class="res-preset-pill" onclick="quickFillReservation('d3_sala', '20:30')">🥩 Sala de Corte</button>
+          <button type="button" class="res-preset-pill" onclick="quickFillReservation('d5_atalho', '20:30')">🍷 Atalho Real</button>
+        </div>
+
+        <div class="res-form-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
+          <select id="resTargetSpot" onchange="handleResSpotSelect(this.value)" style="padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);">
             <option value="d4_pena">ארמון פנה (יום 4)</option>
             <option value="d4_regaleira">קינטה דה רגאליירה (יום 4)</option>
             <option value="d3_sala">Sala de Corte (יום 3)</option>
@@ -2221,17 +2528,17 @@
             <option value="d3_jeronimos">מנזר ז'רונימוש (יום 3)</option>
             <option value="custom">יעד או מסעדה אחרת...</option>
           </select>
-          <input type="time" id="resTime" value="10:30" style="padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);" />
+          <input type="time" id="resTime" value="10:30" style="padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);" />
         </div>
-        <input type="text" id="resCustomName" placeholder="שם היעד המדויק (למשל: מסעדת פראדו)" style="display:none; width:100%; box-sizing:border-box; margin-bottom:8px; padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);" />
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
-          <input type="text" id="resCode" placeholder="מס' הזמנה / אסמכתא" style="padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);" />
-          <input type="text" id="resNotes" placeholder="הערות (למשל: שולחן ל-2)" style="padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);" />
+        <input type="text" id="resCustomName" placeholder="שם היעד המדויק (למשל: מסעדת פראדו)" style="display:none; width:100%; box-sizing:border-box; margin-bottom:8px; padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);" />
+        <div class="res-form-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:10px;">
+          <input type="text" id="resCode" placeholder="מס' הזמנה / אסמכתא (לא חובה)" style="padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);" />
+          <input type="text" id="resNotes" placeholder="הערות (למשל: שולחן ל-2)" style="padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);" />
         </div>
-        <button class="btn-action ticket" style="width:100%; padding:8px; font-size:0.8rem; justify-content:center;" onclick="saveUserReservation()">💾 שמירת הזמנה</button>
+        <button class="btn-action ticket" style="width:100%; padding:10px; font-size:0.85rem; font-weight:800; justify-content:center; border-radius:8px;" onclick="saveUserReservation()">💾 שמירת הזמנה</button>
       </div>
 
-      <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:9px; margin-top:10px; border:1px solid var(--border);" onclick="closeReservationsModal()">סגור</button>
+      <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:10px; margin-top:10px; border:1px solid var(--border); border-radius:8px; font-weight:700;" onclick="closeReservationsModal()">סגור</button>
     </div>
   </div>
 
@@ -3486,24 +3793,55 @@
     function renderDayBanner() {
       const d = tripData[currentDayIdx];
       const banner = document.getElementById('dayCardBanner');
+      if (!banner) return;
+
+      const visitedCount = d.spots.filter(s => isVisited(s.id)).length;
+      const totalCount = d.spots.length;
+      const pct = totalCount > 0 ? Math.round((visitedCount / totalCount) * 100) : 0;
+
       banner.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-          <h2>יום ${d.day}: ${d.title}</h2>
-          <button class="reset-schedule-btn" id="resetScheduleBtn" onclick="resetScheduleToDefault()" title="איפוס ללוח הזמנים המקורי">↩️ אפס מסלול למקור</button>
-        </div>
-        <div class="banner-tags-row">
-          <span class="banner-area-pill">📍 ${d.area}</span>
-          <span class="banner-area-pill" style="color:var(--accent); background:var(--accent-soft);">📅 ${d.date}</span>
-        </div>
-        ${d.brief ? `<div class="banner-guide-brief">💡 <strong>דגשי המדריך:</strong> ${d.brief}</div>` : ''}
-        <div class="day-progress">
-          <div class="progress-meta">
-            <span id="progLabel">0 מתוך ${d.spots.length} הושלמו</span>
-            <span id="progPct">0%</span>
+        <div class="day-banner-top">
+          <div class="day-banner-title-wrap">
+            <h2>יום ${d.day}: ${d.title}</h2>
+            <div class="day-banner-meta">
+              <span>📍 ${d.area}</span>
+              <span>•</span>
+              <span style="color:var(--accent);">📅 ${d.date}</span>
+              <span>•</span>
+              <span id="progLabel">${visitedCount} מתוך ${totalCount} סומנו (${pct}%)</span>
+            </div>
           </div>
-          <div class="progress-rail">
-            <div class="progress-fill" id="progFill"></div>
-          </div>
+          <button class="reset-schedule-btn" id="resetScheduleBtn" onclick="resetScheduleToDefault()" title="איפוס לוח הזמנים והמקומות ביום זה למבנה המקורי">↩️ אפס מסלול מקורי</button>
+        </div>
+
+        <div class="progress-rail-slim">
+          <div class="progress-fill" id="progFill" style="width: ${pct}%;"></div>
+        </div>
+
+        ${d.brief ? `
+          <details class="guide-brief-accordion">
+            <summary class="guide-brief-summary">
+              <span>💡 דגשי המדריך וההמלצות ליום זה</span>
+              <span style="font-size:0.72rem; opacity:0.8;">לחצו לפתיחה ▾</span>
+            </summary>
+            <div class="guide-brief-content">
+              ${d.brief}
+            </div>
+          </details>
+        ` : ''}
+
+        <div class="day-tools-row">
+          <button class="tool-chip ${isRainMode ? 'active' : ''}" onclick="toggleRainMode()" title="הפעלת מצב גשם מדגישה חלופות מקורות והתרעות">
+            🌧️ ${isRainMode ? 'מצב גשם פעיל ✓' : 'מצב גשם'}
+          </button>
+          ${currentDayIdx === 3 ? `
+            <button class="tool-chip sintra-chip" onclick="toggleSintraAccordion()" title="דרכי הגעה מפורטות לסינטרה ברכבת ואוטובוסים">
+              🧭 מדריך תחבורה לסינטרה
+            </button>
+          ` : ''}
+          <button class="tool-chip" id="toggleAllTipsBtn" onclick="toggleExpandAllSpots()" title="פתח או סגור את כל סודות המדריך בכרטיסים">
+            💡 הרחב את כל הטיפים
+          </button>
         </div>
       `;
       updateProgress();
@@ -3517,11 +3855,9 @@
 
       const fill = document.getElementById('progFill');
       const label = document.getElementById('progLabel');
-      const pctEl = document.getElementById('progPct');
 
       if (fill) fill.style.width = pct + '%';
-      if (label) label.innerText = `${count} מתוך ${spots.length} מקומות סומנו`;
-      if (pctEl) pctEl.innerText = `${pct}%`;
+      if (label) label.innerText = `${count} מתוך ${spots.length} סומנו (${pct}%)`;
     }
 
     // ==========================================
@@ -3564,7 +3900,7 @@
         ` : '';
 
         const metaRow = (s.hours || s.duration || s.ticketPrice) ? `
-          <div class="spot-meta-row">
+          <div class="spot-meta-row" style="margin-bottom:6px;">
             ${s.hours ? `<span class="meta-tag hours">🕒 ${s.hours}</span>` : ''}
             ${s.duration ? `<span class="meta-tag duration">⏱️ משך מומלץ: ${s.duration}</span>` : ''}
           </div>
@@ -3572,7 +3908,7 @@
         ` : '';
 
         const extraBtns = !isHotel && !s.id.includes('airport') ? `
-          <div class="spot-extra-btns">
+          <div class="spot-extra-btns" style="margin-top:8px;">
             <button class="btn-detail-link" onclick="openSpotDetails('${s.id}')">
               📖 פרטים נוספים והמלצות ▾
             </button>
@@ -3599,50 +3935,60 @@
           </div>
         ` : '';
 
+        const hasDrawerContent = !!(metaRow || insightsHtml || extraBtns);
+
         card.innerHTML = `
-          <div class="spot-header-row">
-            <span class="time-badge">⏰ ${s.time}</span>
-            <div class="chips-group">
-              <span class="category-chip ${isAlert ? 'alert' : ''} ${isHotel ? 'hotel' : ''}">${s.tag}</span>
+          <div class="spot-card-header">
+            <div class="spot-title-left">
+              <span class="time-badge">⏰ ${s.time}</span>
+              <h3>${s.name}</h3>
+            </div>
+            <div class="spot-header-actions">
+              <button class="audio-btn-slim" id="audio-btn-${s.id}" onclick="playSpotAudioGuide('${s.id}')" title="האזנה להסבר מדריך קולי">
+                🎙️
+              </button>
+              <label class="visit-check-circle" title="${visited ? 'סומן כנצפה (לחצו לביטול)' : 'סמנו שביקרתם כאן'}">
+                <input type="checkbox" ${visited ? 'checked' : ''} onchange="toggleVisited('${s.id}')">
+                <span class="check-mark">✓</span>
+              </label>
             </div>
           </div>
 
-          ${reservationBadge}
-          ${rainWarningBadge}
-
-          <div class="spot-title-row">
-            <div class="spot-headline">${s.name}</div>
-            <button class="audio-btn" id="audio-btn-${s.id}" onclick="playSpotAudioGuide('${s.id}')" title="האזנה להסבר מדריך קולי">
-              <span>🎙️</span>
-            </button>
-          </div>
-
-          ${metaRow}
-          
-          <div class="address-chip" onclick="copyText('${s.address}', 'הכתובת הועתקה!')" title="לחצו להעתקת הכתובת">
-            <span>📍 ${s.address}</span>
-            <span style="font-size:0.7rem; opacity:0.75;">📋</span>
+          <div class="spot-badges-strip">
+            <span class="category-chip ${isAlert ? 'alert' : ''} ${isHotel ? 'hotel' : ''}">${s.tag}</span>
+            ${reservationBadge}
+            ${rainWarningBadge}
           </div>
 
           <div class="spot-body-desc">${s.desc}</div>
 
-          ${insightsHtml}
-          ${extraBtns}
-
-          <div class="actions-grid">
-            <a class="btn-action maps" href="${gmapsUrl}" target="_blank">📍 מפות</a>
-            <a class="btn-action uber" href="${uberUrl}" target="_blank">🚕 Uber</a>
-            <a class="btn-action bolt" href="${boltUrl}" target="_blank">⚡ Bolt</a>
-            ${s.ticketUrl ? `<a class="btn-action ticket" href="${s.ticketUrl}" target="_blank">🎟️ כרטיסים</a>` : ''}
+          <div>
+            <div class="address-chip-slim" onclick="copyText('${s.address.replace(/'/g, "\\'")}', 'הכתובת הועתקה!')" title="לחצו להעתקת הכתובת">
+              <span>📍 ${s.address}</span>
+              <span style="font-size:0.68rem; opacity:0.75;">📋</span>
+            </div>
           </div>
 
-          <div class="card-footer-row">
-            <label class="complete-label">
-              <input type="checkbox" ${visited ? 'checked' : ''} onchange="toggleVisited('${s.id}')">
-              <span>${visited ? 'ביקרנו כאן ✓' : 'סמן ביקור'}</span>
-            </label>
-            <span style="font-size:0.72rem; color:var(--text-subtle);">לחצו על הכתובת להעתקה</span>
+          <div class="actions-grid-slim">
+            <a class="btn-action maps" href="${gmapsUrl}" target="_blank" rel="noopener">📍 מפות</a>
+            <a class="btn-action uber" href="${uberUrl}" target="_blank" rel="noopener">🚕 Uber</a>
+            <a class="btn-action bolt" href="${boltUrl}" target="_blank" rel="noopener">⚡ Bolt</a>
+            ${s.ticketUrl ? `<a class="btn-action ticket" href="${s.ticketUrl}" target="_blank" rel="noopener">🎟️ כרטיס</a>` : ''}
           </div>
+
+          ${hasDrawerContent ? `
+            <details class="spot-insights-accordion" id="insights-${s.id}">
+              <summary class="spot-insights-summary">
+                <span>💡 סודות, שעות וטיפים למקום</span>
+                <span style="font-size:0.74rem; font-weight:700;">▾ פרטים</span>
+              </summary>
+              <div class="spot-insights-drawer">
+                ${metaRow}
+                ${insightsHtml}
+                ${extraBtns}
+              </div>
+            </details>
+          ` : ''}
         `;
         container.appendChild(card);
 
@@ -4328,38 +4674,56 @@
       if (currentDayIdx === 3) { // Day 4 (zero-based index 3)
         container.style.display = 'block';
         container.innerHTML = `
-          <div class="sintra-nav-card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <strong style="font-size:1.05rem;">🧭 מפת ניווט ותחבורה לסינטרה וקשקאיש (יום 4)</strong>
-              <span style="font-size:0.75rem; background:rgba(255,255,255,0.2); padding:3px 8px; border-radius:12px;">רכבות ואוטובוסים</span>
+          <details class="sintra-nav-accordion" id="sintraAccordion">
+            <summary class="sintra-nav-summary">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:1.15rem;">🧭</span>
+                <div>
+                  <strong style="font-size:0.92rem; color:#fff;">מדריך תחבורה וניווט: סינטרה וקשקאיש (יום 4)</strong>
+                  <div style="font-size:0.72rem; opacity:0.88; color:#d1fae5;">רכבות, אוטובוס 434, קינטה דה רגאליירה וחזרה</div>
+                </div>
+              </div>
+              <span style="font-size:0.75rem; background:rgba(255,255,255,0.22); padding:3px 9px; border-radius:12px; font-weight:700;">הצג פרטים ▾</span>
+            </summary>
+            <div class="sintra-nav-content">
+              <p style="font-size:0.8rem; margin:0 0 10px; opacity:0.95; line-height:1.45;">
+                יום 4 מתקיים מחוץ לליסבון ודורש תזמון מדויק. הנה תחנות המעבר והקווים המדויקים:
+              </p>
+              <div style="display:grid; grid-template-columns:1fr; gap:6px;">
+                <div class="sintra-step-box">
+                  <strong>1. 🚆 רכבת מליסבון לסינטרה (Linha de Sintra):</strong><br>
+                  יציאה מתחנת <strong>Rossio</strong> (7 דק' הליכה מהמלון). רכבות יוצאות כל 20 דק' מרציף 1. משך נסיעה: 40 דק', עלות: €2.40 (בכרטיס Navegante ירוק).
+                </div>
+                <div class="sintra-step-box">
+                  <strong>2. 🚌 הגעה לארמון פנה (אוטובוס 434 Scotturb):</strong><br>
+                  יוצא מרחבת תחנת הרכבת בסינטרה ועולה ישירות לשער הארמון. <span style="color:#fef08a;">⚠️ אסורה כניסת רכבים פרטיים ומוניות לארמון!</span> יש להגיע 20 דק' לפני חלון השעה המוזמן.
+                </div>
+                <div class="sintra-step-box">
+                  <strong>3. 🌀 מעבר לקינטה דה רגאליירה (באר היוזמה):</strong><br>
+                  ירידה ברגל בשביל ירוק ומוצל (כ-25 דק' בירידה) או אובר קצר למרכז סינטרה (Palácio Nacional) ומשם 8 דק' הליכה לרגאליירה.
+                </div>
+                <div class="sintra-step-box">
+                  <strong>4. 🌊 לקאבו דה רוקה וקשקאיש (אוטובוסים 1253 ו-1624):</strong><br>
+                  קו <strong>1253</strong> מסינטרה לקאבו דה רוקה (הצוקים המערביים באירופה, 30 דק'). משם קו <strong>1624</strong> או Uber לקשקאיש (25 דק').<br>
+                  חזרה לליסבון: רכבת נופית מדהימה מתחנת Cascais ישירות לתחנת Cais do Sodré בליסבון (40 דק').
+                </div>
+              </div>
             </div>
-            <p style="font-size:0.8rem; margin:0 0 10px; opacity:0.95; line-height:1.45;">
-              יום 4 מתקיים מחוץ לליסבון ודורש תזמון מדויק. הנה תחנות המעבר והקווים המדויקים:
-            </p>
-            <div style="display:grid; grid-template-columns:1fr; gap:6px;">
-              <div class="sintra-step-box">
-                <strong>1. 🚆 רכבת מליסבון לסינטרה (Linha de Sintra):</strong><br>
-                יציאה מתחנת <strong>Rossio</strong> (7 דק' הליכה מהמלון). רכבות יוצאות כל 20 דק' מרציף 1. משך נסיעה: 40 דק', עלות: €2.40 (בכרטיס Navegante ירוק).
-              </div>
-              <div class="sintra-step-box">
-                <strong>2. 🚌 הגעה לארמון פנה (אוטובוס 434 Scotturb):</strong><br>
-                יוצא מרחבת תחנת הרכבת בסינטרה ועולה ישירות לשער הארמון. <span style="color:#fef08a;">⚠️ אסורה כניסת רכבים פרטיים ומוניות לארמון!</span> יש להגיע 20 דק' לפני חלון השעה המוזמן.
-              </div>
-              <div class="sintra-step-box">
-                <strong>3. 🌀 מעבר לקינטה דה רגאליירה (באר היוזמה):</strong><br>
-                ירידה ברגל בשביל ירוק ומוצל (כ-25 דק' בירידה) או אובר קצר למרכז סינטרה (Palácio Nacional) ומשם 8 דק' הליכה לרגאליירה.
-              </div>
-              <div class="sintra-step-box">
-                <strong>4. 🌊 לקאבו דה רוקה וקשקאיש (אוטובוסים 1253 ו-1624):</strong><br>
-                קו <strong>1253</strong> מסינטרה לקאבו דה רוקה (הצוקים המערביים באירופה, 30 דק'). משם קו <strong>1624</strong> או Uber לקשקאיש (25 דק').<br>
-                חזרה לליסבון: רכבת נופית מדהימה מתחנת Cascais ישירות לתחנת Cais do Sodré בליסבון (40 דק').
-              </div>
-            </div>
-          </div>
+          </details>
         `;
       } else {
         container.style.display = 'none';
         container.innerHTML = '';
+      }
+    }
+
+    function toggleSintraAccordion() {
+      const el = document.getElementById('sintraAccordion');
+      if (el) {
+        el.open = !el.open;
+        if (el.open) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       }
     }
 
@@ -4658,25 +5022,60 @@
       const container = document.getElementById('reservationsListContainer');
       if (!container) return;
       if (userReservations.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:16px; color:var(--text-muted); font-size:0.85rem;">עדיין לא הזנתם שעות שהוזמנו. הוסיפו למטה!</div>`;
+        container.innerHTML = `<div style="text-align:center; padding:18px 12px; color:var(--text-muted); font-size:0.84rem; background:var(--bg-subtle); border-radius:var(--radius-sm); border:1px dashed var(--border);">עדיין לא הזנתם שעות שהוזמנו.<br>בחרו יעד מקיצורי הדרך למטה או הוסיפו ידנית!</div>`;
         updateReservationsBadge();
         return;
       }
 
       container.innerHTML = userReservations.map(r => `
-        <div style="background:var(--surface); border:1px solid var(--border); border-right:4px solid var(--accent); border-radius:var(--radius-sm); padding:10px 12px; display:flex; justify-content:space-between; align-items:center;">
-          <div>
-            <div style="font-weight:800; font-size:0.88rem; color:var(--text-main);">${r.name}</div>
-            <div style="font-size:0.75rem; color:var(--accent); font-weight:700; margin-top:2px;">
-              יום ${r.day || ''} • שעה: ${r.time} ${r.code ? `• אסמכתא: ${r.code}` : ''}
+        <div class="res-ticket-card">
+          <div style="flex:1;">
+            <div style="font-weight:800; font-size:0.9rem; color:var(--text-main); display:flex; align-items:center; gap:6px;">
+              <span>🎟️</span>
+              <span>${r.name}</span>
             </div>
-            ${r.notes ? `<div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">📝 ${r.notes}</div>` : ''}
+            <div style="font-size:0.77rem; color:var(--accent); font-weight:700; margin-top:3px; display:flex; align-items:center; flex-wrap:wrap; gap:6px;">
+              <span>⏰ שעה: ${r.time}</span>
+              ${r.day ? `<span>• יום ${r.day}</span>` : ''}
+              ${r.code ? `
+                <span style="background:var(--bg-subtle); padding:2px 6px; border-radius:4px; border:1px solid var(--border); color:var(--text-main); font-family:monospace;">
+                  #${r.code}
+                </span>
+                <button type="button" class="res-copy-code-btn" onclick="copyText('${r.code}', 'קוד ההזמנה הועתק!')" title="העתק קוד הזמנה">📋 העתק</button>
+              ` : ''}
+            </div>
+            ${r.notes ? `<div style="font-size:0.73rem; color:var(--text-muted); margin-top:3px;">📝 ${r.notes}</div>` : ''}
           </div>
-          <button onclick="deleteUserReservation('${r.id}')" style="background:none; border:none; color:var(--danger); font-size:1.1rem; cursor:pointer; padding:6px;" title="מחיקת הזמנה זו">🗑️</button>
+          <button class="res-ticket-del-btn" onclick="deleteUserReservation('${r.id}')" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); color:var(--danger); border-radius:6px; font-size:0.9rem; cursor:pointer; padding:6px 9px;" title="מחיקת הזמנה זו">🗑️</button>
         </div>
       `).join('');
 
       updateReservationsBadge();
+    }
+
+    function quickFillReservation(spotVal, timeVal) {
+      const select = document.getElementById('resTargetSpot');
+      if (select) {
+        select.value = spotVal;
+        handleResSpotSelect(spotVal);
+      }
+      const timeInput = document.getElementById('resTime');
+      if (timeInput && timeVal) {
+        timeInput.value = timeVal;
+      }
+    }
+
+    let allSpotsExpanded = false;
+    function toggleExpandAllSpots() {
+      allSpotsExpanded = !allSpotsExpanded;
+      const accordions = document.querySelectorAll('.spot-insights-accordion');
+      accordions.forEach(acc => {
+        acc.open = allSpotsExpanded;
+      });
+      const btn = document.getElementById('toggleAllTipsBtn');
+      if (btn) {
+        btn.innerText = allSpotsExpanded ? '💡 כווץ את כל הטיפים' : '💡 הרחב את כל הטיפים';
+      }
     }
 
     function updateReservationsBadge() {
