@@ -1199,13 +1199,217 @@
       display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0;
     }
 
-    /* RESET SCHEDULE BUTTON IN BANNER */
-    .reset-schedule-btn {
-      background: none; border: none; color: var(--accent); font-size: 0.73rem;
-      font-weight: 700; cursor: pointer; text-decoration: underline; padding: 2px 0;
-      display: none;
+    /* RAIN MODE STYLES */
+    .rain-mode-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
     }
-    
+    .rain-mode-bar.active {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(37, 99, 235, 0.08));
+      border-color: #06b6d4;
+      box-shadow: 0 0 14px rgba(6, 182, 212, 0.2);
+    }
+    .rain-toggle-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .switch-toggle {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .switch-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .switch-toggle .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: var(--border);
+      transition: .3s;
+      border-radius: 24px;
+    }
+    .switch-toggle .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    .switch-toggle input:checked + .slider {
+      background-color: #0284c7;
+    }
+    .switch-toggle input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+    .rain-panel {
+      background: var(--surface);
+      border: 1px solid #0284c7;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.12);
+    }
+    .rain-alt-item {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-top: 8px;
+      border-right: 3px solid #0284c7;
+    }
+    .spot-rain-warning {
+      background: rgba(2, 132, 199, 0.12);
+      border: 1px solid rgba(2, 132, 199, 0.35);
+      color: #0369a1;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    body.dark-mode .spot-rain-warning {
+      color: #38bdf8;
+      background: rgba(2, 132, 199, 0.2);
+    }
+
+    /* SINTRA DAY 4 NAVIGATOR BANNER */
+    .sintra-nav-card {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 24px rgba(6, 78, 59, 0.25);
+    }
+    .sintra-step-box {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(4px);
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    /* COUVERT DINING BANNER */
+    .couvert-dining-banner {
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.08), rgba(245, 158, 11, 0.04));
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+
+    /* RESERVATION BADGE & MODAL */
+    .reservation-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
+      border: 1px solid #10b981;
+      color: #065f46;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-top: 6px;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+    }
+    body.dark-mode .reservation-card-badge {
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.18);
+    }
+
+    /* GUIDE HERO & QUICK PILLS */
+    .guide-hero-header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .guide-quick-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .guide-quick-pill {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .guide-quick-pill:hover, .guide-quick-pill:active {
+      background: var(--primary-accent);
+      color: #ffffff;
+      border-color: var(--primary-accent);
+    }
+
+    /* TAX FREE CALCULATOR */
+    .taxfree-calc-box {
+      background: var(--surface);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .taxfree-badge-result {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #10b981;
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      text-align: center;
+    }
+    body.dark-mode .taxfree-badge-result {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+
+    .live-weather-pill {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      transition: all 0.2s ease;
+    }
+    .live-weather-pill:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.02);
+    }
   </style>
 </head>
 <body>
@@ -1228,6 +1432,10 @@
           <span>🚨</span>
         </button>
         <button class="icon-btn-header" onclick="openTicketsHubModal()" title="כרטיסים ועלויות" style="color:var(--accent);"><span>🎟️</span></button>
+        <button class="icon-btn-header" onclick="openReservationsModal()" title="ההזמנות שלי (שעות שהוזמנו)" style="color:#f59e0b; position:relative;">
+          <span>🗓️</span>
+          <span id="headerReservationsBadge" style="display:none; position:absolute; top:-3px; right:-3px; background:var(--accent-warm); color:#fff; font-size:0.6rem; font-weight:800; border-radius:50%; width:16px; height:16px; align-items:center; justify-content:center;">0</span>
+        </button>
         <button class="hotel-btn-top" onclick="openHotelModal()">
           <span>🏨</span> המלון
         </button>
@@ -1241,8 +1449,8 @@
         <span class="live-clock" id="lisbonClock">--:--:--</span>
         <span style="font-size:0.65rem; opacity:0.8;">(שעה פחות מישראל)</span>
       </div>
-      <div>
-        <span>🌤️ אוקטובר: 18°–22°C</span>
+      <div id="lisbonWeatherWidget" class="live-weather-pill" onclick="openWeatherModal()" title="לחצו לתחזית שבועית מפורטת לליסבון">
+        <span id="lisbonWeatherText">🌤️ טוען מזג אוויר...</span>
       </div>
     </div>
 
@@ -1260,6 +1468,28 @@
     <div class="view-section active" id="view-schedule">
       <div class="day-pills-bar" id="dayPillsBar"></div>
       <div class="day-card-banner" id="dayCardBanner"></div>
+
+      <!-- Sintra Navigator Banner (Appears dynamically on Day 4) -->
+      <div id="sintraNavContainer" style="display:none;"></div>
+
+      <!-- Rain Mode Switch Bar -->
+      <div class="rain-mode-bar" id="rainModeBar">
+        <div class="rain-toggle-left">
+          <span style="font-size:1.25rem;">🌧️</span>
+          <div>
+            <div style="font-weight:700; font-size:0.84rem;">מצב יום גשום (חלופות מקורות)</div>
+            <div style="font-size:0.7rem; color:var(--text-muted);">סימון אתרים חשופים והצעת חלופות מקורות מיידיות</div>
+          </div>
+        </div>
+        <label class="switch-toggle" title="הפעלת מצב גשם">
+          <input type="checkbox" id="rainModeToggle" onchange="toggleRainMode(this.checked)">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <!-- Rain Alternatives Panel (Active when rain mode is on) -->
+      <div id="rainAlternativesPanel" class="rain-panel" style="display:none;"></div>
+
       <div class="timeline-container" id="timelineCards"></div>
     </div>
 
@@ -1296,6 +1526,19 @@
         </p>
       </div>
 
+      <!-- Couvert Alert Banner -->
+      <div class="couvert-dining-banner">
+        <div style="display:flex; align-items:flex-start; gap:10px;">
+          <span style="font-size:1.4rem;">🥖</span>
+          <div style="flex:1;">
+            <strong style="color:var(--accent-warm); font-size:0.88rem;">שימו לב לחוק הקוביירט (Couvert) בפורטוגל:</strong>
+            <p style="margin:4px 0 0; font-size:0.78rem; line-height:1.45; color:var(--text-main);">
+              הלחם, החמאה, הגבינות והזיתים שמונחים אוטומטית על השולחן בתחילת הארוחה <strong>אינם בחינם</strong> (€2–€6 לאדם). אם אינכם מעוניינים – פשוט אל תיגעו ובקשו מהמלצר בנימוס לפנותם (<em>"Não, obrigado"</em>), ולא תחויבו בחשבון!
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="filter-tags" id="diningFilters">
         <button class="filter-tag active" onclick="filterDining('all')">הכל (10)</button>
         <button class="filter-tag" onclick="filterDining('meat')">🥩 בשרים וסטייקים</button>
@@ -1313,8 +1556,53 @@
     <!-- VIEW 4: FIELD GUIDE & PHRASEBOOK -->
     <div class="view-section" id="view-guide">
       
+      <!-- Guide Hero Header with Quick Nav -->
+      <div class="guide-hero-header">
+        <h2 style="margin:0; font-size:1.25rem; color:var(--primary-accent);">📖 מדריך השטח והטיפים לליסבון</h2>
+        <p style="margin:3px 0 0; font-size:0.8rem; color:var(--text-muted);">כל המידע המקומי, חלופות גשם, החזרי מס ותרבות האוכל</p>
+        <div class="guide-quick-pills">
+          <a href="#guide-rain-section" class="guide-quick-pill">🌧️ חלופות לגשם</a>
+          <a href="#guide-taxfree-section" class="guide-quick-pill">🏷️ החזר מס Tax-Free</a>
+          <a href="#guide-couvert-section" class="guide-quick-pill">🥖 חוק הקוביירט ותפריטים</a>
+          <a href="#guide-phrasebook-section" class="guide-quick-pill">🗣️ שיחון מקומי</a>
+          <a href="#guide-local-essentials" class="guide-quick-pill">🛒 סופרמרקטים ופארם</a>
+          <a href="#guide-calc-section" class="guide-quick-pill">🧮 מחשבון טיפ ואירו</a>
+        </div>
+      </div>
+
+      <!-- Tax-Free Refund Guide & Calculator -->
+      <div class="taxfree-calc-box" id="guide-taxfree-section">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <h3 style="margin:0; font-size:1.05rem; font-weight:800; color:#059669;">🏷️ החזר מס לתיירים (Tax-Free Portugal)</h3>
+          <span style="font-size:0.75rem; background:#ecfdf5; color:#065f46; font-weight:800; padding:3px 8px; border-radius:20px; border:1px solid #10b981;">חיסכון של 13%–15%!</span>
+        </div>
+        <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">
+          תיירים ישראלים זכאים להחזר מע"מ על קניות ביגוד, הנעלה ומוצרים בפורטוגל (סף מינימום: <strong>50 אירו</strong> בחשבונית אחת). חשבו כאן כמה כסף תקבלו בחזרה:
+        </p>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:12px; align-items:center;">
+          <div>
+            <label style="font-size:0.72rem; font-weight:700; color:var(--text-muted); display:block; margin-bottom:4px;">סך קניות באירו (€):</label>
+            <input type="number" id="taxFreeInput" class="calc-input" placeholder="למשל 150" value="150" oninput="calcTaxFreeRefund()" style="width:100%;">
+          </div>
+          <div>
+            <label style="font-size:0.72rem; font-weight:700; color:var(--text-muted); display:block; margin-bottom:4px;">החזר מוערך לחשבונכם:</label>
+            <div class="taxfree-badge-result" id="taxFreeResult">≈ €20.25 (כ-81 ₪)</div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:10px 12px; font-size:0.78rem; line-height:1.5;">
+          <strong>✈️ איך מקבלים את הכסף בטרמינל 1 (LIS)? 3 צעדים פשוטים:</strong>
+          <ol style="margin:6px 0 0 16px; padding:0;">
+            <li><strong>בחנות:</strong> מבקשים בקופה <em>"Tax Free Form"</em> ומציגים דרכון (או צילום ברור). תקבלו טופס מודפס עם קוד דיגיטלי.</li>
+            <li><strong>בנמל התעופה:</strong> לפני מסירת המזוודות לצ'ק-אין, ניגשים לעמדות האוטומטיות <strong>e-Taxfree Portugal</strong> בקומה 1, סורקים דרכון ואת הברקודים. תקבלו אישור ירוק.</li>
+            <li><strong>קבלת ההחזר:</strong> ניגשים לדלפק Global Blue / Planet (אחרי הבידוק או לפניו) לקבלת זיכוי ישיר לאשראי תוך כמה ימים או במזומן.</li>
+          </ol>
+        </div>
+      </div>
+
       <!-- Currency & Tip Calculator -->
-      <div class="calc-box">
+      <div class="calc-box" id="guide-calc-section">
         <h3 style="font-size:1.05rem; font-weight:800; color:var(--primary-accent); margin-bottom:6px;">
           🧮 מחשבון אירו וטיפ מהיר לשולחן
         </h3>
@@ -1335,7 +1623,7 @@
       </div>
 
       <!-- Interactive Portuguese Phrasebook -->
-      <div class="guide-category">
+      <div class="guide-category" id="guide-phrasebook-section">
         <h3>🗣️ שיחון פורטוגזית שימושי (לחצו להשמעה ברורה 🔊)</h3>
         <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">
           הפורטוגלים מעריכים מאוד שמברכים אותם במילים בסיסיות בשפתם. לחצו על הרמקול כדי לשמוע הגייה מקומית:
@@ -1354,7 +1642,7 @@
 
       
       <!-- Rainy Day Alternatives Plan -->
-      <div class="guide-category" style="border-right:4px solid var(--primary-accent);">
+      <div class="guide-category" id="guide-rain-section" style="border-right:4px solid var(--primary-accent);">
         <h3>🌧️ תוכנית חלופית לימי גשם בליסבון (מקומות מקורים מומלצים)</h3>
         <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:12px;">
           סוף אוקטובר עשוי להביא מדי פעם ממטרי גשם. הנה האתרים המקורים השווים ביותר להחלפה מיידית:
@@ -1388,7 +1676,7 @@
     
       
       <!-- Local Essentials around Hotel -->
-      <div class="guide-category" style="border-right:4px solid var(--success);">
+      <div class="guide-category" id="guide-local-essentials" style="border-right:4px solid var(--success);">
         <h3>🛒 סופרמרקטים, פארם ומשיכת כספים ליד המלון</h3>
         <div class="guide-item">
           <strong>סופרמרקטים צמודים לדירה ברחוב פראטה:</strong>
@@ -1413,25 +1701,27 @@
         </div>
       </div>
     
-      <!-- Critical Rules -->
-      <div class="guide-category">
-        <h3>🍴 כללי ברזל במסעדות ואוכל</h3>
+      <!-- Couvert & Portuguese Food Culture -->
+      <div class="guide-category" id="guide-couvert-section" style="border-right:4px solid var(--accent);">
+        <h3>🥖 חוק הקוביירט (Couvert) ומפענח תפריטים מקומי</h3>
         <div class="guide-item">
-          <strong>⚠️ מלכודת ה-Couvert (לחם, גבינה וזיתים שמניחים על השולחן):</strong>
-          <p>בפורטוגל, המלצר יניח מיד עם הישיבה סלסלת לחם, חמאה, פטה זיתים או גבינה. <strong>זה לא בחינם!</strong> אם תטעמו מהם הם יחויבו בחשבון (2–6 אירו). אם אינכם מעוניינים, פשוט אמרו בנימוס "No, thank you" והמלצר ייקח אותם בלי לחייב.</p>
+          <strong>⚠️ חוק הקוביירט (Couvert) – מה לעשות במסעדות?</strong>
+          <p>בפורטוגל, המלצר יניח מיד עם הישיבה סלסלת לחם, חמאה, פטה זיתים או גבינות. <strong>זה לא על חשבון הבית!</strong> טעמתם? תחויבו (2–6 אירו לאדם). אם אינכם מעוניינים – פשוט אמרו בחיוך <em>"Não, obrigado"</em> (לא, תודה) או אל תיגעו, והמלצר ייקח אותם בלי לחייב פרוטה בחשבון.</p>
         </div>
         <div class="guide-item">
-          <strong>☕ מילון הקפה הפורטוגזי (חובה להזמנה):</strong>
-          <p>• <strong>Bica:</strong> אספרסו קצר וחזק בסגנון המקומי.<br>
-             • <strong>Galão:</strong> קפה הפוך בכוס זכוכית גבוהה עם הרבה חלב חם.<br>
-             • <strong>Meia de Leite:</strong> קפה עם חלב ביחס של חצי-חצי בספל רגיל.<br>
-             • <strong>Pingado:</strong> אספרסו עם טיפת חלב קר (כמו מקיאטו).</p>
+          <strong>☕ מפענח הקפה הפורטוגלי (חובה להזמנה נכונה בבתי קפה):</strong>
+          <p>• <strong>Bica:</strong> אספרסו קצר וחזק בסגנון המקומי של ליסבון.<br>
+             • <strong>Galão:</strong> קפה הפוך בכוס זכוכית גבוהה עם 3/4 חלב חם.<br>
+             • <strong>Meia de Leite:</strong> קפה עם חלב ביחס 50/50 בספל חרסינה רגיל.<br>
+             • <strong>Garoto:</strong> אספרסו קצר מוכתם במעט חלב חם.<br>
+             • <strong>Abatanado:</strong> אספרסו מוארך במים חמים (אמריקנו).</p>
         </div>
         <div class="guide-item">
-          <strong>🥩 מנות דגל שוות (ללא פירות ים):</strong>
-          <p>• <strong>Prego no Pão:</strong> סנדוויץ' בקר עסיסי ודק בלחמנייה חמה עם חמאת שום וחרדל.<br>
-             • <strong>Bifana:</strong> כריך מסורתי של פרוסות בשר דקות בציר יין, שום וחרדל.<br>
-             • <strong>Bacalhau à Brás:</strong> פתיתי דג בקלה מוקפצים עם ביצה טרופה, רצועות תפוחי אדמה דקות וזיתים (ללא פירות ים).</p>
+          <strong>🥩 מנות דגל פורטוגליות מומלצות (ללא פירות ים):</strong>
+          <p>• <strong>Bacalhau à Brás:</strong> פתיתי דג בקלה מוקפצים עם ביצה טרופה, רצועות תפוחי אדמה דקיקות ובצל – המנה הלאומית האהובה ביותר.<br>
+             • <strong>Bifana:</strong> כריך מסורתי של פרוסות בשר דקות בציר יין לבן, שום ופפריקה.<br>
+             • <strong>Prego no Pão:</strong> סנדוויץ' סטייק בקר דק בלחמנייה חמה עם חמאת שום וחרדל.<br>
+             • <strong>Travesseiro de Sintra:</strong> מאפה עלים חם ממולא בקרם שקדים עשיר (במאפיית Casa Piriquita בסינטרה!).</p>
         </div>
       </div>
 
@@ -1611,8 +1901,8 @@
       <span>מסעדות</span>
     </button>
     <button class="nav-tab-item" onclick="navigateTab('guide')">
-      <span class="tab-icon">🗣️</span>
-      <span>שיחון וטיפים</span>
+      <span class="tab-icon">📖</span>
+      <span>מדריך ליסבון</span>
     </button>
     <button class="nav-tab-item" onclick="navigateTab('tools')">
       <span class="tab-icon">🧰</span>
@@ -1823,6 +2113,7 @@
 
       <div style="margin-top:14px; padding:10px; background:rgba(37,99,235,0.08); border-radius:var(--radius-sm); text-align:center; font-size:0.85rem; font-weight:800; color:var(--primary-accent);">
         💰 סך הכל עלות כניסות לאדם: כ-75–85 אירו (~300–340 ₪) | עם שילוב כרטיס ליסבון וקופונים: כ-55–65 אירו בלבד!
+      </div>
 
       <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:9px; margin-top:12px; border:1px solid var(--border);" onclick="closeTicketsHubModal()">סגור</button>
     </div>
@@ -1875,6 +2166,72 @@
       </div>
 
       <button class="btn-action" style="width: 100%; background: var(--bg-subtle); color: var(--text-main); padding: 10px; margin-top: 10px; border:1px solid var(--border);" onclick="closeEmergencyModal()">סגור</button>
+    </div>
+  </div>
+
+  <!-- Weather Forecast Modal -->
+  <div class="modal-backdrop" id="weatherModal" onclick="closeWeatherModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()" style="max-width:440px; text-align:right;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <h3 style="margin:0; font-size:1.15rem; color:var(--primary-accent);">🌤️ תחזית מזג אוויר חיה – ליסבון</h3>
+        <button onclick="closeWeatherModal()" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted);">✕</button>
+      </div>
+      <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">
+        נתונים בזמן אמת מהתחנה המטאורולוגית של ליסבון:
+      </p>
+      <div id="weatherModalCurrent" style="background:linear-gradient(135deg, rgba(6,182,212,0.1), rgba(37,99,235,0.1)); border:1px solid rgba(6,182,212,0.3); border-radius:var(--radius-sm); padding:12px; margin-bottom:12px; text-align:center;">
+        <div style="font-size:2.2rem;" id="weatherModalIcon">⛅</div>
+        <div style="font-size:1.5rem; font-weight:800; font-family:var(--font-num);" id="weatherModalTemp">--°C</div>
+        <div style="font-size:0.85rem; font-weight:700; color:var(--text-main);" id="weatherModalDesc">טוען נתונים חיים...</div>
+        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;" id="weatherModalDetails">לחות: --% | סיכוי למשקעים: --%</div>
+      </div>
+      <h4 style="font-size:0.85rem; margin:10px 0 6px;">📅 תחזית לימים הקרובים:</h4>
+      <div id="weatherDailyList" style="display:flex; flex-direction:column; gap:6px; max-height:220px; overflow-y:auto;">
+        <!-- Filled dynamically by JS -->
+      </div>
+      <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:9px; margin-top:12px; border:1px solid var(--border);" onclick="closeWeatherModal()">סגור</button>
+    </div>
+  </div>
+
+  <!-- Reservations Wallet Modal -->
+  <div class="modal-backdrop" id="reservationsModal" onclick="closeReservationsModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()" style="max-width:480px; text-align:right;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.15rem; color:var(--accent-warm);">🎟️ ארנק ההזמנות שלי</h3>
+        <button onclick="closeReservationsModal()" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted);">✕</button>
+      </div>
+      <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">
+        שמרו כאן את שעות הכניסה שהזמנתם לארמונות ולמסעדות (פנה, Sala de Corte וכו'). המידע נשמר בנייד ומוצג בלוח הזמנים.
+      </p>
+
+      <div id="reservationsListContainer" style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;">
+        <!-- Filled dynamically -->
+      </div>
+
+      <!-- Add New Reservation Form -->
+      <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px; margin-top:8px;">
+        <div style="font-size:0.82rem; font-weight:800; margin-bottom:8px; color:var(--primary-accent);">➕ הוספת / עדכון שעת הזמנה:</div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
+          <select id="resTargetSpot" onchange="handleResSpotSelect(this.value)" style="padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);">
+            <option value="d4_pena">ארמון פנה (יום 4)</option>
+            <option value="d4_regaleira">קינטה דה רגאליירה (יום 4)</option>
+            <option value="d3_sala">Sala de Corte (יום 3)</option>
+            <option value="d5_atalho">Atalho Real (יום 5)</option>
+            <option value="d2_castelo">טירת סאו ז'ורז'ה (יום 2)</option>
+            <option value="d3_jeronimos">מנזר ז'רונימוש (יום 3)</option>
+            <option value="custom">יעד או מסעדה אחרת...</option>
+          </select>
+          <input type="time" id="resTime" value="10:30" style="padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);" />
+        </div>
+        <input type="text" id="resCustomName" placeholder="שם היעד המדויק (למשל: מסעדת פראדו)" style="display:none; width:100%; box-sizing:border-box; margin-bottom:8px; padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);" />
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
+          <input type="text" id="resCode" placeholder="מס' הזמנה / אסמכתא" style="padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);" />
+          <input type="text" id="resNotes" placeholder="הערות (למשל: שולחן ל-2)" style="padding:7px; border-radius:6px; border:1px solid var(--border); font-size:0.78rem; background:var(--surface); color:var(--text-main);" />
+        </div>
+        <button class="btn-action ticket" style="width:100%; padding:8px; font-size:0.8rem; justify-content:center;" onclick="saveUserReservation()">💾 שמירת הזמנה</button>
+      </div>
+
+      <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:9px; margin-top:10px; border:1px solid var(--border);" onclick="closeReservationsModal()">סגור</button>
     </div>
   </div>
 
@@ -3150,6 +3507,7 @@
         </div>
       `;
       updateProgress();
+      renderSintraNavigator();
     }
 
     function updateProgress() {
@@ -3224,6 +3582,23 @@
           </div>
         ` : '';
 
+        // Reservation & Rain warnings
+        const resItem = getUserReservationForSpot(s);
+        const reservationBadge = resItem ? `
+          <div class="reservation-card-badge" onclick="openReservationsModal()" style="cursor:pointer;" title="לחצו לצפייה או עריכת ההזמנה בארנק">
+            <span>🎟️ שעה מוזמנת: ${resItem.time}</span>
+            ${resItem.code ? `<span style="opacity:0.85; font-size:0.7rem;">(#${resItem.code})</span>` : ''}
+          </div>
+        ` : '';
+
+        const isOutdoorSpot = isSpotOutdoors(s);
+        const rainWarningBadge = (isRainMode && isOutdoorSpot) ? `
+          <div class="spot-rain-warning">
+            <span>🌧️ אתר חשוף לגשם</span>
+            <button onclick="quickSwapToIndoor('${s.id}')" style="background:#0284c7; color:#fff; border:none; border-radius:4px; font-size:0.68rem; padding:2px 6px; cursor:pointer; margin-right:4px;">החלף למקורה ▾</button>
+          </div>
+        ` : '';
+
         card.innerHTML = `
           <div class="spot-header-row">
             <span class="time-badge">⏰ ${s.time}</span>
@@ -3231,6 +3606,9 @@
               <span class="category-chip ${isAlert ? 'alert' : ''} ${isHotel ? 'hotel' : ''}">${s.tag}</span>
             </div>
           </div>
+
+          ${reservationBadge}
+          ${rainWarningBadge}
 
           <div class="spot-title-row">
             <div class="spot-headline">${s.name}</div>
@@ -3732,6 +4110,10 @@
             🥩 <strong>מנות מומלצות (ללא פירות ים):</strong> ${r.dishes}
           </div>
 
+          <div style="font-size:0.73rem; color:var(--text-muted); background:var(--bg-subtle); border-radius:6px; padding:4px 8px; margin-bottom:8px;">
+            🥖 <strong>תזכורת קוביירט:</strong> לחם וגבינה שיוגשו לשולחן כרוכים בתשלום. אפשר לסרב בנימוס (<em>"Não, obrigado"</em>).
+          </div>
+
           <div class="actions-grid">
             <a class="btn-action maps" href="${gmapsUrl}" target="_blank">📍 מפות</a>
             <a class="btn-action uber" href="${uberUrl}" target="_blank">🚕 Uber</a>
@@ -3938,6 +4320,456 @@
     }
 
     // ==========================================
+    // 19. ניווט סינטרה וקשקאיש (Sintra Day 4 Navigator)
+    // ==========================================
+    function renderSintraNavigator() {
+      const container = document.getElementById('sintraNavContainer');
+      if (!container) return;
+      if (currentDayIdx === 3) { // Day 4 (zero-based index 3)
+        container.style.display = 'block';
+        container.innerHTML = `
+          <div class="sintra-nav-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <strong style="font-size:1.05rem;">🧭 מפת ניווט ותחבורה לסינטרה וקשקאיש (יום 4)</strong>
+              <span style="font-size:0.75rem; background:rgba(255,255,255,0.2); padding:3px 8px; border-radius:12px;">רכבות ואוטובוסים</span>
+            </div>
+            <p style="font-size:0.8rem; margin:0 0 10px; opacity:0.95; line-height:1.45;">
+              יום 4 מתקיים מחוץ לליסבון ודורש תזמון מדויק. הנה תחנות המעבר והקווים המדויקים:
+            </p>
+            <div style="display:grid; grid-template-columns:1fr; gap:6px;">
+              <div class="sintra-step-box">
+                <strong>1. 🚆 רכבת מליסבון לסינטרה (Linha de Sintra):</strong><br>
+                יציאה מתחנת <strong>Rossio</strong> (7 דק' הליכה מהמלון). רכבות יוצאות כל 20 דק' מרציף 1. משך נסיעה: 40 דק', עלות: €2.40 (בכרטיס Navegante ירוק).
+              </div>
+              <div class="sintra-step-box">
+                <strong>2. 🚌 הגעה לארמון פנה (אוטובוס 434 Scotturb):</strong><br>
+                יוצא מרחבת תחנת הרכבת בסינטרה ועולה ישירות לשער הארמון. <span style="color:#fef08a;">⚠️ אסורה כניסת רכבים פרטיים ומוניות לארמון!</span> יש להגיע 20 דק' לפני חלון השעה המוזמן.
+              </div>
+              <div class="sintra-step-box">
+                <strong>3. 🌀 מעבר לקינטה דה רגאליירה (באר היוזמה):</strong><br>
+                ירידה ברגל בשביל ירוק ומוצל (כ-25 דק' בירידה) או אובר קצר למרכז סינטרה (Palácio Nacional) ומשם 8 דק' הליכה לרגאליירה.
+              </div>
+              <div class="sintra-step-box">
+                <strong>4. 🌊 לקאבו דה רוקה וקשקאיש (אוטובוסים 1253 ו-1624):</strong><br>
+                קו <strong>1253</strong> מסינטרה לקאבו דה רוקה (הצוקים המערביים באירופה, 30 דק'). משם קו <strong>1624</strong> או Uber לקשקאיש (25 דק').<br>
+                חזרה לליסבון: רכבת נופית מדהימה מתחנת Cascais ישירות לתחנת Cais do Sodré בליסבון (40 דק').
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        container.style.display = 'none';
+        container.innerHTML = '';
+      }
+    }
+
+    // ==========================================
+    // 20. מצב יום גשום וחלופות מקורות (Rain Mode)
+    // ==========================================
+    let isRainMode = false;
+    const INDOOR_ALTERNATIVES = [
+      {
+        id: "rain_colombo",
+        name: "קניון קולומבו (Centro Colombo)",
+        tag: "🛍️ שופינג ומסעדות",
+        desc: "קניון מקורה ענק עם 400 חנויות (Primark, Zara, Fnac), מתחם קולנוע ו-60 מסעדות. אידיאלי לשעות גשומות.",
+        address: "Av. Lusíada, 1500-392 Lisboa (מטרו Colégio Militar/Luz)",
+        lat: 38.7538, lng: -9.1887
+      },
+      {
+        id: "rain_azulejo",
+        name: "מוזיאון האריחים הלאומי (Museu do Azulejo)",
+        tag: "🏛️ אמנות ומנזר עתיק",
+        desc: "מנזר מרהיב מ-1509 עם קירות אריחים כחולים, כנסיית זהב מפוארת ובית קפה מקורה בגן שקט.",
+        address: "R. Me. Deus 4, 1900-312 Lisboa",
+        lat: 38.7247, lng: -9.1139
+      },
+      {
+        id: "rain_oceanario",
+        name: "האקווריום של ליסבון (Oceanário de Lisboa)",
+        tag: "🐠 אקווריום ענק",
+        desc: "האקווריום הגדול באירופה בפארק האומות. מכל מרכזי ענק עם כרישים, לוטרות ים ופינגווינים.",
+        address: "Esplanada Dom Carlos I, 1990-005 Lisboa",
+        lat: 38.7635, lng: -9.0937
+      },
+      {
+        id: "rain_timeout",
+        name: "שוק האוכל טיים אאוט (Time Out Market)",
+        tag: "🍽️ שוק קולינרי מקורה",
+        desc: "עשרות דוכני שף, סטייקים, פסטות, יינות וקינוחים תחת קורת גג אחת תוססת.",
+        address: "Av. 24 de Julho 49, 1200-479 Lisboa",
+        lat: 38.7071, lng: -9.1460
+      },
+      {
+        id: "rain_gulbenkian",
+        name: "מוזיאון קלוסט גולבנקיאן (Museu Calouste Gulbenkian)",
+        tag: "🎨 אוסף אמנות בינלאומי",
+        desc: "אוצרות מצרים, פרס, ציורי מונה ורמברנדט במבנה מודרני ממוזג ומקורה.",
+        address: "Av. de Berna 45A, 1067-001 Lisboa",
+        lat: 38.7375, lng: -9.1542
+      }
+    ];
+
+    function toggleRainMode(checked) {
+      isRainMode = checked;
+      const bar = document.getElementById('rainModeBar');
+      if (bar) bar.classList.toggle('active', isRainMode);
+      const panel = document.getElementById('rainAlternativesPanel');
+      if (panel) {
+        if (isRainMode) {
+          renderRainAlternativesPanel();
+          panel.style.display = 'block';
+        } else {
+          panel.style.display = 'none';
+        }
+      }
+      renderTimeline();
+    }
+
+    function renderRainAlternativesPanel() {
+      const panel = document.getElementById('rainAlternativesPanel');
+      if (!panel) return;
+      panel.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <strong style="color:#0284c7; font-size:0.92rem;">🌧️ חלופות מקורות מובילות ליום זה (מוגנות מגשם):</strong>
+          <span style="font-size:0.72rem; color:var(--text-muted);">בחרו פעילות יבשה להיום</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          ${INDOOR_ALTERNATIVES.map(a => `
+            <div class="rain-alt-item">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <strong style="font-size:0.85rem;">${a.name}</strong>
+                <span class="category-chip" style="font-size:0.68rem; padding:2px 7px;">${a.tag}</span>
+              </div>
+              <p style="font-size:0.77rem; color:var(--text-muted); margin:4px 0 6px;">${a.desc}</p>
+              <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                <a class="btn-action maps" href="${buildGmapsUrl(a.lat, a.lng)}" target="_blank" style="padding:4px 8px; font-size:0.72rem;">📍 מפות</a>
+                <a class="btn-action uber" href="${buildUberUrl(a.name, a.address, a.lat, a.lng)}" target="_blank" style="padding:4px 8px; font-size:0.72rem;">🚕 Uber</a>
+                <button class="btn-action ticket" onclick="addIndoorSpotToToday('${a.id}')" style="padding:4px 10px; font-size:0.72rem;">➕ הוסף ללו"ז היום</button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function isSpotOutdoors(s) {
+      if (!s) return false;
+      if (s.isHotel || s.id.includes('airport')) return false;
+      const lowerTag = (s.tag || '') + ' ' + (s.name || '');
+      const outdoorKeywords = ['תצפית', 'טירה', 'פארק', 'חוף', 'שקיעה', 'סמטאות', 'קאבו', 'טיילת', 'גנים', 'רחוב', 'כיכר'];
+      return outdoorKeywords.some(kw => lowerTag.includes(kw));
+    }
+
+    function addIndoorSpotToToday(altId) {
+      const alt = INDOOR_ALTERNATIVES.find(a => a.id === altId);
+      if (!alt) return;
+      const spots = tripData[currentDayIdx].spots;
+      const hotelEndIdx = spots.findIndex(s => s.isHotel && s.id.includes('end'));
+      const newSpot = {
+        id: `custom_${alt.id}_${Date.now()}`,
+        name: alt.name,
+        time: "15:00",
+        tag: "🌧️ חלופה מקורה לגשם",
+        hours: "פתוח ומקורה",
+        duration: "שעתיים",
+        desc: alt.desc,
+        address: alt.address,
+        lat: alt.lat,
+        lng: alt.lng
+      };
+      if (hotelEndIdx !== -1) {
+        spots.splice(hotelEndIdx, 0, newSpot);
+      } else {
+        spots.push(newSpot);
+      }
+      saveCustomSchedule();
+      renderTimeline();
+      showToast(`נוסף ללו"ז: ${alt.name}`);
+    }
+
+    function quickSwapToIndoor(spotId) {
+      const panel = document.getElementById('rainAlternativesPanel');
+      if (panel) {
+        panel.scrollIntoView({ behavior: 'smooth' });
+        showToast('בחרו אחת מהחלופות המקורות שלמטה להוספה ללו"ז');
+      }
+    }
+
+    // ==========================================
+    // 21. מזג אוויר חי של ליסבון (Open-Meteo API)
+    // ==========================================
+    let lisbonForecastData = null;
+
+    async function fetchLisbonLiveWeather() {
+      const weatherTextEl = document.getElementById('lisbonWeatherText');
+      try {
+        const url = 'https://api.open-meteo.com/v1/forecast?latitude=38.7223&longitude=-9.1393&current=temperature_2m,relative_humidity_2m,precipitation_probability,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FLisbon';
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Weather API error');
+        const data = await res.json();
+        lisbonForecastData = data;
+
+        const cur = data.current;
+        const temp = Math.round(cur.temperature_2m);
+        const code = cur.weather_code;
+        const rainProb = cur.precipitation_probability !== undefined ? cur.precipitation_probability : 0;
+        const wInfo = getWeatherCodeInfo(code);
+
+        if (weatherTextEl) {
+          weatherTextEl.innerText = `${wInfo.icon} ${temp}°C | ${rainProb}% גשם`;
+        }
+      } catch (err) {
+        console.log('Using default Lisbon weather:', err);
+        if (weatherTextEl) {
+          weatherTextEl.innerText = '🌤️ 20°C | 0% גשם';
+        }
+      }
+    }
+
+    function getWeatherCodeInfo(code) {
+      if (code === 0) return { desc: 'בהיר ושמשי', icon: '☀️' };
+      if (code === 1 || code === 2) return { desc: 'בהיר לרוב', icon: '🌤️' };
+      if (code === 3) return { desc: 'מעונן חלקית', icon: '⛅' };
+      if (code >= 45 && code <= 48) return { desc: 'ערפילי', icon: '🌫️' };
+      if (code >= 51 && code <= 57) return { desc: 'טפטוף קל', icon: '🌦️' };
+      if (code >= 61 && code <= 67) return { desc: 'גשם שוטף', icon: '🌧️' };
+      if (code >= 80 && code <= 82) return { desc: 'ממטרים חולפים', icon: '🌧️' };
+      if (code >= 95) return { desc: 'סופת רעמים', icon: '⛈️' };
+      return { desc: 'סתיו נעים', icon: '🌤️' };
+    }
+
+    function openWeatherModal() {
+      const modal = document.getElementById('weatherModal');
+      if (!modal) return;
+      if (lisbonForecastData && lisbonForecastData.current) {
+        const cur = lisbonForecastData.current;
+        const temp = Math.round(cur.temperature_2m);
+        const wInfo = getWeatherCodeInfo(cur.weather_code);
+        const rainProb = cur.precipitation_probability !== undefined ? cur.precipitation_probability : 0;
+        const humidity = cur.relative_humidity_2m || '--';
+
+        document.getElementById('weatherModalIcon').innerText = wInfo.icon;
+        document.getElementById('weatherModalTemp').innerText = `${temp}°C`;
+        document.getElementById('weatherModalDesc').innerText = `${wInfo.desc} בליסבון כעת`;
+        document.getElementById('weatherModalDetails').innerText = `לחות: ${humidity}% | סיכוי למשקעים כעת: ${rainProb}%`;
+
+        // Render 7-day forecast
+        const dailyContainer = document.getElementById('weatherDailyList');
+        if (dailyContainer && lisbonForecastData.daily) {
+          const d = lisbonForecastData.daily;
+          const daysOfWeek = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת'];
+          dailyContainer.innerHTML = d.time.map((t, idx) => {
+            const dateObj = new Date(t);
+            const dayName = daysOfWeek[dateObj.getDay()];
+            const formattedDate = `${dateObj.getDate()}.${dateObj.getMonth() + 1}`;
+            const maxTemp = Math.round(d.temperature_2m_max[idx]);
+            const minTemp = Math.round(d.temperature_2m_min[idx]);
+            const codeInfo = getWeatherCodeInfo(d.weather_code[idx]);
+            const rain = d.precipitation_probability_max ? d.precipitation_probability_max[idx] : 0;
+            return `
+              <div style="background:var(--bg-subtle); border-radius:8px; padding:7px 10px; display:flex; justify-content:space-between; align-items:center; font-size:0.8rem;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="font-size:1.2rem;">${codeInfo.icon}</span>
+                  <div>
+                    <strong>יום ${dayName} (${formattedDate})</strong>
+                    <div style="font-size:0.7rem; color:var(--text-muted);">${codeInfo.desc}</div>
+                  </div>
+                </div>
+                <div style="text-align:left; font-family:var(--font-num);">
+                  <strong>${maxTemp}° / ${minTemp}°C</strong>
+                  <div style="font-size:0.7rem; color:${rain > 30 ? 'var(--danger)' : 'var(--text-muted)'};">${rain}% גשם</div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+      modal.style.display = 'flex';
+    }
+
+    function closeWeatherModal(e) {
+      if (!e || e.target.id === 'weatherModal' || e.target.tagName === 'BUTTON') {
+        document.getElementById('weatherModal').style.display = 'none';
+      }
+    }
+
+    // ==========================================
+    // 22. ארנק ההזמנות שלי (Reservations Tracker)
+    // ==========================================
+    const DEFAULT_RESERVATIONS = [
+      {
+        id: "res_pena",
+        spotId: "d4_pena",
+        name: "ארמון פנה (סינטרה)",
+        day: 4,
+        date: "23.10 (ו')",
+        time: "10:00",
+        code: "PENA-ONLINE",
+        notes: "חלון שעה קשיח! כרטיס ארמון+פארק"
+      },
+      {
+        id: "res_sala",
+        spotId: "d3_sala",
+        name: "מסעדת Sala de Corte",
+        day: 3,
+        date: "22.10 (ה')",
+        time: "20:30",
+        code: "SALA-CONFIRMED",
+        notes: "שולחן ל-2 לארוחת בשרים"
+      },
+      {
+        id: "res_atalho",
+        spotId: "d5_atalho",
+        name: "מסעדת Atalho Real",
+        day: 5,
+        date: "24.10 (ש')",
+        time: "20:00",
+        code: "ATALHO-GARDEN",
+        notes: "ישיבה בגן הקסום בפרינסיפה ריאל"
+      }
+    ];
+
+    let userReservations = [];
+    try {
+      const savedRes = localStorage.getItem('portugal_user_reservations');
+      userReservations = savedRes ? JSON.parse(savedRes) : DEFAULT_RESERVATIONS;
+    } catch (e) {
+      userReservations = DEFAULT_RESERVATIONS;
+    }
+
+    function getUserReservationForSpot(s) {
+      if (!s) return null;
+      return userReservations.find(r => r.spotId === s.id || (s.name && s.name.includes(r.name)));
+    }
+
+    function openReservationsModal() {
+      renderReservationsList();
+      document.getElementById('reservationsModal').style.display = 'flex';
+    }
+
+    function closeReservationsModal(e) {
+      if (!e || e.target.id === 'reservationsModal' || e.target.tagName === 'BUTTON') {
+        document.getElementById('reservationsModal').style.display = 'none';
+      }
+    }
+
+    function renderReservationsList() {
+      const container = document.getElementById('reservationsListContainer');
+      if (!container) return;
+      if (userReservations.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:16px; color:var(--text-muted); font-size:0.85rem;">עדיין לא הזנתם שעות שהוזמנו. הוסיפו למטה!</div>`;
+        updateReservationsBadge();
+        return;
+      }
+
+      container.innerHTML = userReservations.map(r => `
+        <div style="background:var(--surface); border:1px solid var(--border); border-right:4px solid var(--accent); border-radius:var(--radius-sm); padding:10px 12px; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-weight:800; font-size:0.88rem; color:var(--text-main);">${r.name}</div>
+            <div style="font-size:0.75rem; color:var(--accent); font-weight:700; margin-top:2px;">
+              יום ${r.day || ''} • שעה: ${r.time} ${r.code ? `• אסמכתא: ${r.code}` : ''}
+            </div>
+            ${r.notes ? `<div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">📝 ${r.notes}</div>` : ''}
+          </div>
+          <button onclick="deleteUserReservation('${r.id}')" style="background:none; border:none; color:var(--danger); font-size:1.1rem; cursor:pointer; padding:6px;" title="מחיקת הזמנה זו">🗑️</button>
+        </div>
+      `).join('');
+
+      updateReservationsBadge();
+    }
+
+    function updateReservationsBadge() {
+      const badge = document.getElementById('headerReservationsBadge');
+      if (!badge) return;
+      if (userReservations.length > 0) {
+        badge.innerText = userReservations.length;
+        badge.style.display = 'flex';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    function handleResSpotSelect(val) {
+      const customInput = document.getElementById('resCustomName');
+      if (customInput) {
+        customInput.style.display = val === 'custom' ? 'block' : 'none';
+      }
+    }
+
+    function saveUserReservation() {
+      const select = document.getElementById('resTargetSpot');
+      const timeInput = document.getElementById('resTime');
+      const codeInput = document.getElementById('resCode');
+      const notesInput = document.getElementById('resNotes');
+      const customInput = document.getElementById('resCustomName');
+
+      const spotVal = select.value;
+      const timeVal = timeInput.value || "10:00";
+      const codeVal = codeInput.value.trim();
+      const notesVal = notesInput.value.trim();
+
+      let spotName = select.options[select.selectedIndex].text;
+      let targetSpotId = spotVal;
+
+      if (spotVal === 'custom') {
+        spotName = customInput.value.trim() || 'יעד מותאם אישית';
+        targetSpotId = 'custom_' + Date.now();
+      }
+
+      // Check if updating existing
+      const existingIdx = userReservations.findIndex(r => r.spotId === targetSpotId);
+      const newRes = {
+        id: existingIdx !== -1 ? userReservations[existingIdx].id : 'res_' + Date.now(),
+        spotId: targetSpotId,
+        name: spotName,
+        time: timeVal,
+        code: codeVal,
+        notes: notesVal
+      };
+
+      if (existingIdx !== -1) {
+        userReservations[existingIdx] = newRes;
+      } else {
+        userReservations.push(newRes);
+      }
+
+      localStorage.setItem('portugal_user_reservations', JSON.stringify(userReservations));
+      renderReservationsList();
+      renderTimeline();
+      showToast('ההזמנה נשמרה בהצלחה!');
+    }
+
+    function deleteUserReservation(resId) {
+      userReservations = userReservations.filter(r => r.id !== resId);
+      localStorage.setItem('portugal_user_reservations', JSON.stringify(userReservations));
+      renderReservationsList();
+      renderTimeline();
+      showToast('ההזמנה נמחקה');
+    }
+
+    // ==========================================
+    // 23. מחשבון החזר מס (Tax-Free Calculator)
+    // ==========================================
+    function calcTaxFreeRefund() {
+      const input = document.getElementById('taxFreeInput');
+      const resultEl = document.getElementById('taxFreeResult');
+      if (!input || !resultEl) return;
+
+      const eur = parseFloat(input.value) || 0;
+      if (eur < 50) {
+        resultEl.innerHTML = `<span style="color:var(--danger); font-size:0.8rem;">מינימום להחזר: €50</span>`;
+        return;
+      }
+
+      // In Portugal, net tourist refund rate after management fees is approx 13.5%
+      const refundEur = (eur * 0.135).toFixed(2);
+      const refundIls = Math.round(refundEur * 4.05);
+
+      resultEl.innerHTML = `≈ €${refundEur} (כ-${refundIls} ₪ בחזרה!)`;
+    }
+
+    // ==========================================
     // 18. אתחול ראשוני של האפליקציה
     // ==========================================
     initTheme();
@@ -3947,6 +4779,10 @@
     filterDining('all');
     renderPhrasebook('all');
     calcTipAndIls();
+    calcTaxFreeRefund();
+    updateReservationsBadge();
+    fetchLisbonLiveWeather();
+    renderSintraNavigator();
     renderChecklist();
     document.getElementById('toolsHotelUber').href = buildUberUrl(HOTEL.name, HOTEL.address, HOTEL.lat, HOTEL.lng);
 
