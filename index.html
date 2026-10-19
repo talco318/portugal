@@ -1610,31 +1610,229 @@
       color: #fff;
     }
 
-    @media (max-width: 520px) {
+    /* RESERVATIONS MODAL MOBILE BOTTOM-SHEET & TABBED INTERFACE */
+    .bottom-sheet-handle {
+      width: 44px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 99px;
+      margin: 0 auto 10px;
+      display: block;
+    }
+    .res-modal-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .res-modal-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .res-modal-close {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.15s;
+    }
+    .res-modal-close:hover {
+      background: var(--surface);
+      color: var(--text-main);
+    }
+    .res-modal-tabs {
+      display: flex;
+      gap: 6px;
+      background: var(--bg-subtle);
+      padding: 4px;
+      border-radius: 12px;
+      margin-top: 10px;
+      border: 1px solid var(--border);
+    }
+    .res-tab-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .res-tab-btn.active {
+      background: var(--surface);
+      color: var(--primary-accent);
+      box-shadow: var(--shadow-sm);
+    }
+    .res-tab-badge {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      padding: 1px 7px;
+      font-size: 0.68rem;
+      font-weight: 800;
+    }
+    .res-modal-body {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      max-height: 60vh;
+      padding: 2px 0;
+    }
+
+    /* QUICK MOVE BUTTON & LIVE TRACKER BAR */
+    .btn-quick-move {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.15s ease;
+      color: var(--text-muted);
+    }
+    .btn-quick-move:hover {
+      background: var(--surface);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.06);
+    }
+
+    .live-tracker-bar {
+      margin: 8px 0 6px;
+    }
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 0.75rem;
+      color: var(--text-main);
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-sm);
+    }
+    .live-pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulseGreen 1.8s infinite;
+    }
+    @keyframes pulseGreen {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    .next-countdown-badge {
+      background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(6,182,212,0.12));
+      color: var(--primary-accent);
+      border: 1px solid rgba(37,99,235,0.3);
+      padding: 1px 7px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.7rem;
+    }
+    .live-urgent-res-chip {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(245, 158, 11, 0.12));
+      border: 1px solid #ef4444;
+      color: #b91c1c;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      animation: pulseUrgent 2s infinite ease-in-out;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    body.dark-mode .live-urgent-res-chip {
+      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.2);
+    }
+    @keyframes pulseUrgent {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+      50% { box-shadow: 0 0 10px 2px rgba(239, 68, 68, 0.3); }
+    }
+
+    .tool-chip.sunset-chip {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(217, 119, 6, 0.08));
+      border-color: rgba(245, 158, 11, 0.4);
+      color: #b45309;
+    }
+    body.dark-mode .tool-chip.sunset-chip {
+      color: #fcd34d;
+    }
+    .tool-chip.gmaps-day-chip {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(16, 185, 129, 0.08));
+      border-color: rgba(37, 99, 235, 0.3);
+      color: var(--primary-accent);
+    }
+
+    @media (max-width: 580px) {
       #reservationsModal.modal-backdrop {
         padding: 0;
         align-items: flex-end;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(4px);
       }
-      #reservationsModal .modal-box {
+      #reservationsModal .modal-box.res-modal-box {
         max-width: 100% !important;
         width: 100% !important;
-        border-radius: 20px 20px 0 0 !important;
-        padding: 20px 16px 28px !important;
+        border-radius: 24px 24px 0 0 !important;
+        padding: 12px 16px env(safe-area-inset-bottom, 22px) !important;
         max-height: 88vh !important;
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      @keyframes slideUp {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+      }
+      .res-modal-body {
+        max-height: calc(88vh - 145px);
       }
       .res-form-grid {
         grid-template-columns: 1fr !important;
+      }
+      .res-form-grid input,
+      .res-form-grid select {
+        font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+        min-height: 44px; /* Apple touch friendly */
       }
       .res-ticket-card {
         flex-direction: column;
         align-items: flex-start;
         position: relative;
+        padding: 12px;
       }
       .res-ticket-del-btn {
         position: absolute;
-        top: 8px;
-        left: 8px;
+        top: 10px;
+        left: 10px;
+        padding: 8px 10px;
       }
     }
 
@@ -1729,9 +1927,9 @@
         <button class="icon-btn-header" onclick="openEmergencyModal()" title="חירום ושגרירות" style="color:var(--danger);">
           <span>🚨</span>
         </button>
-        <button class="icon-btn-header" onclick="openTicketsHubModal()" title="כרטיסים ועלויות" style="color:var(--accent);"><span>🎟️</span></button>
-        <button class="icon-btn-header" onclick="openReservationsModal()" title="ההזמנות שלי (שעות שהוזמנו)" style="color:#f59e0b; position:relative;">
-          <span>🗓️</span>
+        <button class="icon-btn-header" onclick="openTicketsHubModal()" title="📊 ריכוז כרטיסים, מחירים ועלויות" style="color:var(--accent);"><span>📊</span></button>
+        <button class="icon-btn-header" onclick="openReservationsModal()" title="🎟️ ארנק ההזמנות שלי (שעות שהוזמנו)" style="color:#f59e0b; position:relative;">
+          <span>🎟️</span>
           <span id="headerReservationsBadge" style="display:none; position:absolute; top:-3px; right:-3px; background:var(--accent-warm); color:#fff; font-size:0.6rem; font-weight:800; border-radius:50%; width:16px; height:16px; align-items:center; justify-content:center;">0</span>
         </button>
         <button class="hotel-btn-top" onclick="openHotelModal()">
@@ -1859,12 +2057,92 @@
         <h2 style="margin:0; font-size:1.25rem; color:var(--primary-accent);">📖 מדריך השטח והטיפים לליסבון</h2>
         <p style="margin:3px 0 0; font-size:0.8rem; color:var(--text-muted);">כל המידע המקומי, חלופות גשם, החזרי מס ותרבות האוכל</p>
         <div class="guide-quick-pills">
+          <a href="#guide-hacks-section" class="guide-quick-pill" style="border-color:#f59e0b; color:#b45309; font-weight:800;">💎 פנינות סודיות והאקים</a>
           <a href="#guide-rain-section" class="guide-quick-pill">🌧️ חלופות לגשם</a>
           <a href="#guide-taxfree-section" class="guide-quick-pill">🏷️ החזר מס Tax-Free</a>
           <a href="#guide-couvert-section" class="guide-quick-pill">🥖 חוק הקוביירט ותפריטים</a>
           <a href="#guide-phrasebook-section" class="guide-quick-pill">🗣️ שיחון מקומי</a>
           <a href="#guide-local-essentials" class="guide-quick-pill">🛒 סופרמרקטים ופארם</a>
           <a href="#guide-calc-section" class="guide-quick-pill">🧮 מחשבון טיפ ואירו</a>
+        </div>
+      </div>
+
+      <!-- Hidden Gems, Shortcuts & Lisbon Travel Hacks -->
+      <div class="guide-category" id="guide-hacks-section" style="border-right:4px solid #f59e0b; background:linear-gradient(135deg, rgba(245,158,11,0.06), rgba(217,119,6,0.02)); margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <h3 style="margin:0; color:#b45309; font-size:1.1rem; font-weight:800;">💎 פנינות סודיות והאקים תיירותיים בליסבון</h3>
+          <span style="font-size:0.75rem; background:#fef3c7; color:#92400e; font-weight:800; padding:3px 9px; border-radius:20px; border:1px solid #fcd34d;">סודות מקומיים</span>
+        </div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
+          טיפים קטנים שעושים הבדל עצום: לחסוך תורים ארוכים, להגיע לנקודות התצפית הטובות ביותר ולחוות את ליסבון כמו מקומי אמיתי.
+        </p>
+
+        <div style="display:grid; grid-template-columns:1fr; gap:10px;">
+          <!-- Hack 1: Santa Justa -->
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px;">
+            <div style="font-weight:800; font-size:0.88rem; color:var(--text-main); margin-bottom:3px;">
+              ⚡ האק מעלית סנטה ז'ושטה (Elevador de Santa Justa) בחינם ובלי תור!
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">
+              במקום לעמוד 45–60 דקות בתור בתחתית המעלית ברחוב סנטה ז'ושטה ולשלם €5.30 לכרטיס — עלו ברגל מסמטאות שיאדו לכיכר <strong>Largo do Carmo</strong> (ליד הריסות מנזר קרמו). מימין לכנסייה יש מעבר פתוח ורציף המוביל ישירות אל <strong>גשר התצפית העליון של המעלית בחינם לחלוטין</strong>! מקבלים בדיוק את אותו נוף פנורמי מרהיב של באיישה והטירה, ללא המתנה.
+            </div>
+          </div>
+
+          <!-- Hack 2: LX Factory -->
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px;">
+            <div style="font-weight:800; font-size:0.88rem; color:var(--text-main); margin-bottom:3px;">
+              🏭 מתחם האמנות והבילוי LX Factory וחנות Ler Devagar
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">
+              מתחם מפעלי טקסטיל נטוש מ-1846 מתחת לגשר 25 באפריל (רובע אלקנטרה) שהפך למוקד ההיפסטרי-אמנותי המוביל בעיר. אל תחמיצו את חנות הספרים <strong>Ler Devagar</strong> ("לקרוא לאט") שנבחרה לאחת מ-10 היפות בעולם, עם דפוס עיתונים היסטורי ופסל אופניים מעופפים, ואת הקוקטייל ברופטופ הצופה לגשר. שילוב מושלם לשעות אחר הצהריים ביום בלם.
+            </div>
+          </div>
+
+          <!-- Hack 3: Senhora do Monte -->
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px;">
+            <div style="font-weight:800; font-size:0.88rem; color:var(--text-main); margin-bottom:3px;">
+              🌄 התצפית הכי גבוהה והשקיעה הכי יפה: Miradouro da Senhora do Monte
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">
+              בעוד שרוב התיירים נדחסים בתצפית סנטה לוזיה, התצפית בראש גבעת גראסה (Senhora do Monte) היא הנקודה הגבוהה ביותר בליסבון. יש בה נוף פנורמי מלא של 270 מעלות על כל העיר, הטירה, נהר הטז'ו וגשר 25 באפריל. בשעת שקיעה יש שם נגני רחוב, דוכני בירה מקומית ואווירה מחשמלת.
+            </div>
+          </div>
+
+          <!-- Hack 4: Time Out Market -->
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px;">
+            <div style="font-weight:800; font-size:0.88rem; color:var(--text-main); margin-bottom:3px;">
+              🍴 Time Out Market (Mercado da Ribeira) — איך לאכול נכון?
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">
+              שוק האוכל הגדול של ליסבון מציע מנות של שפי מישלן במחירים שפויים (€12–€18). הטיפ למניעת עומס: הגיעו לפני 13:00 או אחרי 15:00. דוכנים שאסור לפספס: <strong>Manteigaria</strong> (לפסטל דה נאטה לוהט שיוצא מהתנור כל 15 דקות), <strong>Henrique Sá Pessoa</strong> (מנות שף מסורתיות), ו-<strong>Tartar-ia</strong>.
+            </div>
+          </div>
+
+          <!-- Hack 5: A Ginjinha -->
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px;">
+            <div style="font-weight:800; font-size:0.88rem; color:var(--text-main); margin-bottom:3px;">
+              🍒 כוסית ז'ינז'יניה מסורתית (€1.50) בכיכר רוסיו
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">
+              ב-<strong>A Ginjinha</strong> המקורית מ-1840 (Largo São Domingos 8, שתי דקות הליכה מהמלון). מזמינים <em>"Com elas"</em> (עם דובדבנים שלמים בתחתית הכוסית) או <em>"Sem elas"</em> (בלי). שותים בעמידה ברחוב כמו המקומיים — מסורת ליסבונית מתוקה וחובה!
+            </div>
+          </div>
+
+          <!-- Hack 6: Tipping rules in Portugal -->
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px;">
+            <div style="font-weight:800; font-size:0.88rem; color:var(--text-main); margin-bottom:3px;">
+              💶 תרבות הטיפים בפורטוגל — מתי וכמה משאירים?
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.5;">
+              בפורטוגל טיפ אינו חובה חוקית כמו בארה"ב, והשירות כלול בחשבון:
+              <ul style="margin:4px 0 0 16px; padding:0;">
+                <li><strong>בתי קפה ומאפיות:</strong> מעגלים עודף בכמה סנטים לקופת הטיפים בדלפק.</li>
+                <li><strong>מסעדות רגילות:</strong> מעגלים ליורו הקרוב או משאירים €1–€2 לשולחן אם השירות היה נעים.</li>
+                <li><strong>מסעדות שף / ערב יוקרתי (כמו Sala de Corte):</strong> נהוג להשאיר 5% עד 10% במזומן אם נהניתם במיוחד.</li>
+                <li><strong>מוניות ו-Uber:</strong> עיגול קל באפליקציה (€1) יתקבל בברכה גדולה.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2282,9 +2560,17 @@
         <button onclick="closeTicketsHubModal()" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted);">✕</button>
       </div>
 
-      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">
         סקירה מלאה של כל האטרקציות בתשלום בטיול, כמה עולה, ומתי חובה להזמין מראש:
       </p>
+
+      <div style="background:linear-gradient(135deg, rgba(245,158,11,0.12), rgba(217,119,6,0.06)); border:1px solid #f59e0b; border-radius:10px; padding:10px 12px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <strong style="color:#b45309; font-size:0.84rem;">🎟️ ארנק שעות ההזמנה שלכם:</strong>
+          <div style="font-size:0.73rem; color:var(--text-muted); margin-top:2px;">לשמירת שעות הכניסה שהזמנתם וקבלת תזכורות בזמן אמת</div>
+        </div>
+        <button class="btn-action ticket" style="font-size:0.75rem; padding:6px 11px; white-space:nowrap; border-radius:8px;" onclick="closeTicketsHubModal(); openReservationsModal();">פתח ארנק ▾</button>
+      </div>
 
       <div style="display:flex; flex-direction:column; gap:10px;">
         
@@ -2493,52 +2779,98 @@
 
   <!-- Reservations Wallet Modal -->
   <div class="modal-backdrop" id="reservationsModal" onclick="closeReservationsModal(event)">
-    <div class="modal-box" onclick="event.stopPropagation()" style="max-width:480px; text-align:right;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.15rem; color:var(--accent-warm);">🎟️ ארנק ההזמנות שלי</h3>
-        <button onclick="closeReservationsModal()" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted);">✕</button>
-      </div>
-      <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">
-        שמרו כאן את שעות הכניסה שהזמנתם לארמונות ולמסעדות (פנה, Sala de Corte וכו'). המידע נשמר בנייד ומוצג בלוח הזמנים.
-      </p>
-
-      <div id="reservationsListContainer" style="display:flex; flex-direction:column; gap:8px; margin-bottom:14px;">
-        <!-- Filled dynamically -->
-      </div>
-
-      <!-- Add New Reservation Form -->
-      <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px; margin-top:8px;">
-        <div style="font-size:0.82rem; font-weight:800; margin-bottom:8px; color:var(--primary-accent);">➕ הוספת / עדכון שעת הזמנה:</div>
-        
-        <div class="res-preset-pills">
-          <span style="font-size:0.72rem; color:var(--text-muted); align-self:center;">קיצורי דרך:</span>
-          <button type="button" class="res-preset-pill" onclick="quickFillReservation('d4_pena', '10:30')">🏰 פנה (10:30)</button>
-          <button type="button" class="res-preset-pill" onclick="quickFillReservation('d4_regaleira', '14:30')">🌀 רגאליירה (14:30)</button>
-          <button type="button" class="res-preset-pill" onclick="quickFillReservation('d3_sala', '20:30')">🥩 Sala de Corte</button>
-          <button type="button" class="res-preset-pill" onclick="quickFillReservation('d5_atalho', '20:30')">🍷 Atalho Real</button>
+    <div class="modal-box res-modal-box" onclick="event.stopPropagation()" style="max-width:480px; text-align:right;">
+      <div class="bottom-sheet-handle"></div>
+      
+      <div class="res-modal-header">
+        <div class="res-modal-title-row">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:1.25rem;">🎟️</span>
+            <h3 style="margin:0; font-size:1.15rem; color:var(--accent-warm);">ארנק ההזמנות שלי</h3>
+          </div>
+          <button class="res-modal-close" onclick="closeReservationsModal()" aria-label="סגור">✕</button>
         </div>
 
-        <div class="res-form-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
-          <select id="resTargetSpot" onchange="handleResSpotSelect(this.value)" style="padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);">
-            <option value="d4_pena">ארמון פנה (יום 4)</option>
-            <option value="d4_regaleira">קינטה דה רגאליירה (יום 4)</option>
-            <option value="d3_sala">Sala de Corte (יום 3)</option>
-            <option value="d5_atalho">Atalho Real (יום 5)</option>
-            <option value="d2_castelo">טירת סאו ז'ורז'ה (יום 2)</option>
-            <option value="d3_jeronimos">מנזר ז'רונימוש (יום 3)</option>
-            <option value="custom">יעד או מסעדה אחרת...</option>
-          </select>
-          <input type="time" id="resTime" value="10:30" style="padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);" />
+        <!-- Segmented Tabs for Clean Mobile UX -->
+        <div class="res-modal-tabs">
+          <button type="button" class="res-tab-btn active" id="resTabTicketsBtn" onclick="switchResModalTab('tickets')">
+            <span>🎟️ הכרטיסים שלי</span>
+            <span class="res-tab-badge" id="resTabCountBadge">0</span>
+          </button>
+          <button type="button" class="res-tab-btn" id="resTabAddBtn" onclick="switchResModalTab('add')">
+            <span>➕ הוספת הזמנה</span>
+          </button>
         </div>
-        <input type="text" id="resCustomName" placeholder="שם היעד המדויק (למשל: מסעדת פראדו)" style="display:none; width:100%; box-sizing:border-box; margin-bottom:8px; padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);" />
-        <div class="res-form-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:10px;">
-          <input type="text" id="resCode" placeholder="מס' הזמנה / אסמכתא (לא חובה)" style="padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);" />
-          <input type="text" id="resNotes" placeholder="הערות (למשל: שולחן ל-2)" style="padding:8px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.8rem; background:var(--surface); color:var(--text-main);" />
-        </div>
-        <button class="btn-action ticket" style="width:100%; padding:10px; font-size:0.85rem; font-weight:800; justify-content:center; border-radius:8px;" onclick="saveUserReservation()">💾 שמירת הזמנה</button>
       </div>
 
-      <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:10px; margin-top:10px; border:1px solid var(--border); border-radius:8px; font-weight:700;" onclick="closeReservationsModal()">סגור</button>
+      <div class="res-modal-body">
+        <!-- Tab 1: My Booked Tickets List -->
+        <div id="resTabTicketsContent" class="res-tab-pane">
+          <p style="font-size:0.77rem; color:var(--text-muted); margin:0 0 10px;">
+            שעות הכניסה שהוזמנו לארמונות ולמסעדות. מוצגות גם בכרטיסי ציר הזמן הרלוונטיים:
+          </p>
+          <div id="reservationsListContainer" style="display:flex; flex-direction:column; gap:8px;">
+            <!-- Filled dynamically -->
+          </div>
+          <button class="btn-action ticket" style="width:100%; margin-top:12px; padding:11px; justify-content:center; border-radius:10px; font-weight:800;" onclick="switchResModalTab('add')">
+            ➕ הוסף שעת הזמנה נוספת
+          </button>
+        </div>
+
+        <!-- Tab 2: Add / Edit Reservation Form -->
+        <div id="resTabAddContent" class="res-tab-pane" style="display:none;">
+          <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px;">
+            <div style="font-size:0.82rem; font-weight:800; margin-bottom:8px; color:var(--primary-accent);">
+              בחר יעד מהיר או הזן ידנית:
+            </div>
+            
+            <div class="res-preset-pills">
+              <span style="font-size:0.72rem; color:var(--text-muted); align-self:center;">קיצורי דרך:</span>
+              <button type="button" class="res-preset-pill" onclick="quickFillReservation('d4_pena', '10:00')">🏰 פנה (10:00)</button>
+              <button type="button" class="res-preset-pill" onclick="quickFillReservation('d4_regaleira', '14:30')">🌀 רגאליירה (14:30)</button>
+              <button type="button" class="res-preset-pill" onclick="quickFillReservation('d3_sala', '20:30')">🥩 Sala de Corte</button>
+              <button type="button" class="res-preset-pill" onclick="quickFillReservation('d5_atalho', '20:00')">🍷 Atalho Real</button>
+              <button type="button" class="res-preset-pill" onclick="quickFillReservation('d2_castelo', '11:00')">🏰 טירת סאו ז'ורז'ה</button>
+              <button type="button" class="res-preset-pill" onclick="quickFillReservation('d3_jeronimos', '10:00')">⛪ מנזר ז'רונימוש</button>
+            </div>
+
+            <div class="res-form-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px;">
+              <select id="resTargetSpot" onchange="handleResSpotSelect(this.value)" style="padding:9px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.82rem; background:var(--surface); color:var(--text-main);">
+                <option value="d4_pena">ארמון פנה (יום 4)</option>
+                <option value="d4_regaleira">קינטה דה רגאליירה (יום 4)</option>
+                <option value="d3_sala">Sala de Corte (יום 3)</option>
+                <option value="d5_atalho">Atalho Real (יום 5)</option>
+                <option value="d2_castelo">טירת סאו ז'ורז'ה (יום 2)</option>
+                <option value="d3_jeronimos">מנזר ז'רונימוש (יום 3)</option>
+                <option value="custom">יעד או מסעדה אחרת...</option>
+              </select>
+              <input type="time" id="resTime" value="10:00" style="padding:9px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.82rem; background:var(--surface); color:var(--text-main);" />
+            </div>
+            <input type="text" id="resCustomName" placeholder="שם היעד המדויק (למשל: מסעדת פראדו)" style="display:none; width:100%; box-sizing:border-box; margin-bottom:8px; padding:9px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.82rem; background:var(--surface); color:var(--text-main);" />
+            <div class="res-form-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:10px;">
+              <input type="text" id="resCode" placeholder="מס' הזמנה / אסמכתא (לא חובה)" style="padding:9px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.82rem; background:var(--surface); color:var(--text-main);" />
+              <input type="text" id="resNotes" placeholder="הערות (למשל: שולחן ל-2)" style="padding:9px 10px; border-radius:8px; border:1px solid var(--border); font-size:0.82rem; background:var(--surface); color:var(--text-main);" />
+            </div>
+            <button class="btn-action ticket" style="width:100%; padding:11px; font-size:0.85rem; font-weight:800; justify-content:center; border-radius:8px;" onclick="saveUserReservation()">💾 שמירת הזמנה</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:10px; margin-top:12px; border:1px solid var(--border); border-radius:8px; font-weight:700;" onclick="closeReservationsModal()">סגור</button>
+    </div>
+  </div>
+
+  <!-- Sunset & Golden Hour Modal -->
+  <div class="modal-backdrop" id="sunsetModal" onclick="closeSunsetModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()" style="max-width:440px; text-align:right;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <h3 style="margin:0; font-size:1.15rem; color:#d97706;">🌅 שעת שקיעה ושעת הזהב להיום</h3>
+        <button onclick="closeSunsetModal()" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted);">✕</button>
+      </div>
+      <div id="sunsetModalContent">
+        <!-- Populated dynamically based on current day -->
+      </div>
+      <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:10px; margin-top:12px; border:1px solid var(--border); border-radius:8px; font-weight:700;" onclick="closeSunsetModal()">סגור</button>
     </div>
   </div>
 
@@ -2568,6 +2900,12 @@
         title: "נחיתה, באיישה וקו המים",
         area: "רובע באיישה (סביבת המלון)",
         brief: "נחיתה רגועה, התמקמות בדירה המעולה ברחוב פראטה, ירידה ברגל לכיכר קומרסיו המוארת מול הנהר וראמן חם ב-Panda Cantina ממש ליד המלון.",
+        sunset: {
+          time: "18:48",
+          goldenHour: "18:05",
+          spotName: "Cais das Colunas מול הנהר",
+          note: "בריזה מהטז'ו כשאורות גשר 25 באפריל ופסל ישו נדלקים מעבר למים"
+        },
         spots: [
           {
             id: "d1_airport",
@@ -2655,6 +2993,12 @@
         title: "אלפמה ההיסטורית, טירה ו-Time Out Market",
         area: "הגבעה המזרחית וקאיש דו סודרה",
         brief: "יום של סמטאות ציוריות, מרפסות אריחים כחולים, טירת סאו ז'ורז'ה בראש הגבעה וסיום תוסס בשוק האוכל Time Out Market או בפיצה ב-Lupita.",
+        sunset: {
+          time: "18:47",
+          goldenHour: "18:04",
+          spotName: "Miradouro da Graça / Senhora do Monte",
+          note: "התצפית הגבוהה ביותר בעיר — שקיעה כתומה על כל גגות ליסבון והטירה"
+        },
         spots: [
           {
             id: "d2_hotel_start",
@@ -2776,6 +3120,12 @@
         title: "בלן, מתחם LX Factory וסטייק משובח",
         area: "הציר המערבי לאורך הנהר",
         brief: "ביקור ברובע בלן המלכותי, טעימת המאפה המקורי מ-1837, מנזר ז'רונימוש, שופינג וגלריות במתחם LX Factory וארוחת שף ב-Sala de Corte.",
+        sunset: {
+          time: "18:45",
+          goldenHour: "18:02",
+          spotName: "מגדל בלם ו-Doca de Bom Sucesso על קו המים",
+          note: "השמש שוקעת מעבר לשפך הנהר אל האוקיינוס האטלנטי ליד מגדל בלם"
+        },
         spots: [
           {
             id: "d3_hotel_start",
@@ -2892,6 +3242,12 @@
         title: "סינטרה, צוקי קאבו דה רוקה וקשקאיש",
         area: "טיול יום קו החוף (מחוץ לעיר)",
         brief: "גולת הכותרת שמחוץ לעיר: ארמון פנה הצבעוני בסינטרה, באר היוזמה בקינטה דה רגאליירה, הנקודה המערבית ביותר באירופה בקאבו דה רוקה וסיום בעיירת הנופש קשקאיש.",
+        sunset: {
+          time: "18:44",
+          goldenHour: "18:00",
+          spotName: "צוקי קאבו דה רוקה / מפרץ קשקאיש",
+          note: "הנקודה המערבית ביותר ביבשת אירופה — שקיעה ישירה לתוך האוקיינוס האטלנטי!"
+        },
         spots: [
           {
             id: "d4_hotel_start",
@@ -3028,6 +3384,12 @@
         title: "שופינג מרוכז + פרינסיפה ריאל ורופטופ",
         area: "קניון קולומבו והגבעה המערבית",
         brief: "בוקר קניות מרוכז בקניון קולומבו הענק, פריקת שקיות בדירה, שיטוט בשכונת פרינסיפה ריאל האופנתית, ארוחת בשרים ב-Atalho Real וקוקטייל ברופטופ Javá המשקיף על הנהר.",
+        sunset: {
+          time: "18:42",
+          goldenHour: "17:58",
+          spotName: "Jardim do Torel / רופטופ Javá",
+          note: "גן רומנטי ומבודד עם תצפית מערבית שקטה, או דרינק שקיעה על הנהר ברופטופ Javá"
+        },
         spots: [
           {
             id: "d5_hotel_start",
@@ -3140,6 +3502,12 @@
         title: "שדרות ליברדדה, פארק ירוק וטיילת שקיעה",
         area: "ציר השדרה המרכזית צפונה וקו המים",
         brief: "יום של אלגנטיות: שדרת ליברדדה המוצלת, תצפית פארק אדוארדו השביעי, רביצה נינוחה מול הנהר בטיילת ריביירה דאס נאוס וקוקטייל שקיעה ב-Rossio Gastrobar הצמוד למלון. בלילה זה עוברים לשעון חורף!",
+        sunset: {
+          time: "18:41",
+          goldenHour: "17:57",
+          spotName: "Parque Eduardo VII / רופטופ Rossio Gastrobar",
+          note: "מבט ישיר מפסגת הפארק לאורך כל שדרת ליברדדה עד הנהר (בלילה זה עוברים לשעון חורף!)"
+        },
         spots: [
           {
             id: "d6_hotel_start",
@@ -3237,6 +3605,12 @@
         title: "סמטאות שיאדו, קניות אחרונות וערב סיום",
         area: "רובע שיאדו ובאיישה (הכל ברגל)",
         brief: "יום אחרון מלא: הריסות מנזר קרמו הגותי הפתוח לשמיים, ארוחה פאן-אסייתית מעולה ב-Boa-Bao, קניית מזכרות ויינות בסמטאות שיאדו וארוחת ערב חגיגית לסיום הטיול.",
+        sunset: {
+          time: "17:40",
+          goldenHour: "17:00",
+          spotName: "Miradouro de Santa Catarina (שיאדו)",
+          note: "שקיעה בוהמיינית עם נגני רחוב ואווירת סיום טיול (שימו לב: שעון חורף בליסבון, השקיעה שעה מוקדם יותר!)"
+        },
         spots: [
           {
             id: "d7_hotel_start",
@@ -3349,6 +3723,12 @@
         title: "פרידה מליסבון וטיסה הביתה",
         area: "רוסיו ונמל התעופה",
         brief: "בוקר אחרון: צ'ק אאוט ושמירת חפצים בדירה, הרמת כוסית פרידה מסורתית ב-A Ginjinha, איסוף מזוודות ואובר ישיר לנמל התעופה לטיסת אל על LY376.",
+        sunset: {
+          time: "17:39",
+          goldenHour: "16:59",
+          spotName: "נמל התעופה ליסבון (שער העלייה למטוס)",
+          note: "שקיעת פרידה יפה מחלון המטוס בדרך לישראל"
+        },
         spots: [
           {
             id: "d8_hotel_checkout",
@@ -3798,6 +4178,7 @@
       const visitedCount = d.spots.filter(s => isVisited(s.id)).length;
       const totalCount = d.spots.length;
       const pct = totalCount > 0 ? Math.round((visitedCount / totalCount) * 100) : 0;
+      const sunsetTime = d.sunset ? d.sunset.time : '18:45';
 
       banner.innerHTML = `
         <div class="day-banner-top">
@@ -3818,6 +4199,9 @@
           <div class="progress-fill" id="progFill" style="width: ${pct}%;"></div>
         </div>
 
+        <!-- Live Where Am I / Next Destination & Reservation Tracker -->
+        <div class="live-tracker-bar" id="liveDayTracker"></div>
+
         ${d.brief ? `
           <details class="guide-brief-accordion">
             <summary class="guide-brief-summary">
@@ -3834,6 +4218,12 @@
           <button class="tool-chip ${isRainMode ? 'active' : ''}" onclick="toggleRainMode()" title="הפעלת מצב גשם מדגישה חלופות מקורות והתרעות">
             🌧️ ${isRainMode ? 'מצב גשם פעיל ✓' : 'מצב גשם'}
           </button>
+          <button class="tool-chip sunset-chip" onclick="openSunsetModal()" title="שעת שקיעה, שעת זהב והספוט המומלץ להיום">
+            🌅 שקיעה: ${sunsetTime}
+          </button>
+          <button class="tool-chip gmaps-day-chip" onclick="openFullDayGoogleMapsRoute()" title="פתח מסלול יום מלא ורציף ב-Google Maps הכולל את כל תחנות היום">
+            🗺️ מסלול יום מלא במפות Google
+          </button>
           ${currentDayIdx === 3 ? `
             <button class="tool-chip sintra-chip" onclick="toggleSintraAccordion()" title="דרכי הגעה מפורטות לסינטרה ברכבת ואוטובוסים">
               🧭 מדריך תחבורה לסינטרה
@@ -3846,6 +4236,7 @@
       `;
       updateProgress();
       renderSintraNavigator();
+      updateLiveScheduleTracker();
     }
 
     function updateProgress() {
@@ -3944,6 +4335,11 @@
               <h3>${s.name}</h3>
             </div>
             <div class="spot-header-actions">
+              ${!isHotel && !s.id.includes('airport') ? `
+                <button class="btn-quick-move" onclick="openMoveSpotModal('${s.id}')" title="העבר אטרקציה זו ליום אחר במסלול">
+                  🔀
+                </button>
+              ` : ''}
               <button class="audio-btn-slim" id="audio-btn-${s.id}" onclick="playSpotAudioGuide('${s.id}')" title="האזנה להסבר מדריך קולי">
                 🎙️
               </button>
@@ -5007,22 +5403,54 @@
       return userReservations.find(r => r.spotId === s.id || (s.name && s.name.includes(r.name)));
     }
 
+    function switchResModalTab(tab) {
+      const ticketsBtn = document.getElementById('resTabTicketsBtn');
+      const addBtn = document.getElementById('resTabAddBtn');
+      const ticketsContent = document.getElementById('resTabTicketsContent');
+      const addContent = document.getElementById('resTabAddContent');
+      if (!ticketsBtn || !addBtn || !ticketsContent || !addContent) return;
+
+      if (tab === 'tickets') {
+        ticketsBtn.classList.add('active');
+        addBtn.classList.remove('active');
+        ticketsContent.style.display = 'block';
+        addContent.style.display = 'none';
+      } else {
+        addBtn.classList.add('active');
+        ticketsBtn.classList.remove('active');
+        addContent.style.display = 'block';
+        ticketsContent.style.display = 'none';
+      }
+    }
+
     function openReservationsModal() {
       renderReservationsList();
+      switchResModalTab('tickets');
       document.getElementById('reservationsModal').style.display = 'flex';
     }
 
     function closeReservationsModal(e) {
-      if (!e || e.target.id === 'reservationsModal' || e.target.tagName === 'BUTTON') {
+      if (!e || e.target.id === 'reservationsModal' || e.target.tagName === 'BUTTON' || (e.target.classList && e.target.classList.contains('res-modal-close'))) {
         document.getElementById('reservationsModal').style.display = 'none';
       }
     }
 
     function renderReservationsList() {
       const container = document.getElementById('reservationsListContainer');
+      const countBadge = document.getElementById('resTabCountBadge');
+      if (countBadge) countBadge.innerText = userReservations.length;
       if (!container) return;
+
       if (userReservations.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:18px 12px; color:var(--text-muted); font-size:0.84rem; background:var(--bg-subtle); border-radius:var(--radius-sm); border:1px dashed var(--border);">עדיין לא הזנתם שעות שהוזמנו.<br>בחרו יעד מקיצורי הדרך למטה או הוסיפו ידנית!</div>`;
+        container.innerHTML = `
+          <div style="text-align:center; padding:22px 14px; color:var(--text-muted); font-size:0.84rem; background:var(--bg-subtle); border-radius:var(--radius-sm); border:1px dashed var(--border);">
+            <div style="font-size:1.6rem; margin-bottom:6px;">🎟️</div>
+            עדיין לא הזנתם כרטיסים שהוזמנו מראש.<br>
+            <button type="button" class="btn-action ticket" style="margin-top:10px; padding:6px 14px; font-size:0.78rem;" onclick="switchResModalTab('add')">
+              ➕ הוסף הזמנה ראשונה
+            </button>
+          </div>
+        `;
         updateReservationsBadge();
         return;
       }
@@ -5136,7 +5564,9 @@
       localStorage.setItem('portugal_user_reservations', JSON.stringify(userReservations));
       renderReservationsList();
       renderTimeline();
-      showToast('ההזמנה נשמרה בהצלחה!');
+      updateLiveScheduleTracker();
+      switchResModalTab('tickets');
+      showToast('ההזמנה נשמרה בהצלחה בארנק!');
     }
 
     function deleteUserReservation(resId) {
@@ -5144,11 +5574,186 @@
       localStorage.setItem('portugal_user_reservations', JSON.stringify(userReservations));
       renderReservationsList();
       renderTimeline();
+      updateLiveScheduleTracker();
       showToast('ההזמנה נמחקה');
     }
 
     // ==========================================
-    // 23. מחשבון החזר מס (Tax-Free Calculator)
+    // 23. שעת שקיעה, מסלול יומי ב-Google Maps ומעקב זמנים חי
+    // ==========================================
+    function openSunsetModal() {
+      const d = tripData[currentDayIdx];
+      const modal = document.getElementById('sunsetModal');
+      const content = document.getElementById('sunsetModalContent');
+      if (!modal || !content) return;
+
+      const s = d.sunset || {
+        time: "18:45",
+        goldenHour: "18:02",
+        spotName: "מיראדורו דה סנטה לוזיה או גראסה",
+        note: "שקיעה פנורמית מעל גגות ליסבון ונהר הטז'ו"
+      };
+
+      content.innerHTML = `
+        <div style="background:linear-gradient(135deg, rgba(245,158,11,0.1), rgba(217,119,6,0.05)); border:1px solid rgba(245,158,11,0.3); border-radius:12px; padding:14px; margin-bottom:12px;">
+          <div style="font-size:0.85rem; font-weight:800; color:var(--text-main); margin-bottom:6px;">
+            📅 יום ${d.day} (${d.date}): שקיעת השמש בליסבון
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0;">
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:8px 10px; text-align:center;">
+              <div style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">🌅 שעת שקיעה:</div>
+              <div style="font-size:1.15rem; font-weight:900; color:#d97706; margin-top:2px;">${s.time}</div>
+            </div>
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:8px 10px; text-align:center;">
+              <div style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">📸 שעת הזהב (צילומים):</div>
+              <div style="font-size:1.15rem; font-weight:900; color:#0284c7; margin-top:2px;">${s.goldenHour}</div>
+            </div>
+          </div>
+          <div style="font-size:0.8rem; line-height:1.5; color:var(--text-main); margin-top:8px;">
+            📍 <strong>נקודת השקיעה המומלצת להיום:</strong><br>
+            <span style="color:var(--primary-accent); font-weight:700;">${s.spotName}</span>
+          </div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:6px; line-height:1.45;">
+            💡 <em>${s.note}</em>
+          </div>
+        </div>
+        <div style="font-size:0.74rem; color:var(--text-muted); line-height:1.4;">
+          ℹ️ <strong>טיפ צילום:</strong> כדאי להגיע לנקודת התצפית כ-30 דקות לפני השקיעה (במהלך שעת הזהב) כדי לתפוס מקום טוב עם כוס משקה וליהנות מהאור הרך על האריחים והנהר.
+        </div>
+      `;
+
+      modal.style.display = 'flex';
+    }
+
+    function closeSunsetModal(e) {
+      if (!e || e.target.id === 'sunsetModal' || e.target.tagName === 'BUTTON') {
+        const modal = document.getElementById('sunsetModal');
+        if (modal) modal.style.display = 'none';
+      }
+    }
+
+    function openFullDayGoogleMapsRoute() {
+      const d = tripData[currentDayIdx];
+      if (!d || !d.spots || d.spots.length === 0) return;
+
+      const validSpots = d.spots.filter(s => s.lat && s.lng);
+      if (validSpots.length === 0) {
+        showToast('אין קואורדינטות זמינות ליום זה');
+        return;
+      }
+
+      if (validSpots.length === 1) {
+        window.open(buildGmapsUrl(validSpots[0].lat, validSpots[0].lng), '_blank', 'noopener');
+        return;
+      }
+
+      const origin = `${validSpots[0].lat},${validSpots[0].lng}`;
+      const destination = `${validSpots[validSpots.length - 1].lat},${validSpots[validSpots.length - 1].lng}`;
+      const waypoints = validSpots.slice(1, -1).map(s => `${s.lat},${s.lng}`).join('|');
+
+      let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}`;
+      if (waypoints) {
+        url += `&waypoints=${encodeURIComponent(waypoints)}`;
+      }
+      url += `&travelmode=walking`;
+
+      window.open(url, '_blank', 'noopener');
+      showToast('פותח מסלול יום מלא ב-Google Maps...');
+    }
+
+    function updateLiveScheduleTracker() {
+      const container = document.getElementById('liveDayTracker');
+      if (!container) return;
+      const d = tripData[currentDayIdx];
+      if (!d || !d.spots || d.spots.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+
+      // Lisbon local time (Europe/Lisbon timezone)
+      let lisbonTimeStr = "12:00";
+      try {
+        const lisbonFormatter = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Europe/Lisbon',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        });
+        lisbonTimeStr = lisbonFormatter.format(new Date());
+      } catch (err) {
+        const dNow = new Date();
+        lisbonTimeStr = `${String(dNow.getHours()).padStart(2, '0')}:${String(dNow.getMinutes()).padStart(2, '0')}`;
+      }
+
+      const [nowH, nowM] = lisbonTimeStr.split(':').map(Number);
+      const nowMinutes = nowH * 60 + nowM;
+
+      // Check upcoming reservation for today within 150 minutes
+      let upcomingResAlert = '';
+      const todayRes = userReservations.filter(r => r.day === d.day || (r.date && r.date.includes(d.date.split(' ')[0])));
+      for (const r of todayRes) {
+        if (r.time) {
+          const match = r.time.match(/(\d{1,2}):(\d{2})/);
+          if (match) {
+            const resMinutes = parseInt(match[1]) * 60 + parseInt(match[2]);
+            const diffMin = resMinutes - nowMinutes;
+            if (diffMin > 0 && diffMin <= 150) {
+              upcomingResAlert = `
+                <div class="live-urgent-res-chip" onclick="openReservationsModal()" title="לחצו לצפייה בפרטי הכרטיס בארנק">
+                  <span>🚨 <strong>תזכורת:</strong> יש לכם כניסה מוזמנת ב-<strong>${r.name}</strong> לשעה <strong>${r.time}</strong> (בעוד ${diffMin} דקות)! מומלץ לצאת לדרך.</span>
+                </div>
+              `;
+              break;
+            }
+          }
+        }
+      }
+
+      // Find next spot in schedule
+      let nextSpot = null;
+      let minDiff = Infinity;
+      d.spots.forEach(s => {
+        if (s.time) {
+          const match = s.time.match(/(\d{1,2}):(\d{2})/);
+          if (match) {
+            const sMin = parseInt(match[1]) * 60 + parseInt(match[2]);
+            const diff = sMin - nowMinutes;
+            if (diff > -25 && diff < minDiff) {
+              minDiff = diff;
+              nextSpot = s;
+            }
+          }
+        }
+      });
+
+      let statusHtml = '';
+      if (upcomingResAlert) {
+        statusHtml = upcomingResAlert;
+      } else if (nextSpot) {
+        const isPast = minDiff <= 0;
+        statusHtml = `
+          <div class="live-status-pill">
+            <span class="live-pulse-dot"></span>
+            <span>שעון ליסבון כעת: <strong>${lisbonTimeStr}</strong></span>
+            <span>•</span>
+            <span>${isPast ? 'עכשיו על הפרק' : 'היעד הבא'}: <strong>${nextSpot.name}</strong> (${nextSpot.time})</span>
+            ${minDiff > 0 ? `<span class="next-countdown-badge">בעוד ${minDiff} דק'</span>` : ''}
+          </div>
+        `;
+      } else {
+        statusHtml = `
+          <div class="live-status-pill" style="opacity:0.9;">
+            <span class="live-pulse-dot"></span>
+            <span>שעון ליסבון כעת: <strong>${lisbonTimeStr}</strong> • יום ${d.day}: ${d.title}</span>
+          </div>
+        `;
+      }
+
+      container.innerHTML = statusHtml;
+    }
+
+    // ==========================================
+    // 24. מחשבון החזר מס (Tax-Free Calculator)
     // ==========================================
     function calcTaxFreeRefund() {
       const input = document.getElementById('taxFreeInput');
@@ -5184,6 +5789,7 @@
     renderSintraNavigator();
     renderChecklist();
     document.getElementById('toolsHotelUber').href = buildUberUrl(HOTEL.name, HOTEL.address, HOTEL.lat, HOTEL.lng);
+    setInterval(updateLiveScheduleTracker, 60000);
 
     // Register Service Worker for PWA installability and offline caching
     if ('serviceWorker' in navigator) {
