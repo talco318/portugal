@@ -114,30 +114,44 @@
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
-      padding: 10px 16px;
+      padding: 10px 14px;
+      box-shadow: var(--shadow-sm);
+      transition: background-color 0.25s, border-color 0.25s;
+    }
+
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      box-shadow: var(--shadow-sm);
-      transition: background-color 0.25s, border-color 0.25s;
     }
 
     .header-top-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 6px;
     }
 
     .header-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      min-width: 0;
+      flex-shrink: 1;
     }
 
     .flag-icon {
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       line-height: 1;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+      flex-shrink: 0;
+    }
+
+    .header-info {
+      min-width: 0;
     }
 
     .header-info h1 {
@@ -148,6 +162,8 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      white-space: nowrap;
+      margin: 0;
     }
 
     .header-info p {
@@ -156,13 +172,16 @@
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
+      white-space: nowrap;
+      margin: 2px 0 0;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      flex-shrink: 0;
     }
 
     .icon-btn-header {
@@ -178,6 +197,7 @@
       cursor: pointer;
       font-size: 1rem;
       transition: all 0.15s ease;
+      flex-shrink: 0;
     }
     .icon-btn-header:active { transform: scale(0.92); }
 
@@ -185,7 +205,7 @@
       background: linear-gradient(135deg, #1e40af, #0a1e38);
       color: #ffffff;
       border: none;
-      padding: 7px 12px;
+      padding: 7px 11px;
       border-radius: var(--radius-full);
       font-size: 0.76rem;
       font-weight: 700;
@@ -195,6 +215,8 @@
       gap: 5px;
       box-shadow: 0 3px 10px rgba(30, 64, 175, 0.28);
       transition: transform 0.15s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .hotel-btn-top:active { transform: scale(0.95); }
 
@@ -263,7 +285,7 @@
 
     /* Main Viewport */
     .app-viewport {
-      max-width: 680px;
+      max-width: 760px;
       margin: 0 auto;
       padding: 12px 14px;
     }
@@ -1834,6 +1856,29 @@
         left: 10px;
         padding: 8px 10px;
       }
+
+      /* Responsive Header for Mobile Screens */
+      header {
+        padding: 8px 10px;
+      }
+      .sub-city {
+        display: none;
+      }
+      .header-actions {
+        gap: 4px;
+      }
+      .icon-btn-header {
+        width: 32px;
+        height: 32px;
+        font-size: 0.88rem;
+      }
+      .hotel-btn-top {
+        padding: 6px 9px;
+        font-size: 0.72rem;
+      }
+      .header-info h1 {
+        font-size: 1.05rem;
+      }
     }
 
     /* GUIDE HERO & QUICK PILLS */
@@ -1912,49 +1957,51 @@
 
   <!-- Top App Bar -->
   <header>
-    <div class="header-top-row">
-      <div class="header-brand">
-        <span class="flag-icon">🇵🇹</span>
-        <div class="header-info">
-          <h1>פורטוגל 2026</h1>
-          <p><span>20–27 באוקטובר</span> • <span>ליסבון וסינטרה</span></p>
+    <div class="header-inner">
+      <div class="header-top-row">
+        <div class="header-brand">
+          <span class="flag-icon">🇵🇹</span>
+          <div class="header-info">
+            <h1>פורטוגל 2026</h1>
+            <p><span>20–27 באוקטובר</span><span class="sub-city"> • ליסבון וסינטרה</span></p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn-header" onclick="toggleTheme()" title="מצב לילה / יום">
+            <span id="theme-icon">🌓</span>
+          </button>
+          <button class="icon-btn-header" onclick="openEmergencyModal()" title="חירום ושגרירות" style="color:var(--danger);">
+            <span>🚨</span>
+          </button>
+          <button class="icon-btn-header" onclick="openTicketsHubModal()" title="📊 ריכוז כרטיסים, מחירים ועלויות" style="color:var(--accent);"><span>📊</span></button>
+          <button class="icon-btn-header" onclick="openReservationsModal()" title="🎟️ ארנק ההזמנות שלי (שעות שהוזמנו)" style="color:#f59e0b; position:relative;">
+            <span>🎟️</span>
+            <span id="headerReservationsBadge" style="display:none; position:absolute; top:-3px; right:-3px; background:var(--accent-warm); color:#fff; font-size:0.6rem; font-weight:800; border-radius:50%; width:16px; height:16px; align-items:center; justify-content:center;">0</span>
+          </button>
+          <button class="hotel-btn-top" onclick="openHotelModal()">
+            <span>🏨</span> המלון
+          </button>
         </div>
       </div>
-      <div class="header-actions">
-        <button class="icon-btn-header" onclick="toggleTheme()" title="מצב לילה / יום">
-          <span id="theme-icon">🌓</span>
-        </button>
-        <button class="icon-btn-header" onclick="openEmergencyModal()" title="חירום ושגרירות" style="color:var(--danger);">
-          <span>🚨</span>
-        </button>
-        <button class="icon-btn-header" onclick="openTicketsHubModal()" title="📊 ריכוז כרטיסים, מחירים ועלויות" style="color:var(--accent);"><span>📊</span></button>
-        <button class="icon-btn-header" onclick="openReservationsModal()" title="🎟️ ארנק ההזמנות שלי (שעות שהוזמנו)" style="color:#f59e0b; position:relative;">
-          <span>🎟️</span>
-          <span id="headerReservationsBadge" style="display:none; position:absolute; top:-3px; right:-3px; background:var(--accent-warm); color:#fff; font-size:0.6rem; font-weight:800; border-radius:50%; width:16px; height:16px; align-items:center; justify-content:center;">0</span>
-        </button>
-        <button class="hotel-btn-top" onclick="openHotelModal()">
-          <span>🏨</span> המלון
-        </button>
-      </div>
-    </div>
 
-    <!-- Live Lisbon Dashboard -->
-    <div class="lisbon-live-bar">
-      <div>
-        <span>🕒 שעון ליסבון: </span>
-        <span class="live-clock" id="lisbonClock">--:--:--</span>
-        <span style="font-size:0.65rem; opacity:0.8;">(שעה פחות מישראל)</span>
+      <!-- Live Lisbon Dashboard -->
+      <div class="lisbon-live-bar">
+        <div>
+          <span>🕒 שעון ליסבון: </span>
+          <span class="live-clock" id="lisbonClock">--:--:--</span>
+          <span style="font-size:0.65rem; opacity:0.8;">(שעה פחות מישראל)</span>
+        </div>
+        <div id="lisbonWeatherWidget" class="live-weather-pill" onclick="openWeatherModal()" title="לחצו לתחזית שבועית מפורטת לליסבון">
+          <span id="lisbonWeatherText">🌤️ טוען מזג אוויר...</span>
+        </div>
       </div>
-      <div id="lisbonWeatherWidget" class="live-weather-pill" onclick="openWeatherModal()" title="לחצו לתחזית שבועית מפורטת לליסבון">
-        <span id="lisbonWeatherText">🌤️ טוען מזג אוויר...</span>
-      </div>
-    </div>
 
-    <!-- Universal Search Bar -->
-    <div class="search-wrapper">
-      <span class="search-icon-inside">🔍</span>
-      <input type="text" id="globalSearch" class="search-input" placeholder="חיפוש אטרקציה, מסעדה, סוד מדריך או כתובת..." oninput="handleGlobalSearch(this.value)">
-      <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">✕</button>
+      <!-- Universal Search Bar -->
+      <div class="search-wrapper">
+        <span class="search-icon-inside">🔍</span>
+        <input type="text" id="globalSearch" class="search-input" placeholder="חיפוש אטרקציה, מסעדה, סוד מדריך או כתובת..." oninput="handleGlobalSearch(this.value)">
+        <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">✕</button>
+      </div>
     </div>
   </header>
 
@@ -4081,7 +4128,59 @@
       return `https://bolt.eu/ride?destination_lat=${lat}&destination_lng=${lng}`;
     }
 
-    function buildGmapsUrl(lat, lng) {
+    function getPlaceSearchQuery(name, address) {
+      let venue = '';
+      if (name) {
+        if (name.includes('Grape Harbor')) {
+          venue = 'Grape Harbor Prata Apartments';
+        } else if (name.includes('נמל התעופה') || name.includes('טיסת')) {
+          venue = 'Aeroporto de Lisboa Terminal 1';
+        } else if (name.includes('ז\'רונימוש') || name.includes('זרונימוש')) {
+          venue = 'Mosteiro dos Jerónimos';
+        } else if (name.includes('Time Out')) {
+          venue = 'Time Out Market Lisboa';
+        } else if (name.includes('Panda Cantina')) {
+          venue = 'Panda Cantina Lisboa';
+        } else if (name.includes('Rocco')) {
+          venue = 'Rocco Lisboa';
+        } else if (name.includes('פראדו') || name.includes('Prado')) {
+          venue = 'Prado Restaurante Lisboa';
+        } else if (name.includes('Belcanto') || name.includes('בלקנטו')) {
+          venue = 'Belcanto Lisboa';
+        } else if (name.includes('רוקה') || name.includes('Roca')) {
+          venue = 'Cabo da Roca';
+        } else if (name.includes('קשקאיש') || name.includes('Cascais')) {
+          venue = 'Cascais';
+        } else {
+          const parenMatch = name.match(/\(([A-Za-zÀ-ÿ0-9\s\.\-&']+)\)/);
+          if (parenMatch && parenMatch[1] && parenMatch[1].trim().length > 2) {
+            venue = parenMatch[1].trim();
+          } else {
+            let cleaned = name.replace(/[\u{1F300}-\u{1F9FF}]/gu, '')
+                              .replace(/^[\u0590-\u05FF\s:–\-\/]+:/, '')
+                              .replace(/^[\u0590-\u05FF\s]+ב-/, '')
+                              .replace(/[\u0590-\u05FF]/g, '')
+                              .replace(/[()]/g, '')
+                              .trim();
+            if (cleaned.length > 2) venue = cleaned;
+          }
+        }
+      }
+
+      if (venue && address) {
+        if (address.toLowerCase().includes(venue.toLowerCase())) {
+          return address;
+        }
+        return `${venue}, ${address}`;
+      }
+      return address || venue || '';
+    }
+
+    function buildGmapsUrl(lat, lng, name = '', address = '') {
+      const query = getPlaceSearchQuery(name, address);
+      if (query) {
+        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+      }
       return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
     }
 
@@ -4264,7 +4363,7 @@
         const isAlert = s.tag.includes('חובה') || s.tag.includes('כרטיס');
         const isHotel = s.isHotel;
 
-        const gmapsUrl = buildGmapsUrl(s.lat, s.lng);
+        const gmapsUrl = buildGmapsUrl(s.lat, s.lng, s.name, s.address);
         const uberUrl = buildUberUrl(s.name, s.address, s.lat, s.lng);
         const boltUrl = buildBoltUrl(s.lat, s.lng);
 
@@ -4326,7 +4425,16 @@
           </div>
         ` : '';
 
-        const hasDrawerContent = !!(metaRow || insightsHtml || extraBtns);
+        const transportRow = `
+          <div class="spot-transport-row" style="margin-top:10px; padding-top:8px; border-top:1px dashed var(--border-subtle); display:flex; gap:8px;">
+            <a class="btn-action uber" href="${uberUrl}" target="_blank" rel="noopener" style="flex:1; justify-content:center; padding:8px 6px; font-size:0.78rem;">
+              🚕 הזמן Uber ליעד
+            </a>
+            <a class="btn-action bolt" href="${boltUrl}" target="_blank" rel="noopener" style="flex:1; justify-content:center; padding:8px 6px; font-size:0.78rem;">
+              ⚡ הזמן Bolt ליעד
+            </a>
+          </div>
+        `;
 
         card.innerHTML = `
           <div class="spot-card-header">
@@ -4366,25 +4474,24 @@
           </div>
 
           <div class="actions-grid-slim">
-            <a class="btn-action maps" href="${gmapsUrl}" target="_blank" rel="noopener">📍 מפות</a>
-            <a class="btn-action uber" href="${uberUrl}" target="_blank" rel="noopener">🚕 Uber</a>
-            <a class="btn-action bolt" href="${boltUrl}" target="_blank" rel="noopener">⚡ Bolt</a>
-            ${s.ticketUrl ? `<a class="btn-action ticket" href="${s.ticketUrl}" target="_blank" rel="noopener">🎟️ כרטיס</a>` : ''}
+            <a class="btn-action maps" href="${gmapsUrl}" target="_blank" rel="noopener" title="פתיחת דף המקום והעסק ב-Google Maps (תמונות, ביקורות ושעות פתיחה)" style="flex:1; justify-content:center; padding:9px 10px; font-size:0.8rem;">
+              📍 פתח כרטיס מקום ב-Google Maps ↗
+            </a>
+            ${s.ticketUrl ? `<a class="btn-action ticket" href="${s.ticketUrl}" target="_blank" rel="noopener" style="padding:9px 12px; font-size:0.8rem; flex-shrink:0;">🎟️ כרטיס</a>` : ''}
           </div>
 
-          ${hasDrawerContent ? `
-            <details class="spot-insights-accordion" id="insights-${s.id}">
-              <summary class="spot-insights-summary">
-                <span>💡 סודות, שעות וטיפים למקום</span>
-                <span style="font-size:0.74rem; font-weight:700;">▾ פרטים</span>
-              </summary>
-              <div class="spot-insights-drawer">
-                ${metaRow}
-                ${insightsHtml}
-                ${extraBtns}
-              </div>
-            </details>
-          ` : ''}
+          <details class="spot-insights-accordion" id="insights-${s.id}">
+            <summary class="spot-insights-summary">
+              <span>💡 סודות, שעות, הגעה וטיפים למקום</span>
+              <span style="font-size:0.74rem; font-weight:700;">▾ פרטים</span>
+            </summary>
+            <div class="spot-insights-drawer">
+              ${metaRow}
+              ${insightsHtml}
+              ${transportRow}
+              ${extraBtns}
+            </div>
+          </details>
         `;
         container.appendChild(card);
 
@@ -4464,7 +4571,7 @@
 
       const actionsBox = document.getElementById('modalSpotActions');
       actionsBox.innerHTML = `
-        <a class="btn-action maps" href="${buildGmapsUrl(s.lat, s.lng)}" target="_blank">📍 מפות</a>
+        <a class="btn-action maps" href="${buildGmapsUrl(s.lat, s.lng, s.name, s.address)}" target="_blank" title="פתח דף מקום וביקורות במפות גוגל">📍 מפות וביקורות</a>
         <a class="btn-action uber" href="${buildUberUrl(s.name, s.address, s.lat, s.lng)}" target="_blank">🚕 Uber</a>
         <a class="btn-action bolt" href="${buildBoltUrl(s.lat, s.lng)}" target="_blank">⚡ Bolt</a>
         ${s.ticketUrl ? `<a class="btn-action ticket" href="${s.ticketUrl}" target="_blank">🎟️ כרטיסים</a>` : ''}
@@ -4755,7 +4862,7 @@
     }
 
     function buildPopupHtml(title, subtitle, address, lat, lng) {
-      const gmapsUrl = buildGmapsUrl(lat, lng);
+      const gmapsUrl = buildGmapsUrl(lat, lng, title, address);
       const uberUrl = buildUberUrl(title, address, lat, lng);
       const boltUrl = buildBoltUrl(lat, lng);
       return `
@@ -4763,7 +4870,7 @@
           <strong style="color:#0a1e38; font-size: 0.95rem;">${title}</strong><br>
           <span style="font-size: 0.74rem; color: #64748b;">${subtitle}</span>
           <div style="display: flex; gap: 5px; margin-top: 8px;">
-            <a href="${gmapsUrl}" target="_blank" style="background:#fee2e2; color:#991b1b; padding:4px 8px; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:700;">📍 מפות</a>
+            <a href="${gmapsUrl}" target="_blank" style="background:#fee2e2; color:#991b1b; padding:4px 8px; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:700;">📍 מפות וביקורות</a>
             <a href="${uberUrl}" target="_blank" style="background:#000; color:#fff; padding:4px 8px; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:700;">🚕 Uber</a>
             <a href="${boltUrl}" target="_blank" style="background:#34d186; color:#064e3b; padding:4px 8px; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:700;">⚡ Bolt</a>
           </div>
@@ -4779,7 +4886,7 @@
           <strong>${badge} ${title}</strong>
           <div style="font-size:0.74rem; color:var(--text-muted);">${subtitle}</div>
         </div>
-        <a href="${buildGmapsUrl(lat, lng)}" target="_blank" style="color:var(--primary-accent); text-decoration:none; font-weight:700; font-size:0.8rem; background:rgba(37,99,235,0.08); padding:5px 10px; border-radius:8px;">נווט ↗</a>
+        <a href="${buildGmapsUrl(lat, lng, title, subtitle)}" target="_blank" style="color:var(--primary-accent); text-decoration:none; font-weight:700; font-size:0.8rem; background:rgba(37,99,235,0.08); padding:5px 10px; border-radius:8px;">נווט ↗</a>
       `;
       container.appendChild(item);
     }
@@ -4825,7 +4932,7 @@
       const filtered = cat === 'all' ? diningDatabase : diningDatabase.filter(r => r.category === cat);
 
       filtered.forEach(r => {
-        const gmapsUrl = buildGmapsUrl(r.lat, r.lng);
+        const gmapsUrl = buildGmapsUrl(r.lat, r.lng, r.name, r.address);
         const uberUrl = buildUberUrl(r.name, r.address, r.lat, r.lng);
         const boltUrl = buildBoltUrl(r.lat, r.lng);
 
@@ -4857,7 +4964,7 @@
           </div>
 
           <div class="actions-grid">
-            <a class="btn-action maps" href="${gmapsUrl}" target="_blank">📍 מפות</a>
+            <a class="btn-action maps" href="${gmapsUrl}" target="_blank" title="פתיחת דף המסעדה ב-Google Maps (ביקורות ותפריט)">📍 מפות וביקורות</a>
             <a class="btn-action uber" href="${uberUrl}" target="_blank">🚕 Uber</a>
             <a class="btn-action bolt" href="${boltUrl}" target="_blank">⚡ Bolt</a>
             ${r.bookingUrl ? `<a class="btn-action ticket" href="${r.bookingUrl}" target="_blank">📅 הזמנה</a>` : ''}
@@ -5012,7 +5119,7 @@
           <div class="spot-body-desc">${s.desc}</div>
           ${s.secret ? `<div class="guide-insight-box"><strong>🔍 סוד המדריך:</strong> ${s.secret}</div>` : ''}
           <div class="actions-grid">
-            <a class="btn-action maps" href="${buildGmapsUrl(s.lat, s.lng)}" target="_blank">📍 מפות</a>
+            <a class="btn-action maps" href="${buildGmapsUrl(s.lat, s.lng, s.name, s.address)}" target="_blank" title="פתח דף מקום וביקורות במפות גוגל">📍 מפות וביקורות</a>
             <a class="btn-action uber" href="${buildUberUrl(s.name, s.address, s.lat, s.lng)}" target="_blank">🚕 Uber</a>
             <a class="btn-action bolt" href="${buildBoltUrl(s.lat, s.lng)}" target="_blank">⚡ Bolt</a>
           </div>
@@ -5044,7 +5151,7 @@
     function openHotelModal() {
       const actions = document.getElementById('hotelQuickActions');
       actions.innerHTML = `
-        <a class="btn-action maps" href="${buildGmapsUrl(HOTEL.lat, HOTEL.lng)}" target="_blank">📍 מפות</a>
+        <a class="btn-action maps" href="${buildGmapsUrl(HOTEL.lat, HOTEL.lng, HOTEL.name, HOTEL.address)}" target="_blank" title="פתח את דף המלון ב-Google Maps (תמונות, ביקורות והגעה)">📍 מפות וביקורות</a>
         <a class="btn-action uber" href="${buildUberUrl(HOTEL.name, HOTEL.address, HOTEL.lat, HOTEL.lng)}" target="_blank">🚕 Uber למלון</a>
         <a class="btn-action bolt" href="${buildBoltUrl(HOTEL.lat, HOTEL.lng)}" target="_blank">⚡ Bolt למלון</a>
       `;
@@ -5203,7 +5310,7 @@
               </div>
               <p style="font-size:0.77rem; color:var(--text-muted); margin:4px 0 6px;">${a.desc}</p>
               <div style="display:flex; gap:6px; flex-wrap:wrap;">
-                <a class="btn-action maps" href="${buildGmapsUrl(a.lat, a.lng)}" target="_blank" style="padding:4px 8px; font-size:0.72rem;">📍 מפות</a>
+                <a class="btn-action maps" href="${buildGmapsUrl(a.lat, a.lng, a.name, a.address)}" target="_blank" style="padding:4px 8px; font-size:0.72rem;" title="פתח דף מקום וביקורות במפות גוגל">📍 מפות וביקורות</a>
                 <a class="btn-action uber" href="${buildUberUrl(a.name, a.address, a.lat, a.lng)}" target="_blank" style="padding:4px 8px; font-size:0.72rem;">🚕 Uber</a>
                 <button class="btn-action ticket" onclick="addIndoorSpotToToday('${a.id}')" style="padding:4px 10px; font-size:0.72rem;">➕ הוסף ללו"ז היום</button>
               </div>
@@ -5643,7 +5750,7 @@
       }
 
       if (validSpots.length === 1) {
-        window.open(buildGmapsUrl(validSpots[0].lat, validSpots[0].lng), '_blank', 'noopener');
+        window.open(buildGmapsUrl(validSpots[0].lat, validSpots[0].lng, validSpots[0].name, validSpots[0].address), '_blank', 'noopener');
         return;
       }
 
