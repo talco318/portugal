@@ -1220,6 +1220,7 @@
         <button class="icon-btn-header" onclick="openEmergencyModal()" title="חירום ושגרירות" style="color:var(--danger);">
           <span>🚨</span>
         </button>
+        <button class="icon-btn-header" onclick="openTicketsHubModal()" title="כרטיסים ועלויות" style="color:var(--accent);"><span>🎟️</span></button>
         <button class="hotel-btn-top" onclick="openHotelModal()">
           <span>🏨</span> המלון
         </button>
@@ -1375,6 +1376,33 @@
         <div class="guide-item">
           <strong>5. האקווריום של ליסבון (Oceanário de Lisboa):</strong>
           <p>האקווריום הגדול באירופה בפארק האומות. מכל ענק מרכזי עם כרישים, חתולי ים, פינגווינים ולוטרות ים. חוויה מקורה מהפנטת. שעות: 10:00–20:00 (פתוח מדי יום).</p>
+        </div>
+      </div>
+    
+      
+      <!-- Local Essentials around Hotel -->
+      <div class="guide-category" style="border-right:4px solid var(--success);">
+        <h3>🛒 סופרמרקטים, פארם ומשיכת כספים ליד המלון</h3>
+        <div class="guide-item">
+          <strong>סופרמרקטים צמודים לדירה ברחוב פראטה:</strong>
+          <p>
+            • <strong>Pingo Doce (Baixa):</strong> מרחק 3 דקות הליכה (Rua 1º de Dezembro). הסופרמרקט המשתלם והטוב ביותר לקניית מים מינרליים (בכמה סנטים לבקבוק), פירות, מאפים ויוגורטים.<br>
+            • <strong>My Auchan / Continente Bom Dia:</strong> רשתות מרכולים קרובות ברחוב רוסיו וכיכר קמואש.
+          </p>
+        </div>
+        <div class="guide-item">
+          <strong>בית מרקחת קרוב (Farmácia):</strong>
+          <p>
+            • <strong>Farmácia Barral:</strong> ברובע באיישה (Rua do Ouro), מרחק 2 דקות הליכה מהמלון.<br>
+            • בתי מרקחת מסומנים בצלב ירוק זוהר. רוקחים בפורטוגל דוברים אנגלית מצוינת.
+          </p>
+        </div>
+        <div class="guide-item">
+          <strong>⚠️ משיכת מזומנים – שימו לב לכספומטים!</strong>
+          <p>
+            השתמשו <strong>רק בכספומטים של רשת Multibanco</strong> (סמל MB כחול-אפור). אלו כספומטים רשמיים של הבנקים ללא עמלות נסתרות.<br>
+            <strong>היזהרו מכספומטים צהובים-כחולים של Euronet!</strong> הם גובים עמלות המרה מופקעות (לעיתים 10%–15% יותר).
+          </p>
         </div>
       </div>
     
@@ -1650,6 +1678,112 @@
     </div>
   </div>
     
+  
+  <!-- Tickets & Budget Hub Modal -->
+  <div class="modal-backdrop" id="ticketsHubModal" onclick="closeTicketsHubModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()" style="max-width:500px; text-align:right;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="margin:0; font-size:1.15rem; color:var(--primary-accent);">🎟️ ריכוז כרטיסים, עלויות ודחיפות הזמנה</h3>
+        <button onclick="closeTicketsHubModal()" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted);">✕</button>
+      </div>
+
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
+        סקירה מלאה של כל האטרקציות בתשלום בטיול, כמה עולה, ומתי חובה להזמין מראש:
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        
+        <!-- Pena -->
+        <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:10px 12px; border-right:4px solid var(--danger);">
+          <div style="display:flex; justify-content:space-between; font-weight:800; font-size:0.88rem;">
+            <span>1. ארמון פנה (יום 4 - שישי 23.10)</span>
+            <span style="color:var(--danger); font-size:0.75rem;">🚨 חובה מראש!</span>
+          </div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin:3px 0;">
+            מחיר: <strong>20 אירו</strong> (ארמון+פארק) או <strong>12 אירו</strong> (פארק+מרפסות צבעוניות).<br>
+            חובה לקבוע חלון שעה! אם מאחרים – לא מאפשרים כניסה.
+          </div>
+          <a href="https://parquesdesintra.pt" target="_blank" class="btn-action ticket" style="display:inline-block; margin-top:5px; padding:4px 10px; font-size:0.72rem;">🔗 להזמנה באתר הרשמי</a>
+        </div>
+
+        <!-- Regaleira -->
+        <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:10px 12px; border-right:4px solid var(--accent);">
+          <div style="display:flex; justify-content:space-between; font-weight:800; font-size:0.88rem;">
+            <span>2. קינטה דה רגאליירה (יום 4 - שישי 23.10)</span>
+            <span style="color:var(--accent); font-size:0.75rem;">⚠️ מומלץ מראש</span>
+          </div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin:3px 0;">
+            מחיר: <strong>20 אירו</strong> למבוגר.<br>
+            הזמנה מראש עוקפת תור של 40–60 דקות בקופות בסינטרה.
+          </div>
+          <a href="https://regaleira.pt" target="_blank" class="btn-action ticket" style="display:inline-block; margin-top:5px; padding:4px 10px; font-size:0.72rem;">🔗 להזמנה באתר הרשמי</a>
+        </div>
+
+        <!-- Castle -->
+        <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:10px 12px; border-right:4px solid var(--primary-accent);">
+          <div style="display:flex; justify-content:space-between; font-weight:800; font-size:0.88rem;">
+            <span>3. טירת סאו ז'ורז'ה (יום 2 - רביעי 21.10)</span>
+            <span style="color:var(--primary-accent); font-size:0.75rem;">💡 מומלץ מראש</span>
+          </div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin:3px 0;">
+            מחיר: <strong>17 אירו</strong> למבוגר (גילאי 13–25 ב-8.5 אירו).<br>
+            אין חלון שעה קשיח – קנייה מראש עוקפת את תור הקופות בכניסה.
+          </div>
+          <a href="https://castelodesaojorge.pt/en/" target="_blank" class="btn-action ticket" style="display:inline-block; margin-top:5px; padding:4px 10px; font-size:0.72rem;">🔗 להזמנה באתר הרשמי (BOL)</a>
+        </div>
+
+        <!-- Jeronimos -->
+        <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:10px 12px; border-right:4px solid var(--primary-accent);">
+          <div style="display:flex; justify-content:space-between; font-weight:800; font-size:0.88rem;">
+            <span>4. מנזר ז'רונימוש (יום 3 - חמישי 22.10)</span>
+            <span style="color:var(--primary-accent); font-size:0.75rem;">💡 מומלץ מראש</span>
+          </div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin:3px 0;">
+            מחיר: <strong>19–20 אירו</strong> לקלויסטר הפנימי. הכנסייה המרכזית (קבר ואסקו דה גאמה) <strong>בחינם לחלוטין!</strong>
+          </div>
+          <a href="https://mosteirojeronimos.gov.pt/" target="_blank" class="btn-action ticket" style="display:inline-block; margin-top:5px; padding:4px 10px; font-size:0.72rem;">🔗 להזמנה באתר הרשמי</a>
+        </div>
+
+        <!-- Carmo -->
+        <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:10px 12px; border-right:4px solid var(--success);">
+          <div style="display:flex; justify-content:space-between; font-weight:800; font-size:0.88rem;">
+            <span>5. מנזר קרמו (יום 7 - שני 26.10)</span>
+            <span style="color:var(--success); font-size:0.75rem;">✓ קונים במקום</span>
+          </div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin:3px 0;">
+            מחיר: <strong>7 אירו</strong>. אין מכירה מוקדמת ברשת – קונים בקופה במקום, התור זורם וקצר.
+          </div>
+        </div>
+
+        <!-- Sé -->
+        <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:10px 12px; border-right:4px solid var(--success);">
+          <div style="display:flex; justify-content:space-between; font-weight:800; font-size:0.88rem;">
+            <span>6. קתדרלת ליסבון (יום 2 - רביעי 21.10)</span>
+            <span style="color:var(--success); font-size:0.75rem;">✓ קונים במקום</span>
+          </div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin:3px 0;">
+            מחיר: <strong>7 אירו</strong> לסיור מקיף (אולם התפילה הראשי חינם).
+          </div>
+        </div>
+
+        <!-- Train to Sintra -->
+        <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:10px 12px; border-right:4px solid var(--text-muted);">
+          <div style="font-weight:800; font-size:0.88rem;">🚆 רכבת לסינטרה וקשקאיש</div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin:3px 0;">
+            כרטיס רכבת CP: <strong>2.40 אירו</strong> לכיוון (נסיעה של 40 דק' מרוסיו לסינטרה, וקשקאיש לקאיש דו סודרה). קונים במכונות בתחנה בכרטיס ירוק (Navegante).
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:14px; padding:10px; background:rgba(37,99,235,0.08); border-radius:var(--radius-sm); text-align:center; font-size:0.85rem; font-weight:800; color:var(--primary-accent);">
+        💰 סך הכל עלות כניסות לאדם (לכל האתרים): כ-75–85 אירו (~300–340 ₪)
+      </div>
+
+      <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:9px; margin-top:12px; border:1px solid var(--border);" onclick="closeTicketsHubModal()">סגור</button>
+    </div>
+  </div>
+    
   <!-- Hotel Quick Modal -->
   <div class="modal-backdrop" id="hotelModal" onclick="closeHotelModal(event)">
     <div class="modal-box" onclick="event.stopPropagation()">
@@ -1833,6 +1967,8 @@
             name: "קתדרלת ליסבון (Sé de Lisboa)",
             time: "09:45",
             tag: "🏰 היסטוריה",
+            ticketPrice: "7 אירו (אולם התפילה חינם, כרטיס למקהלה ולאוצר)",
+            bookingUrgency: "✓ קונים בכניסה או מראש",
             hours: "09:30–19:00 (כניסה אחרונה 18:30, סגור תיירות בראשון)",
             duration: "30–45 דק׳",
             desc: "המבנה העתיק ביותר בעיר (שנת 1147), שנראה כמו מבצר אבן חסין רעידות אדמה בדרך לעלייה לאלפמה.",
@@ -1866,6 +2002,8 @@
             name: "טירת סאו ז'ורז'ה (Castelo de São Jorge)",
             time: "11:45",
             tag: "🦚 טירה ונוף",
+            ticketPrice: "17 אירו למבוגר (גילאי 13-25 ב-8.5 אירו)",
+            bookingUrgency: "💡 מומלץ מראש ב-BOL כדי לדלג על תור הקופות",
             ticketUrl: "https://castelodesaojorge.pt/en/",
             hours: "09:00–21:00 (כניסה אחרונה 20:30, פתוח מדי יום באוקטובר)",
             duration: "שעה וחצי עד שעתיים",
@@ -1965,6 +2103,8 @@
             name: "מנזר ז'רונימוש ומגדל בלן",
             time: "10:45",
             tag: "🏛️ אדריכלות ונהר",
+            ticketPrice: "19–20 אירו לקלויסטר (הכנסייה בחינם!)",
+            bookingUrgency: "⚠️ מומלץ מראש לקלויסטר כדי לחסוך תור ארוך",
             ticketUrl: "https://www.mosteirojeronimos.gov.pt/",
             hours: "09:30–17:30 (כניסה אחרונה 17:00, סגור בימי שני!)",
             duration: "שעה וחצי עד שעתיים",
@@ -2064,7 +2204,9 @@
             id: "d4_pena",
             name: "ארמון פנה (Palácio da Pena)",
             time: "10:00",
-            tag: "🏰 כרטיס שעה מראש",
+            tag: "🏰 כרטיס שעה חובה מראש",
+            ticketPrice: "20 אירו (ארמון+פארק) / 12 אירו (פארק וטרסות בלבד)",
+            bookingUrgency: "🚨 חובה להזמין מראש! כניסה לפי חלון שעה קשיח",
             ticketUrl: "https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/",
             hours: "פארק 09:00–19:00, ארמון 09:30–18:30 (כניסה אחרונה 18:00)",
             duration: "שעתיים עד שלוש שעות",
@@ -2083,6 +2225,8 @@
             name: "אחוזת קינטה דה רגאליירה (Quinta da Regaleira)",
             time: "12:30",
             tag: "🌀 באר היוזמה",
+            ticketPrice: "20 אירו למבוגר (ילדים 6-17 ב-15 אירו)",
+            bookingUrgency: "⚠️ מומלץ מאוד מראש באתר regaleira.pt כדי לעקוף תור כרטיסים",
             ticketUrl: "https://www.regaleira.pt/en",
             hours: "באוקטובר: 10:00–18:30 (כניסה אחרונה 17:30, פתוח מדי יום)",
             duration: "שעתיים עד שעתיים וחצי",
@@ -2405,6 +2549,8 @@
             name: "הריסות מנזר קרמו (Convento do Carmo)",
             time: "10:30",
             tag: "🏛️ גותיקה פתוחה",
+            ticketPrice: "7 אירו למבוגר (סטודנטים/פנסיונרים 5 אירו)",
+            bookingUrgency: "✓ אין מכירה מראש – קונים בכניסה, התור מתקדם מהר",
             hours: "10:00–19:00 (כניסה אחרונה 18:40, פתוח בשני! סגור בראשון)",
             duration: "45–60 דק׳",
             desc: "כנסייה גותית שגגה קרס ברעידת האדמה הגדולה של 1755 וקשתות האבן שלה נותרו פתוחות לשמיים בצורה דרמטית.",
@@ -3008,11 +3154,19 @@
           `;
         }
 
-        const metaRow = (s.hours || s.duration) ? `
+        const ticketInfo = s.ticketPrice ? `
+          <div style="background:rgba(217,119,6,0.08); border-right:3px solid var(--accent); padding:5px 9px; border-radius:6px; font-size:0.75rem; margin:6px 0;">
+            <div style="font-weight:700; color:var(--text-main);">🎟️ מחיר: ${s.ticketPrice}</div>
+            <div style="color:var(--accent); font-weight:600; font-size:0.72rem; margin-top:2px;">${s.bookingUrgency || ''}</div>
+          </div>
+        ` : '';
+
+        const metaRow = (s.hours || s.duration || s.ticketPrice) ? `
           <div class="spot-meta-row">
             ${s.hours ? `<span class="meta-tag hours">🕒 ${s.hours}</span>` : ''}
             ${s.duration ? `<span class="meta-tag duration">⏱️ משך מומלץ: ${s.duration}</span>` : ''}
           </div>
+          ${ticketInfo}
         ` : '';
 
         const extraBtns = !isHotel && !s.id.includes('airport') ? `
@@ -3709,6 +3863,16 @@
     // ==========================================
     // 17. מודאל המלון וחירום
     // ==========================================
+    
+    function openTicketsHubModal() {
+      document.getElementById('ticketsHubModal').style.display = 'flex';
+    }
+    function closeTicketsHubModal(e) {
+      if (!e || e.target.id === 'ticketsHubModal' || e.target.tagName === 'BUTTON') {
+        document.getElementById('ticketsHubModal').style.display = 'none';
+      }
+    }
+    
     function openHotelModal() {
       const actions = document.getElementById('hotelQuickActions');
       actions.innerHTML = `
