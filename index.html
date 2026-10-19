@@ -1,0 +1,3746 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a192f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>פורטוגל 2026 🇵🇹 | מדריך הטיול והמסלול האישי</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans for numbers/Latin, Rubik for Hebrew -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    :root {
+      --primary: #0a1e38;
+      --primary-light: #1e40af;
+      --primary-accent: #2563eb;
+      --accent: #d97706;
+      --accent-warm: #c25e24;
+      --accent-soft: #fef3c7;
+      --bg: #f8fafc;
+      --bg-subtle: #f1f5f9;
+      --surface: #ffffff;
+      --surface-card: #ffffff;
+      --surface-elevated: #ffffff;
+      --border: #e2e8f0;
+      --border-subtle: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+      --success: #10b981;
+      --success-light: #ecfdf5;
+      --danger: #ef4444;
+      --danger-light: #fef2f2;
+      --uber: #000000;
+      --bolt: #34d186;
+      --gmaps: #ea4335;
+      --radius-xs: 6px;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-card: 0 6px 20px -4px rgba(15, 23, 42, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 12px 28px -6px rgba(15, 23, 42, 0.12);
+      --shadow-float: 0 18px 40px -8px rgba(10, 25, 47, 0.22);
+      --header-bg: rgba(255, 255, 255, 0.94);
+      --nav-bg: rgba(255, 255, 255, 0.95);
+      --font-main: 'Rubik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-num: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --primary: #0f172a;
+      --primary-light: #3b82f6;
+      --primary-accent: #60a5fa;
+      --bg: #0b1120;
+      --bg-subtle: #131c31;
+      --surface: #131d33;
+      --surface-card: #18233e;
+      --surface-elevated: #1e293b;
+      --border: #243250;
+      --border-subtle: #1a243a;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-subtle: #64748b;
+      --header-bg: rgba(15, 23, 42, 0.92);
+      --nav-bg: rgba(15, 23, 42, 0.94);
+      --shadow-card: 0 6px 20px -4px rgba(0, 0, 0, 0.35);
+      --shadow-hover: 0 12px 28px -6px rgba(0, 0, 0, 0.5);
+      --shadow-float: 0 18px 40px -8px rgba(0, 0, 0, 0.6);
+      --accent-soft: rgba(217, 119, 6, 0.18);
+      --success-light: rgba(16, 185, 129, 0.15);
+      --danger-light: rgba(239, 68, 68, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding-bottom: 120px;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      overflow-x: hidden;
+    }
+
+    /* Top Sticky App Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--header-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+      transition: background-color 0.25s, border-color 0.25s;
+    }
+
+    .header-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .flag-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    }
+
+    .header-info h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary-accent);
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-info p {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn-header {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.15s ease;
+    }
+    .icon-btn-header:active { transform: scale(0.92); }
+
+    .hotel-btn-top {
+      background: linear-gradient(135deg, #1e40af, #0a1e38);
+      color: #ffffff;
+      border: none;
+      padding: 7px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 3px 10px rgba(30, 64, 175, 0.28);
+      transition: transform 0.15s ease;
+    }
+    .hotel-btn-top:active { transform: scale(0.95); }
+
+    /* Live Lisbon Info Banner */
+    .lisbon-live-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      padding: 5px 10px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      border: 1px solid var(--border-subtle);
+    }
+    .live-clock {
+      color: var(--primary-accent);
+      font-family: var(--font-num);
+      font-weight: 700;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    /* Global Search Box */
+    .search-wrapper {
+      position: relative;
+      margin-top: 2px;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 7px 34px 7px 14px;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    .search-icon-inside {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      color: var(--text-subtle);
+      pointer-events: none;
+    }
+    .clear-search-btn {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Main Viewport */
+    .app-viewport {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 12px 14px;
+    }
+
+    /* Horizontal Day Scroll Bar */
+    .day-pills-bar {
+      display: flex;
+      overflow-x: auto;
+      gap: 8px;
+      padding: 4px 2px 12px 2px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .day-pills-bar::-webkit-scrollbar { display: none; }
+    
+    .day-pill {
+      flex: 0 0 auto;
+      padding: 9px 15px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+      user-select: none;
+      position: relative;
+    }
+    .day-pill:active { transform: scale(0.96); }
+    .day-pill.active {
+      background: linear-gradient(135deg, #1e3a8a, #0a1e38);
+      color: #ffffff;
+      border-color: #1e3a8a;
+      box-shadow: 0 6px 16px rgba(10, 30, 60, 0.28);
+      transform: translateY(-2px);
+    }
+    .day-pill .pill-title {
+      font-size: 0.83rem;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+    }
+    .day-pill .pill-date {
+      font-size: 0.68rem;
+      font-weight: 500;
+      opacity: 0.9;
+      margin-top: 2px;
+      font-family: var(--font-num);
+    }
+    .day-pill .pill-badge-done {
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      background: var(--success);
+      color: white;
+      font-size: 0.6rem;
+      width: 15px;
+      height: 15px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #fff;
+    }
+
+    /* Day Banner Overview */
+    .day-card-banner {
+      background: var(--surface-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+    .day-card-banner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary-accent), var(--accent));
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    }
+    .day-card-banner h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.35;
+    }
+    .banner-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .banner-area-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #1e40af;
+      background: rgba(30, 64, 175, 0.1);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+    }
+    [data-theme="dark"] .banner-area-pill {
+      color: #93c5fd;
+      background: rgba(147, 197, 253, 0.12);
+    }
+    .banner-guide-brief {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 10px;
+      background: var(--bg-subtle);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border-right: 3px solid var(--accent);
+    }
+
+    /* Progress Track */
+    .day-progress { margin-top: 12px; }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .progress-rail {
+      height: 7px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      transition: width 0.35s ease;
+      border-radius: var(--radius-full);
+    }
+
+    /* Views */
+    .view-section { display: none; animation: fadeIn 0.2s ease-out; }
+    .view-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Map Box */
+    #map-box {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card);
+      height: 340px;
+      width: 100%;
+      margin-bottom: 12px;
+      z-index: 10;
+    }
+    .map-controls-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .map-ctl-btn {
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-main);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: var(--shadow-sm);
+      white-space: nowrap;
+    }
+    .map-ctl-btn.active {
+      background: var(--primary-accent);
+      color: white;
+      border-color: var(--primary-accent);
+    }
+
+    /* Spot Cards (Timeline) */
+    .timeline-container { display: flex; flex-direction: column; gap: 0; }
+    
+    .spot-card {
+      background: var(--surface-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 16px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .spot-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+    .spot-card.hotel-anchor {
+      background: linear-gradient(180deg, var(--surface-card), var(--bg-subtle));
+      border-right: 4px solid var(--primary-light);
+    }
+    .spot-card.completed {
+      opacity: 0.6;
+      background: var(--bg-subtle);
+      border-color: var(--border);
+    }
+    .spot-card.completed .spot-headline {
+      text-decoration: line-through;
+    }
+
+    .spot-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 8px;
+    }
+    .time-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-num);
+      border: 1px solid var(--border-subtle);
+    }
+    .chips-group {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .category-chip {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .category-chip.alert {
+      background: var(--danger-light);
+      color: var(--danger);
+    }
+    .category-chip.hotel {
+      background: rgba(37, 99, 235, 0.12);
+      color: var(--primary-accent);
+    }
+
+    .spot-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .spot-headline {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.35;
+    }
+
+    /* Audio Guide Button on Card */
+    .audio-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      color: var(--primary-accent);
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      transition: all 0.15s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .audio-btn:hover {
+      background: var(--primary-accent);
+      color: white;
+      border-color: var(--primary-accent);
+      transform: scale(1.05);
+    }
+    .audio-btn.speaking {
+      background: var(--accent-warm);
+      color: white;
+      border-color: var(--accent-warm);
+      animation: pulse 1s infinite alternate;
+    }
+    @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+    /* Interactive Address Chip */
+    .address-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--primary-accent);
+      background: rgba(37, 99, 235, 0.08);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 10px;
+      transition: background 0.15s;
+    }
+    .address-chip:active { background: rgba(37, 99, 235, 0.18); }
+
+    .spot-body-desc {
+      font-size: 0.86rem;
+      color: var(--text-main);
+      line-height: 1.55;
+      margin-bottom: 10px;
+      opacity: 0.92;
+    }
+
+    /* Tour Guide Highlights inside spot */
+    .guide-insight-box {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      border-right: 3px solid var(--accent);
+    }
+    .insight-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .insight-row strong {
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+    .insight-row span {
+      color: var(--text-muted);
+    }
+
+    /* Actions Grid */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+      gap: 7px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+      margin-bottom: 10px;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 8px 6px;
+      border-radius: var(--radius-sm);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-action.maps { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+    .btn-action.uber { background: #000000; color: #ffffff; }
+    .btn-action.bolt { background: #34d186; color: #064e3b; }
+    .btn-action.ticket { background: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
+    .btn-action:active { transform: scale(0.96); }
+
+    /* Checkbox */
+    .card-footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .complete-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      color: var(--text-muted);
+    }
+    .complete-label input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary-accent);
+      cursor: pointer;
+    }
+
+    /* TRANSIT CONNECTOR */
+    .transit-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 12px 0;
+      margin: -2px 0;
+    }
+    .transit-rail {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: repeating-linear-gradient(to bottom, #94a3b8 0, #94a3b8 5px, transparent 5px, transparent 9px);
+      right: 28px;
+      z-index: 1;
+    }
+    .transit-pill {
+      position: relative;
+      z-index: 2;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+    .transit-pill .dot { color: var(--text-subtle); }
+
+    /* Map Custom Marker */
+    .map-marker-pin {
+      background: var(--primary-light);
+      color: #ffffff;
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      border: 2px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-family: var(--font-num);
+    }
+    .map-marker-pin.hotel-pin {
+      background: #dc2626;
+    }
+
+    /* RESTAURANT DIRECTORY STYLING */
+    .filter-tags {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .filter-tags::-webkit-scrollbar { display: none; }
+    .filter-tag {
+      padding: 7px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .filter-tag.active {
+      background: var(--primary-accent);
+      color: #ffffff;
+      border-color: var(--primary-accent);
+    }
+
+    .rest-card {
+      background: var(--surface-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-card);
+    }
+    .rest-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    .rest-top h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .rest-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-xs);
+    }
+    .dish-recommendation {
+      background: var(--bg-subtle);
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      margin: 8px 0;
+    }
+
+    /* FIELD GUIDE & PHRASEBOOK */
+    .guide-category {
+      background: var(--surface-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-card);
+    }
+    .guide-category h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary-accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 8px;
+    }
+    .guide-item { margin-bottom: 12px; }
+    .guide-item:last-child { margin-bottom: 0; }
+    .guide-item strong {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 3px;
+    }
+    .guide-item p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Phrasebook Grid */
+    .phrase-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .phrase-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .phrase-content { flex: 1; }
+    .phrase-pt {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--primary-accent);
+      direction: ltr;
+      text-align: right;
+    }
+    .phrase-he-phonetic {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 1px;
+    }
+    .phrase-meaning {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .phrase-speak-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--primary-accent);
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .phrase-speak-btn:active { transform: scale(0.92); }
+
+    /* Currency & Tip Calculator */
+    .calc-box {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-card);
+    }
+    .calc-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .calc-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      background: var(--bg-subtle);
+      outline: none;
+      font-family: var(--font-num);
+    }
+    .calc-result-badge {
+      padding: 10px 14px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-md);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--success);
+      font-family: var(--font-num);
+      text-align: center;
+      min-width: 120px;
+    }
+    .tip-buttons-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .tip-btn {
+      flex: 1;
+      padding: 8px 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+    .tip-btn.active {
+      background: var(--primary-accent);
+      color: white;
+      border-color: var(--primary-accent);
+    }
+
+    /* Emergency & Tools Hub */
+    .emergency-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .emergency-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s;
+    }
+    .emergency-card:active { transform: scale(0.97); }
+    .emergency-card.red { border-right: 4px solid var(--danger); }
+    .emergency-card.blue { border-right: 4px solid var(--primary-accent); }
+    .emergency-card.amber { border-right: 4px solid var(--accent); }
+    .emergency-card strong { font-size: 0.85rem; font-weight: 800; }
+    .emergency-card span { font-size: 0.74rem; color: var(--text-muted); }
+    .emergency-card .phone-num { font-size: 0.95rem; font-family: var(--font-num); font-weight: 800; color: var(--primary-accent); direction: ltr; text-align: right; }
+
+    /* Checklist */
+    .check-list-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .check-list-item:last-child { border-bottom: none; }
+    .check-list-item input { width: 18px; height: 18px; accent-color: var(--success); }
+    .check-list-item.done span { text-decoration: line-through; opacity: 0.6; }
+
+    /* BOTTOM NAVIGATION BAR */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 8px calc(10px + env(safe-area-inset-bottom, 0px)) 8px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+    }
+    .nav-tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      transition: all 0.15s ease;
+      flex: 1;
+      padding: 4px 0;
+    }
+    .nav-tab-item .tab-icon { font-size: 1.25rem; transition: transform 0.15s; }
+    .nav-tab-item.active { color: var(--primary-accent); }
+    .nav-tab-item.active .tab-icon { transform: translateY(-2px); }
+
+    /* Floating Audio Player Banner */
+    #audio-mini-player {
+      display: none;
+      position: fixed;
+      bottom: 74px;
+      left: 14px;
+      right: 14px;
+      max-width: 652px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--primary-accent);
+      border-radius: var(--radius-full);
+      padding: 8px 16px;
+      z-index: 1500;
+      box-shadow: var(--shadow-float);
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      animation: slideUp 0.25s ease-out;
+    }
+    @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .player-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .player-text { font-size: 0.78rem; font-weight: 700; color: var(--text-main); }
+    .player-controls { display: flex; align-items: center; gap: 6px; }
+    .player-btn {
+      background: var(--bg-subtle);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    /* Modal Backdrop */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 25, 47, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+    .modal-box {
+      background: var(--surface);
+      width: 100%;
+      max-width: 440px;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      text-align: center;
+      box-shadow: var(--shadow-float);
+      animation: popScale 0.2s ease-out;
+      border: 1px solid var(--border);
+      max-height: 88vh;
+      overflow-y: auto;
+    }
+    @keyframes popScale { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .modal-box h3 { font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
+    .modal-address-chip {
+      background: var(--bg-subtle);
+      padding: 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: 1px dashed var(--border);
+      margin: 14px 0;
+      direction: ltr;
+      color: var(--primary-accent);
+      cursor: pointer;
+    }
+
+    /* Toast */
+    #toast-msg {
+      position: fixed;
+      bottom: 85px;
+      left: 50%;
+      transform: translateX(-50%) translateY(50px);
+      background: rgba(10, 25, 47, 0.95);
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      z-index: 3000;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+      box-shadow: var(--shadow-float);
+      pointer-events: none;
+      opacity: 0;
+      white-space: nowrap;
+    }
+    #toast-msg.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  
+    /* SPOT DURATION & HOURS BADGES */
+    .spot-meta-row {
+      display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 10px 0;
+    }
+    .meta-tag {
+      font-size: 0.73rem; font-weight: 700; padding: 3px 9px; border-radius: var(--radius-xs);
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .meta-tag.hours {
+      background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border);
+    }
+    .meta-tag.duration {
+      background: rgba(16, 185, 129, 0.1); color: #059669; border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    [data-theme="dark"] .meta-tag.duration { color: #34d399; }
+
+    /* ACTION BUTTONS FOR SPOT EXPANSION & MOVING */
+    .spot-extra-btns {
+      display: flex; gap: 7px; margin-top: 8px; margin-bottom: 6px;
+    }
+    .btn-detail-link {
+      flex: 2; background: rgba(37, 99, 235, 0.08); color: var(--primary-accent);
+      border: 1px solid rgba(37, 99, 235, 0.2); padding: 7px 10px; border-radius: var(--radius-sm);
+      font-size: 0.76rem; font-weight: 700; cursor: pointer; text-align: center;
+      display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+      transition: all 0.15s ease;
+    }
+    .btn-detail-link:active { transform: scale(0.97); background: rgba(37, 99, 235, 0.15); }
+    .btn-move-spot {
+      flex: 1; background: var(--bg-subtle); color: var(--text-muted);
+      border: 1px solid var(--border); padding: 7px 8px; border-radius: var(--radius-sm);
+      font-size: 0.74rem; font-weight: 700; cursor: pointer; text-align: center;
+      display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .btn-move-spot:active { transform: scale(0.97); }
+
+    /* DAY SELECTOR MODAL FOR MOVING SPOTS */
+    .day-selector-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 16px 0;
+    }
+    .day-select-btn {
+      padding: 10px; border-radius: var(--radius-md); border: 1px solid var(--border);
+      background: var(--bg-subtle); color: var(--text-main); font-size: 0.82rem; font-weight: 700;
+      cursor: pointer; text-align: center; transition: all 0.15s;
+    }
+    .day-select-btn:active { transform: scale(0.96); }
+    .day-select-btn.current {
+      border-color: var(--primary-accent); color: var(--primary-accent); opacity: 0.6; pointer-events: none;
+    }
+
+    /* DEEP DETAIL MODAL STYLES */
+    .detail-section {
+      text-align: right; margin-bottom: 14px;
+    }
+    .detail-section h4 {
+      font-size: 0.95rem; font-weight: 800; color: var(--primary-accent); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .detail-section p {
+      font-size: 0.84rem; color: var(--text-main); line-height: 1.6;
+    }
+    .detail-chips-row {
+      display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0;
+    }
+
+    /* RESET SCHEDULE BUTTON IN BANNER */
+    .reset-schedule-btn {
+      background: none; border: none; color: var(--accent); font-size: 0.73rem;
+      font-weight: 700; cursor: pointer; text-decoration: underline; padding: 2px 0;
+      display: none;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- Top App Bar -->
+  <header>
+    <div class="header-top-row">
+      <div class="header-brand">
+        <span class="flag-icon">🇵🇹</span>
+        <div class="header-info">
+          <h1>פורטוגל 2026</h1>
+          <p><span>20–27 באוקטובר</span> • <span>ליסבון וסינטרה</span></p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn-header" onclick="toggleTheme()" title="מצב לילה / יום">
+          <span id="theme-icon">🌓</span>
+        </button>
+        <button class="icon-btn-header" onclick="openEmergencyModal()" title="חירום ושגרירות" style="color:var(--danger);">
+          <span>🚨</span>
+        </button>
+        <button class="hotel-btn-top" onclick="openHotelModal()">
+          <span>🏨</span> המלון
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Lisbon Dashboard -->
+    <div class="lisbon-live-bar">
+      <div>
+        <span>🕒 שעון ליסבון: </span>
+        <span class="live-clock" id="lisbonClock">--:--:--</span>
+        <span style="font-size:0.65rem; opacity:0.8;">(שעה פחות מישראל)</span>
+      </div>
+      <div>
+        <span>🌤️ אוקטובר: 18°–22°C</span>
+      </div>
+    </div>
+
+    <!-- Universal Search Bar -->
+    <div class="search-wrapper">
+      <span class="search-icon-inside">🔍</span>
+      <input type="text" id="globalSearch" class="search-input" placeholder="חיפוש אטרקציה, מסעדה, סוד מדריך או כתובת..." oninput="handleGlobalSearch(this.value)">
+      <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()">✕</button>
+    </div>
+  </header>
+
+  <div class="app-viewport">
+
+    <!-- VIEW 1: DAILY SCHEDULE (TIMELINE) -->
+    <div class="view-section active" id="view-schedule">
+      <div class="day-pills-bar" id="dayPillsBar"></div>
+      <div class="day-card-banner" id="dayCardBanner"></div>
+      <div class="timeline-container" id="timelineCards"></div>
+    </div>
+
+    <!-- VIEW 2: MAP VIEW -->
+    <div class="view-section" id="view-map">
+      <div class="day-card-banner" style="margin-bottom: 10px;">
+        <h2 id="mapDayTitle">מפת המסלול</h2>
+        <div class="banner-tags-row">
+          <span class="banner-area-pill" id="mapDayArea">כל היעדים כולל המלון</span>
+        </div>
+      </div>
+
+      <div class="map-controls-row">
+        <button class="map-ctl-btn active" id="mapBtnDay" onclick="setMapMode('day')">📌 מסלול היום</button>
+        <button class="map-ctl-btn" id="mapBtnAll" onclick="setMapMode('all')">🌍 כל ימי הטיול</button>
+        <button class="map-ctl-btn" id="mapBtnDining" onclick="setMapMode('dining')">🍽️ כל המסעדות</button>
+        <button class="map-ctl-btn" onclick="locateUser()"><span id="locate-icon">📍</span> איפה אני עכשיו?</button>
+      </div>
+
+      <div id="map-box"></div>
+      <div class="timeline-container" id="mapQuickList"></div>
+    </div>
+
+    <!-- VIEW 3: DINING DIRECTORY -->
+    <div class="view-section" id="view-dining">
+      <div class="day-card-banner">
+        <h2>מדריך הקולינריה 🍽️</h2>
+        <div class="banner-tags-row">
+          <span class="banner-area-pill" style="color:#059669; background:rgba(16,185,129,0.12);">✓ ללא פירות ים בלבד</span>
+          <span class="banner-area-pill">🥩 בשרים, פסטה, ראמן ורופטופים</span>
+        </div>
+        <p class="banner-guide-brief">
+          💡 <strong>סוד המדריך לאוכל בליסבון:</strong> מנות בשר נקראות בפורטוגל Carnes. למסעדות פופולריות כמו Sala de Corte ו-Atalho Real חובה להזמין מקום מראש. בפיצריות וראמן עובדים בעיקר על בסיס הגעה חופשית (Walk-in).
+        </p>
+      </div>
+
+      <div class="filter-tags" id="diningFilters">
+        <button class="filter-tag active" onclick="filterDining('all')">הכל (10)</button>
+        <button class="filter-tag" onclick="filterDining('meat')">🥩 בשרים וסטייקים</button>
+        <button class="filter-tag" onclick="filterDining('italian')">🍝 איטלקי ופיצה</button>
+        <button class="filter-tag" onclick="filterDining('asian')">🍜 אסייתי וראמן</button>
+        <button class="filter-tag" onclick="filterDining('rooftop')">🍸 רופטופים וברים</button>
+        <button class="filter-tag" onclick="filterDining('sweet')">☕ מתוקים ומאפים</button>
+        <button class="filter-tag" onclick="filterDining('wine')">🍷 ברי יין וטעימות</button>
+        <button class="filter-tag" onclick="filterDining('sunset')">🌅 תצפיות שקיעה ודרינק</button>
+      </div>
+
+      <div id="diningCardsList"></div>
+    </div>
+
+    <!-- VIEW 4: FIELD GUIDE & PHRASEBOOK -->
+    <div class="view-section" id="view-guide">
+      
+      <!-- Currency & Tip Calculator -->
+      <div class="calc-box">
+        <h3 style="font-size:1.05rem; font-weight:800; color:var(--primary-accent); margin-bottom:6px;">
+          🧮 מחשבון אירו וטיפ מהיר לשולחן
+        </h3>
+        <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">
+          הקלידו את הסכום באירו בחשבון וקבלו שווי בשקלים וחישוב טיפ במקום:
+        </p>
+        <div class="calc-row">
+          <input type="number" id="calcEurInput" class="calc-input" placeholder="סכום באירו €" value="30" oninput="calcTipAndIls()">
+          <div class="calc-result-badge" id="calcIlsOutput">≈ 120 ₪</div>
+        </div>
+        <div class="tip-buttons-row">
+          <button class="tip-btn active" onclick="selectTipPct(0)">ללא טיפ (€0)</button>
+          <button class="tip-btn" onclick="selectTipPct(5)">5% טיפ</button>
+          <button class="tip-btn" onclick="selectTipPct(10)">10% טיפ</button>
+          <button class="tip-btn" onclick="selectTipPct('round')">עיגול למעלה</button>
+        </div>
+        <div id="calcTipSummary" style="font-size:0.8rem; font-weight:700; color:var(--text-main); margin-top:8px;"></div>
+      </div>
+
+      <!-- Interactive Portuguese Phrasebook -->
+      <div class="guide-category">
+        <h3>🗣️ שיחון פורטוגזית שימושי (לחצו להשמעה ברורה 🔊)</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">
+          הפורטוגלים מעריכים מאוד שמברכים אותם במילים בסיסיות בשפתם. לחצו על הרמקול כדי לשמוע הגייה מקומית:
+        </p>
+
+        <div class="filter-tags" style="margin-bottom:6px;">
+          <button class="filter-tag active" onclick="filterPhraseCategory('all')">הכל</button>
+          <button class="filter-tag" onclick="filterPhraseCategory('dining')">🍽️ במסעדה</button>
+          <button class="filter-tag" onclick="filterPhraseCategory('cafe')">☕ קפה ומאפים</button>
+          <button class="filter-tag" onclick="filterPhraseCategory('nav')">🚶‍♂️ התמצאות</button>
+          <button class="filter-tag" onclick="filterPhraseCategory('courtesy')">🤝 נימוס יומי</button>
+        </div>
+
+        <div class="phrase-grid" id="phrasebookList"></div>
+      </div>
+
+      
+      <!-- Rainy Day Alternatives Plan -->
+      <div class="guide-category" style="border-right:4px solid var(--primary-accent);">
+        <h3>🌧️ תוכנית חלופית לימי גשם בליסבון (מקומות מקורים מומלצים)</h3>
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:12px;">
+          סוף אוקטובר עשוי להביא מדי פעם ממטרי גשם. הנה האתרים המקורים השווים ביותר להחלפה מיידית:
+        </p>
+
+        <div class="guide-item">
+          <strong>1. מוזיאון האריחים הלאומי (Museu Nacional do Azulejo):</strong>
+          <p>שוכן בתוך מנזר מדרה דה דאוש (Madre de Deus) המרהיב מ-1509. קירות שלמים של אריחים כחולים, כנסיית זהב בארוקית עוצרת נשימה ופנורמת אריחים ענקית באורך 23 מטר המתארת את ליסבון לפני רעידת האדמה. שעות: 10:00–18:00 (סגור בשני).</p>
+        </div>
+
+        <div class="guide-item">
+          <strong>2. קניון קולומבו (Centro Colombo):</strong>
+          <p>מתחם ענק ומקורה לחלוטין עם 400 חנויות, קולנוע ומתחם אוכל עצום (פתוח רציף מדי יום 10:00 עד חצות). מושלם לשעות של שופינג יבש.</p>
+        </div>
+
+        <div class="guide-item">
+          <strong>3. שוק האוכל טיים אאוט (Time Out Market):</strong>
+          <p>מתחם שוק מקורה ענק עם עשרות דוכני שף, בשרים, פסטות ושתייה. חוויה קולינרית תוססת ומוגנת מגשם (פתוח 10:00 עד חצות/02:00).</p>
+        </div>
+
+        <div class="guide-item">
+          <strong>4. מוזיאון קלוסט גולבנקיאן (Museu Calouste Gulbenkian):</strong>
+          <p>אחד מאוספי האמנות הפרטיים הטובים בעולם: עתיקות מצרים, יוון, רומא, שטיחים פרסיים, ציורי רמברנדט, מונה ותכשיטי רנה לאליק. שעות: 10:00–18:00 (סגור בשלישי).</p>
+        </div>
+
+        <div class="guide-item">
+          <strong>5. האקווריום של ליסבון (Oceanário de Lisboa):</strong>
+          <p>האקווריום הגדול באירופה בפארק האומות. מכל ענק מרכזי עם כרישים, חתולי ים, פינגווינים ולוטרות ים. חוויה מקורה מהפנטת. שעות: 10:00–20:00 (פתוח מדי יום).</p>
+        </div>
+      </div>
+    
+      <!-- Critical Rules -->
+      <div class="guide-category">
+        <h3>🍴 כללי ברזל במסעדות ואוכל</h3>
+        <div class="guide-item">
+          <strong>⚠️ מלכודת ה-Couvert (לחם, גבינה וזיתים שמניחים על השולחן):</strong>
+          <p>בפורטוגל, המלצר יניח מיד עם הישיבה סלסלת לחם, חמאה, פטה זיתים או גבינה. <strong>זה לא בחינם!</strong> אם תטעמו מהם הם יחויבו בחשבון (2–6 אירו). אם אינכם מעוניינים, פשוט אמרו בנימוס "No, thank you" והמלצר ייקח אותם בלי לחייב.</p>
+        </div>
+        <div class="guide-item">
+          <strong>☕ מילון הקפה הפורטוגזי (חובה להזמנה):</strong>
+          <p>• <strong>Bica:</strong> אספרסו קצר וחזק בסגנון המקומי.<br>
+             • <strong>Galão:</strong> קפה הפוך בכוס זכוכית גבוהה עם הרבה חלב חם.<br>
+             • <strong>Meia de Leite:</strong> קפה עם חלב ביחס של חצי-חצי בספל רגיל.<br>
+             • <strong>Pingado:</strong> אספרסו עם טיפת חלב קר (כמו מקיאטו).</p>
+        </div>
+        <div class="guide-item">
+          <strong>🥩 מנות דגל שוות (ללא פירות ים):</strong>
+          <p>• <strong>Prego no Pão:</strong> סנדוויץ' בקר עסיסי ודק בלחמנייה חמה עם חמאת שום וחרדל.<br>
+             • <strong>Bifana:</strong> כריך מסורתי של פרוסות בשר דקות בציר יין, שום וחרדל.<br>
+             • <strong>Bacalhau à Brás:</strong> פתיתי דג בקלה מוקפצים עם ביצה טרופה, רצועות תפוחי אדמה דקות וזיתים (ללא פירות ים).</p>
+        </div>
+      </div>
+
+      <div class="guide-category">
+        <h3>🚕 תחבורה והתניידות בעיר הגבעות</h3>
+        <div class="guide-item">
+          <strong>אובר ו-Bolt – הדרך הכי נוחה וזולה:</strong>
+          <p>בליסבון שירותי הנסיעות זולים במיוחד (נסיעה ממוצעת בעיר עולה 4–7 אירו בלבד). האפליקציות מגיעות תוך 2–4 דקות. אם עייפים מהעליות התלולות – זו הדרך הנוחה והמשתלמת ביותר.</p>
+        </div>
+        <div class="guide-item">
+          <strong>אבני הפסיפס (Calçada Portuguesa):</strong>
+          <p>המדרכות בליסבון מרוצפות אבני בזלת וגיר קטנות שהוחלקו במשך מאות שנים. הן הופכות למשטח החלקה במיוחד ברטיבות קלה. נעלי הליכה נוחות עם סוליה אוחזת הן חובה מוחלטת!</p>
+        </div>
+        <div class="guide-item">
+          <strong>חשמלית 28 וזהירות מכייסים:</strong>
+          <p>החשמלית הצהובה מפורסמת אך צפופה מאוד ומהווה מוקד ראשי לכייסים מקצועיים. מומלץ לעלות לאלפמה ברגל בנחת או באובר קצר, ולשמור ארנקים וטלפונים בכיסים פנימיים.</p>
+        </div>
+      </div>
+
+      <div class="guide-category">
+        <h3>💳 כספים, אשראי וטיפים</h3>
+        <div class="guide-item">
+          <strong>אשראי מול מזומן (רשת Multibanco):</strong>
+          <p>ב-90% מהמקומות מכבדים אשראי בינלאומי. עם זאת, בטברנות קטנות, דוכני שוק ומאפיות יש לעיתים מכשירים מקומיים בלבד (Multibanco) שלא תומכים בכרטיסי אשראי זרים. מומלץ להחזיק תמיד 40–50 אירו במזומן בכיס.</p>
+        </div>
+        <div class="guide-item">
+          <strong>מנהגי טיפים:</strong>
+          <p>בבתי קפה ובברים רק מעגלים עודף. במסעדות עם שירות מלא מקובל להשאיר 5%–10% במזומן אם נהניתם מהשירות (אלא אם דמי השירות כבר חויבו בחשבון מראש).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 5: TOOLKIT, EMERGENCY & CHECKLIST -->
+    <div class="view-section" id="view-tools">
+      <div class="day-card-banner">
+        <h2>מוקד חירום, טיסות וארגון 🧰</h2>
+        <p style="font-size:0.84rem; color:var(--text-muted); margin-top:4px;">
+          כל מה שצריך בשלוף: טלפונים לשעת חירום, פרטי הטיסות, המלון וצ'ק ליסט לקראת היציאה.
+        </p>
+      </div>
+
+      
+      <!-- Android Offline Guide Banner -->
+      <div class="guide-category" style="border-right:4px solid var(--bolt); background: linear-gradient(180deg, var(--surface-card), var(--bg-subtle));">
+        <h3>📱 עבודה מלאה ללא אינטרנט (אפליקציה למסך הבית)</h3>
+        <p style="font-size:0.83rem; color:var(--text-main); line-height:1.6;">
+          הדף הזה נבנה כקובץ עצמאי הכולל את כל מסלולי הטיול, הכתובות, שעות הפתיחה והשיחון המלא <strong>ללא תלות באינטרנט!</strong>
+        </p>
+        <div style="background:var(--bg-subtle); border-radius:var(--radius-sm); padding:10px 12px; margin-top:8px; font-size:0.8rem; line-height:1.5;">
+          <strong>איך להתקין על מסך הבית ב-Android (Chrome):</strong><br>
+          1. פתחו קובץ זה בדפדפן Chrome בטלפון.<br>
+          2. לחצו על תפריט 3 הנקודות <strong>⋮</strong> בצד העליון של הדפדפן.<br>
+          3. בחרו ב-<strong>"הוסף למסך הבית" (Add to Home screen)</strong> או "התקן אפליקציה".<br>
+          4. כעת יש לכם אייקון אפליקציה ישיר במסך הבית שייפתח תמיד גם במצב טיסה או כשיש ניתוק קליטה!
+        </div>
+      </div>
+    
+      <!-- Emergency Cards Grid -->
+      <div class="emergency-grid">
+        <a href="tel:112" class="emergency-card red">
+          <strong>🚨 מוקד חירום אירופי</strong>
+          <span>משטרה / אמבולנס</span>
+          <div class="phone-num">112</div>
+        </a>
+        <a href="tel:+351210455500" class="emergency-card blue">
+          <strong>🇮🇱 שגרירות ישראל</strong>
+          <span>ליסבון (שעות פעילות)</span>
+          <div class="phone-num">+351 21 045 5500</div>
+        </a>
+        <a href="tel:+351213421623" class="emergency-card amber">
+          <strong>👮 משטרת תיירים ליסבון</strong>
+          <span>Palácio Foz, Restauradores</span>
+          <div class="phone-num">+351 213 421 623</div>
+        </a>
+        <a href="tel:+351218841000" class="emergency-card red">
+          <strong>🏥 ביה"ח סאו ז'וזה</strong>
+          <span>מרכזייה כללית</span>
+          <div class="phone-num">+351 21 884 1000</div>
+        </a>
+        <a href="tel:+351808242424" class="emergency-card blue" style="grid-column: span 2;">
+          <strong>🩺 SNS 24 – קו בריאות (לפני הגעה למיון)</strong>
+          <span>מקובל להתקשר לפני הגעה למיון כשהמצב לא מסכן חיים. במצב דחוף: 112</span>
+          <div class="phone-num">808 24 24 24</div>
+        </a>
+      </div>
+
+      <!-- Travel Insurance Card -->
+      <div class="guide-category" style="border-right:4px solid var(--success);">
+        <h3>🛡️ ביטוח נסיעות – הראל</h3>
+        <div class="emergency-grid" style="margin-bottom:10px;">
+          <a href="tel:+97237547030" class="emergency-card red">
+            <strong>📞 מוקד חירום 24/7</strong>
+            <span>אשפוז, רופא, תאונה</span>
+            <div class="phone-num">+972 3 754 7030</div>
+          </a>
+          <a href="https://wa.me/972527544589" target="_blank" class="emergency-card blue">
+            <strong>💬 וואטסאפ</strong>
+            <span>פניות בהודעות</span>
+            <div class="phone-num">+972 52 754 4589</div>
+          </a>
+        </div>
+        <div class="guide-item">
+          <strong>מה עושים במקרה רפואי?</strong>
+          <p>1. במצב מסכן חיים – קודם <strong>112</strong>, אחר כך הראל.<br>
+             2. במצב לא דחוף – להתקשר למוקד <strong>לפני</strong> שהולכים לרופא, כדי שיפנו לנותן שירות מהסדר בלי תשלום מראש.<br>
+             3. לשמור כל קבלה, מסמך רפואי ואישור משטרה (במקרה של גניבה) – צלמו אותם מיד.<br>
+             4. אפליקציית <strong>"הראל חו״ל"</strong> – לאיתור רופאים והגשת תביעות.</p>
+        </div>
+        <div class="guide-item">
+          <strong>📝 מספר פוליסה (נשמר רק במכשיר שלכם):</strong>
+          <input type="text" id="policyNumber" class="search-input" style="padding:8px 14px; margin-top:4px; direction:ltr; text-align:right;" placeholder="הקלידו מספר פוליסה..." oninput="localStorage.setItem('harel_policy', this.value)">
+        </div>
+        <p style="font-size:0.72rem; color:var(--text-subtle); margin-top:8px;">
+          ⚠️ את המספרים שלעיל מצאתי בחיפוש ברשת ולא הצלחתי לאמת באתר הראל עצמו. השווו מול מסמך הפוליסה.
+        </p>
+      </div>
+
+      <!-- Flight Summary Card -->
+      <div class="guide-category">
+        <h3>✈️ פרטי טיסות אל על</h3>
+        <div style="font-size:0.85rem; line-height:1.6;">
+          <div style="display:flex; justify-content:space-between; border-bottom:1px solid var(--border-subtle); padding:6px 0;">
+            <span>🛫 <strong>טיסת הלוך: LY371</strong></span>
+            <span>20.10 (ג') • 17:55 נחיתה בליסבון</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0;">
+            <span>🛬 <strong>טיסת חזור: LY376</strong></span>
+            <span>27.10 (ג') • 19:15 המראה מליסבון</span>
+          </div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+            טרמינל 1 בנמל התעופה הומברטו דלגדו (LIS). מומלץ להגיע 3 שעות לפני ההמראה.
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel Summary Card -->
+      <div class="guide-category">
+        <h3>🏨 פרטי הדירה שלנו</h3>
+        <div style="font-size:0.85rem; line-height:1.6;">
+          <strong>Grape Harbor Prata Apartments</strong><br>
+          <span style="direction:ltr; display:inline-block; font-weight:700; color:var(--primary-accent);">
+            Rua da Prata 199, Baixa, 1100-416 Lisboa
+          </span>
+          <div class="actions-grid" style="margin-top:10px;">
+            <a class="btn-action maps" href="https://www.google.com/maps/search/?api=1&query=38.7118,-9.1372" target="_blank">📍 מפות</a>
+            <a class="btn-action uber" id="toolsHotelUber" href="#" target="_blank">🚕 Uber למלון</a>
+            <a class="btn-action bolt" href="https://bolt.eu/ride?destination_lat=38.7118&destination_lng=-9.1372" target="_blank">⚡ Bolt למלון</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Packing & Trip Checklist -->
+      <div class="guide-category">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <h3 style="margin:0; border:none; padding:0;">🎒 צ'ק-ליסט בדיקות ומסמכים</h3>
+          <span style="font-size:0.75rem; color:var(--text-muted);" id="checklistCount">0/8</span>
+        </div>
+        <div id="checklistItems"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <button class="nav-tab-item active" onclick="navigateTab('schedule')">
+      <span class="tab-icon">📅</span>
+      <span>לו״ז ומסלול</span>
+    </button>
+    <button class="nav-tab-item" onclick="navigateTab('map')">
+      <span class="tab-icon">🗺️</span>
+      <span>מפה חיה</span>
+    </button>
+    <button class="nav-tab-item" onclick="navigateTab('dining')">
+      <span class="tab-icon">🍽️</span>
+      <span>מסעדות</span>
+    </button>
+    <button class="nav-tab-item" onclick="navigateTab('guide')">
+      <span class="tab-icon">🗣️</span>
+      <span>שיחון וטיפים</span>
+    </button>
+    <button class="nav-tab-item" onclick="navigateTab('tools')">
+      <span class="tab-icon">🧰</span>
+      <span>עזרים וחירום</span>
+    </button>
+  </nav>
+
+  <!-- Floating Audio Player Bar -->
+  <div id="audio-mini-player">
+    <div class="player-info">
+      <span style="font-size:1.1rem;">🎙️</span>
+      <div class="player-text" id="playerTitle">משמיע הסבר מדריך...</div>
+    </div>
+    <div class="player-controls">
+      <button class="player-btn" onclick="toggleAudioPlayback()" id="playerPlayPauseBtn">⏸️</button>
+      <button class="player-btn" onclick="stopAudioGuide()">⏹️</button>
+    </div>
+  </div>
+
+  
+  <!-- Spot Deep Details Modal -->
+  <div class="modal-backdrop" id="spotDetailModal" onclick="closeSpotDetailModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+        <h3 id="modalSpotName" style="text-align:right; font-size:1.15rem; flex:1;"></h3>
+        <button onclick="closeSpotDetailModal()" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-muted); padding:0 4px;">✕</button>
+      </div>
+
+      <div class="detail-chips-row" id="modalSpotMeta"></div>
+
+      <div class="detail-section" id="modalSpotDescSec">
+        <h4>🏛️ על המקום ומה רואים שם</h4>
+        <p id="modalSpotDeepDesc"></p>
+      </div>
+
+      <div class="detail-section" id="modalSpotTimeSec">
+        <h4>⏳ הערכת זמן ואיך לחלק את השהייה</h4>
+        <p id="modalSpotTimeGuide"></p>
+      </div>
+
+      <div class="detail-section" id="modalSpotSecretSec" style="display:none;">
+        <h4>🔍 סוד המדריך</h4>
+        <p id="modalSpotSecret" style="color:var(--accent); font-weight:600;"></p>
+      </div>
+
+      <div class="detail-section" id="modalSpotWarningSec" style="display:none;">
+        <h4 style="color:var(--danger);">⚠️ שימו לב במקום</h4>
+        <p id="modalSpotWarning"></p>
+      </div>
+
+      <div class="actions-grid" id="modalSpotActions" style="margin-top:14px;"></div>
+
+      <button class="btn-action" id="modalMoveBtn" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:9px; margin-top:8px; border:1px solid var(--border);" onclick="openMoveFromDetail()">
+        🔀 העבר אטרקציה זו ליום אחר במסלול
+      </button>
+    </div>
+  </div>
+
+  <!-- Move Spot To Day Modal -->
+  <div class="modal-backdrop" id="moveSpotModal" onclick="closeMoveSpotModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3>🔀 העברת אטרקציה ליום אחר</h3>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;" id="moveSpotTitleNotice">
+        בחרו לאיזה יום תרצו להעביר אטרקציה זו:
+      </p>
+
+      <div class="day-selector-grid" id="daySelectorGrid"></div>
+
+      <button class="btn-action" style="width:100%; background:var(--bg-subtle); color:var(--text-main); padding:9px; border:1px solid var(--border);" onclick="closeMoveSpotModal()">ביטול</button>
+    </div>
+  </div>
+    
+  <!-- Hotel Quick Modal -->
+  <div class="modal-backdrop" id="hotelModal" onclick="closeHotelModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3>🏨 Grape Harbor Prata Apartments</h3>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:2px;">
+        הכתובת המדויקת של הדירה ברובע באיישה – להצגה לנהג או ניווט מהיר:
+      </p>
+      
+      <div class="modal-address-chip" onclick="copyText('Rua da Prata 199, Baixa, 1100-416 Lisboa', 'כתובת המלון הועתקה!')" title="לחצו להעתקה">
+        Rua da Prata 199, Baixa<br>1100-416 Lisboa
+        <div style="font-size: 0.72rem; color: var(--accent); font-weight: normal; margin-top: 6px;">(לחצו להעתקת הכתובת 📋)</div>
+      </div>
+
+      <div class="actions-grid" id="hotelQuickActions"></div>
+
+      <button class="btn-action" style="width: 100%; background: var(--bg-subtle); color: var(--text-main); padding: 10px; margin-top: 8px; border:1px solid var(--border);" onclick="closeHotelModal()">סגור</button>
+    </div>
+  </div>
+
+  <!-- Emergency Quick Modal -->
+  <div class="modal-backdrop" id="emergencyModal" onclick="closeEmergencyModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3 style="color:var(--danger);">🚨 מוקד חירום וסיוע מהיר</h3>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top:2px;">
+        חיוג בלחיצה ישירה לסיוע רפואי, משטרתי וקונסולרי:
+      </p>
+      
+      <div class="emergency-grid" style="margin-top:14px; text-align:right;">
+        <a href="tel:112" class="emergency-card red">
+          <strong>🚨 112 (חירום כללי)</strong>
+          <span>משטרה / מד"א / מכבי אש</span>
+        </a>
+        <a href="tel:+351210455500" class="emergency-card blue">
+          <strong>🇮🇱 שגרירות ישראל</strong>
+          <span>Rua António Enes 16, 4º</span>
+        </a>
+        <a href="tel:+351213421623" class="emergency-card amber">
+          <strong>👮 משטרת התיירים</strong>
+          <span>דוברי אנגלית בליסבון</span>
+        </a>
+        <a href="tel:+351218841000" class="emergency-card red">
+          <strong>🏥 ביה"ח סאו ז'וזה</strong>
+          <span>מרכז רפואי דחוף</span>
+        </a>
+      </div>
+
+      <button class="btn-action" style="width: 100%; background: var(--bg-subtle); color: var(--text-main); padding: 10px; margin-top: 10px; border:1px solid var(--border);" onclick="closeEmergencyModal()">סגור</button>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification -->
+  <div id="toast-msg">הכתובת הועתקה!</div>
+
+  <script>
+    // ==========================================
+    // 1. נתונים והגדרות יסוד
+    // ==========================================
+    const CARTO_KEY = "cb1_4orj_1_2765ab84644929c4315239fe";
+
+    const HOTEL = {
+      name: "Grape Harbor Prata Apartments",
+      address: "Rua da Prata 199, Baixa, 1100-416 Lisboa",
+      lat: 38.7118,
+      lng: -9.1372
+    };
+
+    // מסלול מפורט עם העשרות תוכן ייחודיות של מדריך טיולים (סודות, צילום, אזהרות וכרטיסים)
+    
+    // מסלול מפורט עם שעות פתיחה מאומתות, משך שהייה מומלץ והסברים מעמיקים
+    const defaultTripData = [
+      {
+        day: 1,
+        date: "20.10 (ג')",
+        title: "נחיתה, באיישה וקו המים",
+        area: "רובע באיישה (סביבת המלון)",
+        brief: "נחיתה רגועה, התמקמות בדירה המעולה ברחוב פראטה, ירידה ברגל לכיכר קומרסיו המוארת מול הנהר וראמן חם ב-Panda Cantina ממש ליד המלון.",
+        spots: [
+          {
+            id: "d1_airport",
+            name: "נחיתה בנמל התעופה ליסבון (טיסת LY371)",
+            time: "17:55",
+            tag: "✈️ נחיתה",
+            hours: "פתוח 24/7",
+            duration: "45–60 דק׳",
+            desc: "נחיתה בטרמינל 1, איסוף מזוודות ונסיעה קצרה באובר ישירות לדירה שלכם ברחוב פראטה במרכז.",
+            deepDetails: "נמל התעופה הבינלאומי הומברטו דלגדו (LIS), טרמינל 1. לאחר הנחיתה עוברים ביקורת דרכונים, איסוף מזוודות ויציאה למפלס העליון (Departures/המרות) כדי להגיע לנקודת איסוף ה-Uber המסומנת Kiss & Fly.",
+            timeGuide: "ביקורת דרכונים לוקחת בדרך כלל 15–25 דקות. הזמינו את האובר רק לאחר שהמזוודות בידיכם.",
+            secret: "נקודת איסוף האובר בנמל התעופה היא בחניון הנשיקה (Kiss & Fly) במפלס ההמראות עליון.",
+            photoSpot: "מבט ראשון על שער הניצחון כשהאובר מגיע למרכז העיר.",
+            warning: "לא לעלות על מוניות שחורות-ירוקות ביציאה מטרמינל 1 (גובות לעיתים תעריף מופקע) - רק Uber או Bolt.",
+            address: "Aeroporto de Lisboa, Terminal 1",
+            lat: 38.7742, lng: -9.1342,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "20 דק׳ באובר / בולט", distance: "7.5 ק״מ", note: "נסיעה חלקה ישירות לרחוב פראטה במרכז העיר" }
+          },
+          {
+            id: "d1_hotel_checkin",
+            name: "🏨 צ'ק-אין: Grape Harbor Prata Apartments",
+            time: "19:00",
+            tag: "🏨 המלון שלנו",
+            isHotel: true,
+            hours: "צ'ק-אין החל מ-15:00",
+            duration: "20–30 דק׳",
+            desc: "התמקמות בדירה המרווחת בלב ליסבון. מיקום פנומנלי שמאפשר לחזור ברגל בכל רגע במהלך היום.",
+            deepDetails: "דירת הנופש שלכם ברחוב פראטה (Rua da Prata 199) שוכנת בבניין היסטורי משופץ בלב רובע באיישה. מיקום אסטרטגי המאפשר הגעה רגלית קלה לכל נקודה מרכזית בעיר, למסעדות ולתחבורה.",
+            timeGuide: "פריקת מזוודות מהירה, שטיפת פנים, התרעננות ויציאה ברגל ליהנות מהבריזה הראשונה בכיכר קומרסיו.",
+            secret: "סופרמרקט קטן Pingo Doce נמצא מרחק 3 דקות הליכה למים מינרליים ונשנושים.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "4 דק׳ ברגל", distance: "350 מ׳", note: "ירידה רגלית ישרה במורד רחוב פראטה עד שער הניצחון" }
+          },
+          {
+            id: "d1_praca",
+            name: "כיכר קומרסיו (Praça do Comércio)",
+            time: "20:30",
+            tag: "🌊 קו המים",
+            hours: "שטח פתוח 24/7",
+            duration: "30–45 דק׳",
+            desc: "הכיכר המלכותית של ליסבון מוארת לאורך נהר הטז'ו עם שער הניצחון המונומנטלי (Arco da Rua Augusta).",
+            deepDetails: "כיכר המסחר המלכותית (Praça do Comércio) נבנתה מחדש לאחר רעידת האדמה של 1755 ונחשבת לאחת הכיכרות המרשימות באירופה. בצפונה מתנשא שער הניצחון המרהיב ובדרומה נהר הטז'ו הרחב עם עמודי האבן ההיסטוריים Cais das Colunas.",
+            timeGuide: "הליכה במורד רחוב פראטה, יציאה לכיכר המוארת, הליכה לקו המים לצפייה באורות גשר 25 באפריל ופסל ישו המואר מעבר לנהר.",
+            secret: "שבו על עמודי האבן העתיקים ב-Cais das Colunas מול המים כשהשמש שוקעת ואורות הגשר נדלקים.",
+            photoSpot: "עמדו במרכז הכיכר כששער הניצחון המואר מאחוריכם.",
+            address: "Praça do Comércio, Lisboa",
+            lat: 38.7075, lng: -9.1364,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "5 דק׳ ברגל", distance: "400 מ׳", note: "הליכה צפונה בסמטאות באיישה" }
+          },
+          {
+            id: "d1_dinner",
+            name: "ארוחת ערב: Panda Cantina (או Rocco)",
+            time: "21:15",
+            tag: "🍜 אסייתי / 🍝 איטלקי",
+            hours: "18:30–22:30 (Panda) / 12:00–01:00 (Rocco)",
+            duration: "שעה עד שעה ורבע",
+            desc: "Panda Cantina (קערת ראמן נודלס בעבודת יד ברחוב של המלון, ללא פירות ים) או מסעדת Rocco בשיאדו.",
+            deepDetails: "Panda Cantina היא מסעדת ראמן מקומית ברחוב פראטה המתמחה בקערות נודלס בקר חמות ועשירות המיוצרות בעבודת יד מדי יום (ללא פירות ים). לחלופין, מסעדת Rocco בשיאדו היא מסעדת שף איטלקית מפוארת ביותר עם גלאם ועיצוב עוצר נשימה.",
+            timeGuide: "Panda Cantina עובדים ב-Walk-in בלבד. התור מתקדם תוך כ-10 דקות. ב-Rocco נדרשת הזמנה מראש.",
+            secret: "ב-Panda Cantina אפשר לבחור את רמת החריפות מ-1 עד 5. רמה 2 מושלמת למרבית האנשים.",
+            warning: "Panda Cantina עובדים ב-Walk-in בלבד. אם יש תור, הוא מתקדם תוך 10–12 דקות בלבד.",
+            address: "Rua da Prata 252, Lisboa",
+            lat: 38.7115, lng: -9.1375,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "דקה אחת ברגל", distance: "70 מ׳", note: "חזרה קלה למלון באותו הרחוב" }
+          },
+          {
+            id: "d1_hotel_end",
+            name: "🏨 חזרה למלון: Grape Harbor Prata Apartments",
+            time: "22:45",
+            tag: "🏨 חזרה למלון",
+            isHotel: true,
+            hours: "לילה טוב",
+            duration: "מנוחה",
+            desc: "סיום יום הנחיתה, מנוחה והתרעננות לקראת מחר.",
+            deepDetails: "חזרה רגלית קלילה של דקה מהמסעדה ישירות לדירה ולילה ראשון בליסבון.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng
+          }
+        ]
+      },
+      {
+        day: 2,
+        date: "21.10 (ד')",
+        title: "אלפמה ההיסטורית, טירה ו-Time Out Market",
+        area: "הגבעה המזרחית וקאיש דו סודרה",
+        brief: "יום של סמטאות ציוריות, מרפסות אריחים כחולים, טירת סאו ז'ורז'ה בראש הגבעה וסיום תוסס בשוק האוכל Time Out Market או בפיצה ב-Lupita.",
+        spots: [
+          {
+            id: "d2_hotel_start",
+            name: "🏨 יציאה מהמלון לעבר אלפמה",
+            time: "09:30",
+            tag: "🏨 תחילת יום",
+            isHotel: true,
+            hours: "יציאה בוקר",
+            duration: "10 דק׳ הליכה",
+            desc: "קפה בדירה או במאפייה סמוכה, ויציאה רגלית מזרחה לעבר קתדרלת סה העתיקה.",
+            deepDetails: "יציאה מרחוב פראטה מזרחה דרך סמטאות באיישה במעלה המדרון המתון לעבר רובע אלפמה.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "5 דק׳ ברגל", distance: "450 מ׳", note: "הליכה מזרחה לכיוון קתדרלת סה" }
+          },
+          {
+            id: "d2_se",
+            name: "קתדרלת ליסבון (Sé de Lisboa)",
+            time: "09:45",
+            tag: "🏰 היסטוריה",
+            hours: "09:30–19:00 (כניסה אחרונה 18:30, סגור תיירות בראשון)",
+            duration: "30–45 דק׳",
+            desc: "המבנה העתיק ביותר בעיר (שנת 1147), שנראה כמו מבצר אבן חסין רעידות אדמה בדרך לעלייה לאלפמה.",
+            deepDetails: "קתדרלת ליסבון הוקמה לאחר כיבוש העיר מחדש מידי המורים. חזיתה המבוצרת בנויה בסגנון רומנסקי עם שני מגדלי פעמונים וחלון רוזטה ענקי. בפנים נמצאים שרידי עתיקות רומיות וערביות שנחשפו בחפירות.",
+            timeGuide: "החלל המרכזי פתוח לתפילה חינם. ביקור במרפסת המקהלה העליונה ובמוזיאון האוצר כרוך בכרטיס (7 אירו). חצי שעה מספיקה בהחלט.",
+            secret: "המתינו מול חזית הקתדרלה 2-3 דקות כדי לצלם את החשמלית הצהובה מס' 28 חולפת בדיוק על הרקע שלה.",
+            photoSpot: "המדרכה ממול לחזית הקתדרלה בעיקול הפסים.",
+            warning: "זהירות מכייסים סביב תחנת החשמלית מחוץ לכנסייה.",
+            address: "Largo da Sé, Lisboa",
+            lat: 38.7098, lng: -9.1329,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "6 דק׳ בעלייה", distance: "450 מ׳", note: "עלייה קלה דרך סמטאות אלפמה עם פסי החשמלית" }
+          },
+          {
+            id: "d2_view",
+            name: "תצפית סנטה לוזיה (Miradouro de Santa Luzia)",
+            time: "10:30",
+            tag: "🌅 תצפית ואריחים",
+            hours: "שטח פתוח 24/7",
+            duration: "25–35 דק׳",
+            desc: "מרפסת רומנטית מוקפת עמודי שיש לבנים, סוכת בוגנוויליה סגולה וקירות אריחי אזולז'וש מול הנהר.",
+            deepDetails: "אחת מנקודות התצפית האהובות ביותר בליסבון. המרפסת משקיפה על גגות הרעפים האדומים של רובע אלפמה היורדים אל נהר הטז'ו. הקיר המרכזי מעוטר בפסיפסי אריחים כחולים המתארים את כיכר קומרסיו לפני רעידת האדמה הגדולה.",
+            timeGuide: "צילומים בפרגולת הבוגנוויליה, ירידה במדרגות למפלס הגן התחתון וקפה קצר מול הנוף.",
+            secret: "רדו במדרגות הקטנות למפלס התחתון של הגן (Miradouro das Portas do Sol הסמוך) – שקט בהרבה מהמפלס העליון.",
+            photoSpot: "הקיר המרוצף באריחים כחולים עם נוף גגות הרעפים האדומים והנהר.",
+            address: "Miradouro de Santa Luzia, Lisboa",
+            lat: 38.7116, lng: -9.1303,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "8 דק׳ ברגל", distance: "550 מ׳", note: "המשך עלייה לעבר שער המבצר" }
+          },
+          {
+            id: "d2_castle",
+            name: "טירת סאו ז'ורז'ה (Castelo de São Jorge)",
+            time: "11:45",
+            tag: "🦚 טירה ונוף",
+            ticketUrl: "https://castelodesaojorge.pt/en/",
+            hours: "09:00–21:00 (כניסה אחרונה 20:30, פתוח מדי יום באוקטובר)",
+            duration: "שעה וחצי עד שעתיים",
+            desc: "מבצר מורי עתיק בראש הגבעה. הליכה על החומות עם מבט פנורמי של 360 מעלות על העיר, גשר 25 באפריל ונהר הטז'ו.",
+            deepDetails: "מתחם הטירה העתיקה חולש על העיר מראשית המאה ה-11. כולל 11 מגדלים עתיקים, שבילי הליכה מבוצרים על החומה, תצוגה ארכיאולוגית, חצרות מוצלות בעצי אורן וטווסים שמסתובבים חופשי.",
+            timeGuide: "45 דקות להליכה על החומות והתצפיות, 30 דקות למנוחה וצילום הטווסים בצל עצי האורן, ו-20 דקות למוזיאון.",
+            secret: "בחצרות הטירה מסתובבים עשרות טווסים חופשיים על עצי האורן – נקודת תצפית מושלמת לנוח בצל.",
+            photoSpot: "חומת המגדל המערבי עם נוף ישיר לקו המים ולגשר.",
+            warning: "המדרגות במעלה החומות תלולות – לאחוז במעקה.",
+            address: "Castelo de S. Jorge, Lisboa",
+            lat: 38.7139, lng: -9.1335,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "14 דק׳ בירידה", distance: "1.1 ק״מ", note: "ירידה רגלית נעימה דרך באיישה אל רובע שיאדו" }
+          },
+          {
+            id: "d2_manteigaria",
+            name: "עצירת פסטל דה נאטה ב-Manteigaria",
+            time: "14:00",
+            tag: "☕ קינוח חם",
+            hours: "08:00–00:00 (חצות, פתוח מדי יום)",
+            duration: "15–20 דק׳",
+            desc: "מאפה פסטל דה נאטה חם וטרי הישר מהתנור לצד אספרסו קצר (Bica) בסניף הדגל בכיכר קמואש.",
+            deepDetails: "מפעל פסטל דה נאטה בוטיקי שבו רואים דרך חלון הזכוכית את האופים מרדדים את הבצק וממלאים את הקרם. המאפים יוצאים חמים כל 5–10 דקות (פעמון מצלצל בכל יציאת מגש מהתנור!).",
+            timeGuide: "עמידה ליד הדלפק, הזמנת 2 מאפים חמים ואספרסו, פיזור קינמון ואבקת סוכר.",
+            secret: "מפזרים על המאפה קינמון ואבקת סוכר מהמלחייה שעל הדלפק כמו המקומיים.",
+            address: "Rua do Loreto 2, Lisboa",
+            lat: 38.7109, lng: -9.1437,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "10 דק׳ בירידה", distance: "700 מ׳", note: "ירידה במדרגות דרך כיכר קמואש לעבר שוק האוכל בנהר" }
+          },
+          {
+            id: "d2_timeout",
+            name: "ערב ב-Time Out Market (או פיצה ב-Lupita)",
+            time: "20:00",
+            tag: "🥩 בשרים / 🍕 פיצה",
+            hours: "10:00–00:00 (חצות, בה'-ש' עד 02:00)",
+            duration: "שעה וחצי עד שעתיים",
+            desc: "שוק אוכל ענק ותוסס עם דוכני שפים (סטייקים של Miguel Castro e Silva, המבורגרים מובחרים ופסטות) או פיצת מחמצת ב-Lupita מעבר לרחוב.",
+            deepDetails: "שוק האוכל הטרנדי הגדול בליסבון הממוקם במבנה השוק ההיסטורי Mercado da Ribeira. כ-30 דוכנים של מיטב מסעדות השף בעיר תחת קורת גג אחת עם שולחנות עץ משותפים ואווירה תוססת ביותר.",
+            timeGuide: "סיבוב מקדים בין הדוכנים לבחירת מנות בשר/המבורגר (15 דקות), הזמנה ותפיסת מקום ישיבה.",
+            secret: "אם עמוס בפנים, פיצריית Lupita נמצאת 100 מטר ליד ומגישה אחת הפיצות הטובות באירופה.",
+            address: "Av. 24 de Julho 49, Lisboa",
+            lat: 38.7071, lng: -9.1460,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "12 דק׳ בטיילת (או 4 דק' אובר)", distance: "1.0 ק״מ", note: "הליכה ישרה לאורך קו המים חזרה לרחוב פראטה" }
+          },
+          {
+            id: "d2_hotel_end",
+            name: "🏨 חזרה למלון: Grape Harbor Prata Apartments",
+            time: "22:30",
+            tag: "🏨 חזרה למלון",
+            isHotel: true,
+            hours: "לילה טוב",
+            duration: "מנוחה",
+            desc: "חזרה לדירה, מנוחה וטעינת כוחות.",
+            deepDetails: "הליכה נעימה לאורך קו המים חזרה לרובע באיישה ולדירה ברחוב פראטה.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng
+          }
+        ]
+      },
+      {
+        day: 3,
+        date: "22.10 (ה')",
+        title: "בלן, מתחם LX Factory וסטייק משובח",
+        area: "הציר המערבי לאורך הנהר",
+        brief: "ביקור ברובע בלן המלכותי, טעימת המאפה המקורי מ-1837, מנזר ז'רונימוש, שופינג וגלריות במתחם LX Factory וארוחת שף ב-Sala de Corte.",
+        spots: [
+          {
+            id: "d3_hotel_start",
+            name: "🏨 יציאה מהמלון לרובע בלן",
+            time: "09:15",
+            tag: "🏨 תחילת יום",
+            isHotel: true,
+            hours: "בוקר",
+            duration: "15 דק׳ נסיעה",
+            desc: "יציאה לרחוב פראטה והזמנת אובר קצר ישירות לרובע בלן לאורך קו המים.",
+            deepDetails: "נסיעה מהירה ונוחה של 15 דקות באובר מערבה לאורך קו נהר הטז'ו ישירות לפתח המאפייה ההיסטורית בבלן.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "15 דק׳ ב-Uber", distance: "6.5 ק״מ", note: "נסיעה מערבה לאורך קו המים הישר למאפייה בבלן" }
+          },
+          {
+            id: "d3_pasteis",
+            name: "Pastéis de Belém המקורי",
+            time: "09:45",
+            tag: "🥧 מוסד מ-1837",
+            hours: "08:00–22:00 (פתוח מדי יום)",
+            duration: "30–45 דק׳",
+            desc: "בית הקפה ההיסטורי שמייצר את המאפה המקורי לפי המתכון הסודי שנשמר מאז המאה ה-19.",
+            deepDetails: "בית הקפה המקורי שבו התחילה מסורת הפסטל דה נאטה ב-1837. המתכון הסודי נשמר בחדר סודי ורק שלושה שפים יודעים אותו. האולמות הפנימיים מעוטרים באריחים כחולים היסטוריים ומציעים שירות מלא לשולחן.",
+            timeGuide: "היכנסו ישירות פנימה לחדרים הפנימיים לתפוס שולחן (אל תעמדו בתור הטייק-אוויי בחוץ!). הזמינו 2 פסטלים חמים וקפה Galão.",
+            secret: "אל תעמדו בתור הארוך בחוץ לטייק-אוויי! היכנסו פנימה – יש מאות מקומות ישיבה בחדרים הפנימיים המרוצפים אריחים כחולים עם שירות לשולחן.",
+            address: "Rua de Belém 84-92, Lisboa",
+            lat: 38.6975, lng: -9.2032,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "7 דק׳ בטיילת", distance: "550 מ׳", note: "הליכה קלילה לאורך גני פראסה דו אימפריו לעבר המנזר והטיילת" }
+          },
+          {
+            id: "d3_jeronimos",
+            name: "מנזר ז'רונימוש ומגדל בלן",
+            time: "10:45",
+            tag: "🏛️ אדריכלות ונהר",
+            ticketUrl: "https://www.mosteirojeronimos.gov.pt/",
+            hours: "09:30–17:30 (כניסה אחרונה 17:00, סגור בימי שני!)",
+            duration: "שעה וחצי עד שעתיים",
+            desc: "פאר האדריכלות המנואלינית בעולם, גילופי אבן מרהיבים והליכה בטיילת מול מגדל השמירה ההיסטורי על המים.",
+            deepDetails: "אתר מורשת עולמית של אונסק\'ו. הכנסייה והמנזר נבנו לאורך המאה ה-16 בסגנון מנואליני ייחודי (גילופי חבלים, אלמוגים ומפלצות ים). קברו של ואסקו דה גאמה נמצא בכנסייה הפתוחה בחינם לקהל. הקלויסטר הדו-קומתי המרהיב דורש כרטיס שעה מראש.",
+            timeGuide: "ביקור בכנסייה הראשית (חינם, 25 דקות), סיור בקלויסטר המפואר (45 דקות), והליכה נעימה לאורך קו המים למגדל בלן לתמונות (30 דקות).",
+            secret: "כנסיית המנזר (בה קבור ואסקו דה גאמה) פתוחה בכניסה חופשית ללא תשלום, התור לכרטיסים הוא רק לקלויסטר הפנימי.",
+            photoSpot: "המדרגות מול מגדל בלן מול גלי האוקיינוס.",
+            address: "Praça do Império, Lisboa",
+            lat: 38.6979, lng: -9.2067,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "8 דק׳ ב-Uber", distance: "3.8 ק״מ", note: "נסיעה מזרחה לאורך קו המים ישירות למתחם LX Factory" }
+          },
+          {
+            id: "d3_lxfactory",
+            name: "מתחם האמנות והבילוי LX Factory",
+            time: "13:00",
+            tag: "🎨 בוטיקים וספרים",
+            hours: "מתחם פתוח 09:00 עד הלילה; חנויות 10:30–20:00; ספרים 12:00–00:00",
+            duration: "שעתיים עד שעתיים וחצי",
+            desc: "מתחם מפעלי טקסטיל נטוש שהפך למוקד ההיפסטרי של ליסבון – חנויות מעצבים, אופנה, ציורי גרפיטי ענקיים וחנות הספרים המרהיבה Ler Devagar.",
+            deepDetails: "מתחם תעשייתי היסטורי מתחת לעמודי הענק של גשר 25 באפריל. כולל עשרות חנויות קונספט, גלריות, חנות הספרים האייקונית Ler Devagar עם פסל האופניים המעופפים ומכונות הדפוס הישנות, וציורי גרפיטי מרהיבים של אמנים בינלאומיים.",
+            timeGuide: "שעה וחצי לשיטוט בסמטה המרכזית בין חנויות העיצוב, 30 דקות לחנות הספרים Ler Devagar (עלו לקומה השנייה!), ודרינק קל באחד מבתי הקפה.",
+            secret: "עלו לקומה השנייה בחנות הספרים Ler Devagar לראות את מכונות הדפוס הישנות ופסל האופניים המעופפים.",
+            address: "R. Rodrigues de Faria 103, Lisboa",
+            lat: 38.7036, lng: -9.1789,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "10 דק׳ באובר", distance: "3.6 ק״מ", note: "נסיעה קלה חזרה לדירה למנוחה קלה והתרעננות" }
+          },
+          {
+            id: "d3_hotel_mid",
+            name: "🏨 מנוחה והתרעננות במלון: Grape Harbor",
+            time: "16:30",
+            tag: "🏨 מנוחה בדירה",
+            isHotel: true,
+            hours: "מנוחת אחה\'צ",
+            duration: "שעתיים וחצי",
+            desc: "פריקת שקיות, מקלחת ומנוחה לפני ארוחת הבשרים בערב.",
+            deepDetails: "הפוגה מושלמת בדירה: פריקת שקיות הקניות, מקלחת מרעננת ומנוחת רגליים לפני יציאת הערב למסעדת הבשרים המובילה.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "10 דק׳ ברגל (או 4 דק' אובר)", distance: "850 מ׳", note: "הליכה קלילה לעבר אזור כיכר דום לואיש" }
+          },
+          {
+            id: "d3_saladecorte",
+            name: "ארוחת ערב: Sala de Corte",
+            time: "20:30",
+            tag: "🥩 חובה להזמין מראש",
+            ticketUrl: "https://saladecorte.pt/",
+            hours: "12:00–15:30 ו-19:00–00:00 (חובה להזמין שולחן מראש!)",
+            duration: "שעתיים",
+            desc: "מסעדת הבשרים המובילה בליסבון – נתחי בקר מובחרים (Chuleton, אנטרקוט, פילה) מיושנים על גריל פחמים מיוחד.",
+            deepDetails: "מסעדת הסטייקים הנחשבת ביותר בליסבון ומהמובילות באירופה. מציגה לראווה מקרר יישון ענק עם נתחים מיושנים ביישון יבש. הבשר נצלה על גריל פחמים ספרדי מיוחד מסוג Josper ומלווה בתוספות שף מעולות.",
+            timeGuide: "חובה להזמין מקום מראש באתר המסעדה! הזמינו נתח Chuleton או פילה מיושן עם פירה כמהין ויין פורטוגזי עמוק.",
+            secret: "הזמינו נתח Chuleton מיושן עם צ'יפס כמהין ופירה כמהין – חוויה קולינרית יוצאת דופן.",
+            warning: "ודאו שהשולחן מוזמן לשעה זו מראש באתר המסעדה!",
+            address: "Praça Dom Luís I 7, Lisboa",
+            lat: 38.7067, lng: -9.1465,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "10 דק׳ ברגל", distance: "850 מ׳", note: "הליכה נעימה חזרה למלון בסיום הארוחה" }
+          },
+          {
+            id: "d3_hotel_end",
+            name: "🏨 חזרה למלון: Grape Harbor Prata Apartments",
+            time: "23:00",
+            tag: "🏨 חזרה למלון",
+            isHotel: true,
+            hours: "לילה טוב",
+            duration: "מנוחה",
+            desc: "חזרה למלון ולילה טוב.",
+            deepDetails: "הליכה קצרה של 10 דקות חזרה מכיכר דום לואיש לדירה ברחוב פראטה.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng
+          }
+        ]
+      },
+      {
+        day: 4,
+        date: "23.10 (ו')",
+        title: "סינטרה, צוקי קאבו דה רוקה וקשקאיש",
+        area: "טיול יום קו החוף (מחוץ לעיר)",
+        brief: "גולת הכותרת שמחוץ לעיר: ארמון פנה הצבעוני בסינטרה, באר היוזמה בקינטה דה רגאליירה, הנקודה המערבית ביותר באירופה בקאבו דה רוקה וסיום בעיירת הנופש קשקאיש.",
+        spots: [
+          {
+            id: "d4_hotel_start",
+            name: "🏨 יציאה מהמלון לתחנת רוסיו (רכבת לסינטרה)",
+            time: "08:50",
+            tag: "🏨 תחילת יום",
+            isHotel: true,
+            hours: "08:50 יציאה",
+            duration: "10 דק׳ הליכה לרכבת",
+            desc: "הליכה קצרה של 5 דקות ברגל לתחנת הרכבת רוסיו (Rossio) המעוצבת בסגנון ניאו-מנואליני.",
+            deepDetails: "מתחנת רוסיו יוצאת רכבת ישירה וממוזגת לסינטרה כל 20 דקות. קונים כרטיס Navegante ירוק במכונות בתחנה (2.40 אירו לכל כיוון) ועולים על הרכבת.",
+            secret: "קונים כרטיס מטרו/רכבת ירוק (Navegante) במכונות בתחנת רוסיו – עלות הרכבת כ-2.40 אירו בלבד לכל כיוון.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "train", icon: "🚆", text: "40 דק׳ ברכבת ישירה", distance: "28 ק״מ", note: "רכבת נוחה וממוזגת מתחנת רוסיו ישירות לתחנת סינטרה" }
+          },
+          {
+            id: "d4_pena",
+            name: "ארמון פנה (Palácio da Pena)",
+            time: "10:00",
+            tag: "🏰 כרטיס שעה מראש",
+            ticketUrl: "https://www.parquesdesintra.pt/en/parks-monuments/park-and-national-palace-of-pena/",
+            hours: "פארק 09:00–19:00, ארמון 09:30–18:30 (כניסה אחרונה 18:00)",
+            duration: "שעתיים עד שלוש שעות",
+            desc: "הארמון הצבעוני והסוריאליסטי בראש הרי סינטרה שנבחר לאחד מפלאי תבל. נופים עוצרי נשימה עד האוקיינוס האטלנטי.",
+            deepDetails: "נחשב לאחד מסמלי פורטוגל המפורסמים בעולם. נבנה ע\'י המלך פרדיננד השני על חורבות מנזר שנחרב ברעידת האדמה. משלב מגדלי צהוב ואדום עזים, מרפסות תצפית מעל העננים, שער הטריטון המיתולוגי ופארק יערות אגדי.",
+            timeGuide: "חשוב ביותר: הגיעו לשער הפארק לפחות 35 דקות לפני שעת הכרטיס שלכם! יש עלייה ברגל של 15–20 דקות מהשער לארמון. סיור במרפסות ובטרסות הצבעוניות (שעה וחצי) וסיור בחדרי המלוכה הפנימיים (45 דקות).",
+            secret: "הגיעו לשער הפארק לפחות 35 דקות לפני חלון הזמן שמופיע על הכרטיס שלכם, כי העלייה ברגל בתוך הפארק לארמון לוקחת כ-20 דקות.",
+            photoSpot: "מרפסת המלכה עם הקשתות הצהובות והנוף הפנורמי של ההרים.",
+            warning: "לא מאפשרים כניסה לארמון למי שמאחר לחלון השעה הנקוב על הכרטיס!",
+            address: "Estrada da Pena, Sintra",
+            lat: 38.7876, lng: -9.3906,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "10 דק׳ באובר", distance: "1.9 ק״מ", note: "ירידה מפסגת ההר לאחוזת רגאליירה בסמטאות העיירה" }
+          },
+          {
+            id: "d4_regaleira",
+            name: "אחוזת קינטה דה רגאליירה (Quinta da Regaleira)",
+            time: "12:30",
+            tag: "🌀 באר היוזמה",
+            ticketUrl: "https://www.regaleira.pt/en",
+            hours: "באוקטובר: 10:00–18:30 (כניסה אחרונה 17:30, פתוח מדי יום)",
+            duration: "שעתיים עד שעתיים וחצי",
+            desc: "אחוזה גותית מוקפת גנים מיסטיים, מעברי סתרים תת-קרקעיים ובאר היוזמה הספירלית המפורסמת היורדת 27 מטרים לבטן האדמה.",
+            deepDetails: "אחוזה קסומה ומסתורית בסגנון גותי ורנסאנס, מלאה בסמלי מסתורין של הטמפלרים והאלכימיה. האטרקציה המרכזית היא באר היוזמה – מגדל תת-קרקעי ספירלי ששימש לטקסי חניכה, ממנו יוצאות מנהרות חצובות בסלע המובילות לאגמים ומפלים סודיים.",
+            timeGuide: "ירידה במדרגות הספירליות של באר היוזמה (25 דקות), הליכה במנהרות התת-קרקעיות (20 דקות), שיטוט בגנים הפראיים ובקפלה (שעה), וביקור בתוך האחוזה (30 דקות).",
+            secret: "כשיורדים לתחתית הבאר הלוליינית, פנו במנהרה התת-קרקעית שמובילה לאגם עם אבני מדרך הצפות על המים.",
+            photoSpot: "מבט מלמטה למעלה של באר היוזמה הספירלית.",
+            address: "R. Barbosa du Bocage 5, Sintra",
+            lat: 38.7963, lng: -9.3960,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "22 דק׳ באובר", distance: "16 ק״מ", note: "נסיעה יפה ביער הררי ישירות לצוקי האוקיינוס האטלנטי" }
+          },
+          {
+            id: "d4_roca",
+            name: "קאבו דה רוקה (Cabo da Roca)",
+            time: "15:00",
+            tag: "🌊 קצה אירופה",
+            hours: "פתוח 24/7 (מרכז מבקרים ומגדלור עד 18:30)",
+            duration: "45–60 דק׳",
+            desc: "הנקודה המערבית ביותר ביבשת אירופה ('איפה שהיבשה נגמרת והים מתחיל'). מצוקי ענק מעל האוקיינוס ומגדלור עתיק.",
+            deepDetails: "צוקי ענק המתנשאים לגובה 140 מטר ישירות מעל גלי האוקיינוס האטלנטי. המגדלור ההיסטורי פועל כאן מאז 1772. אנדרטת האבן במקום מציינת את הקואורדינטות המדויקות ואת הציטוט המפורסם של לואיש דה קמואש.",
+            timeGuide: "הליכה לאורך שבילי המצוק לתצפית על האוקיינוס, צילום ליד אנדרטת האבן, ונשימת בריזה אוקיינית. הביאו עליונית – כמעט תמיד נושבת כאן רוח חזקה.",
+            secret: "רוחות עזות נושבות כאן כמעט תמיד – כדאי להביא ז'קט/עליונית גם ביום שמש.",
+            photoSpot: "אנדרטת האבן עם הקואורדינטות הרשמיות מול האוקיינוס.",
+            address: "Estrada do Cabo da Roca, Colares",
+            lat: 38.7804, lng: -9.4989,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "20 דק׳ באובר", distance: "15 ק״מ", note: "נסיעה דרומה לאורך כביש החוף הפנורמי לעיירת הנופש קשקאיש" }
+          },
+          {
+            id: "d4_cascais",
+            name: "עיירת החוף קשקאיש (Cascais)",
+            time: "16:30",
+            tag: "⛵ נמל ומדרחוב",
+            hours: "טיילת פתוחה 24/7; חנויות עד 20:00–22:00; גלידת Santini עד 22:00",
+            duration: "שעה וחצי עד שעתיים",
+            desc: "ריביירה פורטוגזית מקסימה: סמטאות ציוריות, מדרחוב קניות, נמל יאכטות, מצוק Boca do Inferno (פי הגיהנום) ורכבת חופית ישירה חזרה לליסבון.",
+            deepDetails: "עיירת נופש אלגנטית שהייתה מעון הקיץ של בית המלוכה הפורטוגלי. מדרחוב קניות שוקק חיים עם חנויות בוטיק, חוף חולי יפהפה, נמל מרינה וגלידריות איטלקיות מסורתיות.",
+            timeGuide: "טיול במדרחוב הססגוני, עצירה לגלידה איטלקית ב-Santini, הליכה לחוף המרכזי או ביקור במצוק Boca do Inferno, ונסיעה חזרה ברכבת החופית הנופית (35 דקות ישירות לתחנת Cais do Sodré).",
+            secret: "קחו גלידה איטלקית מעולה ב-Santini במרכז קשקאיש – מוסד מקומי מאז 1949.",
+            address: "Cascais, Portugal",
+            lat: 38.6979, lng: -9.4215,
+            transitionToNext: { mode: "train", icon: "🚆", text: "35 דק׳ ברכבת חופית", distance: "25 ק״מ", note: "נסיעה יפהפייה לאורך החוף מקשקאיש לתחנת Cais do Sodré ומשם 8 דק' ברגל" }
+          },
+          {
+            id: "d4_hotel_rest",
+            name: "🏨 התרעננות במלון: Grape Harbor",
+            time: "19:30",
+            tag: "🏨 מנוחה בדירה",
+            isHotel: true,
+            hours: "מנוחת ערב",
+            duration: "שעה וחצי",
+            desc: "חזרה מהטיול בסינטרה, מקלחת ומנוחה קלה לפני יציאה לדרינק לילי.",
+            deepDetails: "התאוששות מהנה מהטיול בסינטרה ובחופים, מקלחת מרעננת והתארגנות ליציאה לילית.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "8 דק׳ ברגל", distance: "650 מ׳", note: "הליכה קצרה ל'רחוב הוורוד' ברובע קאיש דו סודרה" }
+          },
+          {
+            id: "d4_pensao",
+            name: "דרינק ב-Pensão Amor (פינק סטריט)",
+            time: "21:30",
+            tag: "🍸 בר ייחודי",
+            hours: "ימי ה'-ש' מ-14:00 (א'-ד' מ-17:00) עד 03:00/04:00 לפנות בוקר",
+            duration: "שעה עד שעה וחצי",
+            desc: "בר קוקטיילים ייחודי ומעוצב בסגנון קברט וינטג' ברובע הבילויים Cais do Sodré.",
+            deepDetails: "המבנה שימש במאה ה-19 כפנסיון וינטג' לימאים שהגיעו לנמל. כיום הוסב לאחד הברים המיוחדים והידועים בליסבון – חדרים מעוצבים בקטיפה אדומה, מראות עתיקות, ספרים ישנים וקוקטיילים משובחים.",
+            timeGuide: "סיבוב בין החדרים השונים, בחירת קוקטייל ייחודי והאזנה למוזיקה באווירה תקופתית.",
+            secret: "הבר שוכן בתוך מבנה היסטורי שהיה פעם פנסיון ימאים עתיק ומעוצב בחדרים נסתרים.",
+            address: "R. do Alecrim 19, Lisboa",
+            lat: 38.7082, lng: -9.1438,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "8 דק׳ ברגל", distance: "650 מ׳", note: "הליכה קלה חזרה למיטה במלון" }
+          },
+          {
+            id: "d4_hotel_end",
+            name: "🏨 חזרה למלון: Grape Harbor Prata Apartments",
+            time: "23:30",
+            tag: "🏨 חזרה למלון",
+            isHotel: true,
+            hours: "לילה טוב",
+            duration: "מנוחה",
+            desc: "לילה טוב במרכז באיישה.",
+            deepDetails: "חזרה קלה ברגל של 8 דקות ישירות לדירה.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng
+          }
+        ]
+      },
+      {
+        day: 5,
+        date: "24.10 (ש')",
+        title: "שופינג מרוכז + פרינסיפה ריאל ורופטופ",
+        area: "קניון קולומבו והגבעה המערבית",
+        brief: "בוקר קניות מרוכז בקניון קולומבו הענק, פריקת שקיות בדירה, שיטוט בשכונת פרינסיפה ריאל האופנתית, ארוחת בשרים ב-Atalho Real וקוקטייל ברופטופ Javá המשקיף על הנהר.",
+        spots: [
+          {
+            id: "d5_hotel_start",
+            name: "🏨 יציאה מהמלון לשופינג בקולומבו",
+            time: "09:30",
+            tag: "🏨 תחילת יום",
+            isHotel: true,
+            hours: "09:30 בוקר",
+            duration: "15 דק׳ נסיעה",
+            desc: "יציאה לקניון קולומבו (מטרו ישיר בקו הכחול מתחנת Baixa-Chiado או 12 דקות באובר).",
+            deepDetails: "נסיעה קלה צפונה ישירות לקניון קולומבו לקראת שעת פתיחת החנויות ב-10:00 בבוקר.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "14 דק׳ באובר / מטרו", distance: "7.2 ק״מ", note: "נסיעה צפונה לקניון קולומבו" }
+          },
+          {
+            id: "d5_shopping",
+            name: "שופינג מרוכז: Colombo Shopping Centre",
+            time: "10:00",
+            tag: "🛍️ קניון ענק",
+            hours: "פתוח מדי יום: 10:00–00:00 (חצות!)",
+            duration: "3–4 שעות בקלות",
+            desc: "קניון ענק ומקורה (Zara הגדולה, Primark, Pull&Bear, Mango, Massimo Dutti, Nike, Sephora) הכל תחת קורת גג אחת.",
+            deepDetails: "מרכז הקניות הגדול ביותר בליסבון ומהגדולים בחצי האי האיברי, עם כ-400 חנויות על פני 3 קומות מרווחות. כולל סניף דגל ענק של Zara, Primark רב-קומתי, כל מותגי קבוצת Inditex (Bershka, Stradivarius, Pull&Bear, Massimo Dutti), Sephora, חנויות אלקטרוניקה, ספורט וסופרמרקט ענק.",
+            timeGuide: "הגעה ב-10:00 עם הפתיחה כשאין עומס. קומה ראשונה: זארה, ביגוד נשים, הנעלה וקוסמטיקה; קומה שנייה: פריימרק, אופנת גברים ומותגי קז'ואל; קומה עליונה: מתחם מסעדות ובתי קפה למנוחה. בקשו טופס Tax Free בקופות בכל קנייה מעל 50 אירו.",
+            secret: "אם אתם צריכים החזר מס (Tax Free), בקשו בקופות טופס Tax Free והחתימו מרוכז בעמדה בקניון.",
+            address: "Av. Lusíada, Lisboa",
+            lat: 38.7538, lng: -9.1887,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "15 דק׳ באובר", distance: "7.0 ק״מ", note: "נסיעה חזרה לדירה לפריקת השקיות ומנוחה" }
+          },
+          {
+            id: "d5_hotel_drop",
+            name: "🏨 פריקת שקיות ומנוחה במלון: Grape Harbor",
+            time: "14:30",
+            tag: "🏨 פריקת שקיות",
+            isHotel: true,
+            hours: "צהריים",
+            duration: "שעה וחצי",
+            desc: "מניחים את כל הקניות בדירה, נחים ושותים קפה בנחת לפני המשך היום.",
+            deepDetails: "התארגנות בנחת בדירה, השארת כל השקיות בחדר ויציאה קלילה ללא משקל לעבר הגבעה המערבית של פרינסיפה ריאל.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "12 דק׳ בעלייה (או 5 דק' אובר)", distance: "850 מ׳", note: "עלייה קלה מבאיישה לשכונת פרינסיפה ריאל האלגנטית" }
+          },
+          {
+            id: "d5_principe",
+            name: "שכונת פרינסיפה ריאל וארמון Embaixada",
+            time: "16:30",
+            tag: "🌿 בוטיקים וגלריות",
+            hours: "חנויות Embaixada: 12:00–20:00; הגן פתוח 24/7",
+            duration: "שעה וחצי עד שעתיים",
+            desc: "שכונה בוהמית יפהפייה עם חנויות קונספט, גן מוצל עתיק עם עץ ארז ענקי וארמון מורי (Embaixada) שהפך לגלריית מעצבים.",
+            deepDetails: "שכונת היוקרה הבוהמיינית של ליסבון. גן פרינסיפה ריאל כולל סוכת עץ ארז עתיק ומרשים, בתי קפה נינוחים מתחת לעצים וארמון Embaixada – ארמון ניאו-מורי מרהיב מהמאה ה-19 עם חצר פנימית בהשראת אלהמברה שהוסב לחלל גלריות ובוטיקים של מעצבים מקומיים.",
+            timeGuide: "ישיבה לקפה בגן פרינסיפה ריאל, סיור בחצר הפנימית המרהיבה של ארמון Embaixada (צילום חובה!), ושיטוט ברחוב דום פדרו החמישי (Rua Dom Pedro V).",
+            secret: "היכנסו למרכז ארמון Embaixada לראות את החצר הפנימית המרהיבה בסגנון אלהמברה.",
+            photoSpot: "עץ הארז הענק בגן פרינסיפה ריאל שיוצר סוכת ענק טבעית.",
+            address: "Praça do Príncipe Real 26, Lisboa",
+            lat: 38.7161, lng: -9.1487,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "3 דק׳ ברגל", distance: "220 מ׳", note: "הליכה קצרה מכיכר הגן לחצר המסעדה" }
+          },
+          {
+            id: "d5_atalho",
+            name: "ארוחת ערב: Atalho Real",
+            time: "20:00",
+            tag: "🥩 בשרים בגן קסום",
+            ticketUrl: "https://oatalho.pt/atalho-real/",
+            hours: "שבת: 12:00–17:00 ו-18:00–01:00 (מומלץ להזמין מראש!)",
+            duration: "שעתיים",
+            desc: "מסעדת בשרים משובחת השוכנת בחצר גן פנימית מתחת לעצים בפרינסיפה ריאל. פיקאניה, אנטרקוט ובלאק אנגוס עסיסי.",
+            deepDetails: "מסעדת בשרים איכותית השוכנת בחצר גן פנימית פסטורלית של ארמון ריברו דה קוניה בפרינסיפה ריאל. מציעה נתחי בשר מובחרים (פיקאניה ברזילאית, אנטרקוט, צ'אק רול, המבורגרים איכותיים) בליווי רטבים מיוחדים ותוספות.",
+            timeGuide: "מומלץ להזמין שולחן מראש לחצר הגן (Esplanada) – האווירה בשבת בערב לאור נרות מתחת לעצים היא מהרומנטיות בעיר.",
+            secret: "בקשו לשבת בחצר הגן החיצונית (Esplanada) – האווירה הרומנטית בערב יוצאת דופן.",
+            address: "Calçada Engenheiro Miguel Pais 67, Lisboa",
+            lat: 38.7175, lng: -9.1502,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "12 דק׳ בירידה", distance: "950 מ׳", note: "ירידה בסמטאות שיאדו אל עבר כיכר דום לואיש ליד הנהר" }
+          },
+          {
+            id: "d5_java",
+            name: "קוקטייל לילה ברופטופ Javá",
+            time: "22:00",
+            tag: "🍸 רופטופ ונוף",
+            ticketUrl: "https://www.instagram.com/java_lisboa/",
+            hours: "פתוח מדי יום: 12:00–01:00",
+            duration: "שעה וחצי",
+            desc: "בר גג אופנתי ותוסס באזור קאיש דו סודרה המשקיף על נהר הטז'ו וגשר 25 באפריל המואר בלילה.",
+            deepDetails: "רופטופ מעוצב ומלא חיים על גג מבנה בכיכר דום לואיש. מציע מרפסת היקפית פנורמית עם נוף ישיר לנהר, גשר 25 באפריל המואר וגגות העיר, עם מוזיקת רקע מצוינת וקוקטיילים יצירתיים.",
+            timeGuide: "דרינק לילי מרענן מול הגשר המואר בסיום ארוחת הבשרים.",
+            address: "Praça Dom Luís I 30, Lisboa",
+            lat: 38.7065, lng: -9.1468,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "10 דק׳ ברגל", distance: "850 מ׳", note: "הליכה רגועה לאורך קו המים חזרה לדירה" }
+          },
+          {
+            id: "d5_hotel_end",
+            name: "🏨 חזרה למלון: Grape Harbor Prata Apartments",
+            time: "23:45",
+            tag: "🏨 חזרה למלון",
+            isHotel: true,
+            hours: "לילה טוב",
+            duration: "מנוחה",
+            desc: "חזרה למלון ולילה שקט.",
+            deepDetails: "הליכה נעימה של 10 דקות לאורך קו המים חזרה לדירה ברחוב פראטה.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng
+          }
+        ]
+      },
+      {
+        day: 6,
+        date: "25.10 (א')",
+        title: "שדרות ליברדדה, פארק ירוק וטיילת שקיעה",
+        area: "ציר השדרה המרכזית צפונה וקו המים",
+        brief: "יום של אלגנטיות: שדרת ליברדדה המוצלת, תצפית פארק אדוארדו השביעי, רביצה נינוחה מול הנהר בטיילת ריביירה דאס נאוס וקוקטייל שקיעה ב-Rossio Gastrobar הצמוד למלון. בלילה זה עוברים לשעון חורף!",
+        spots: [
+          {
+            id: "d6_hotel_start",
+            name: "🏨 יציאה מהמלון לשדרה הראשית",
+            time: "10:00",
+            tag: "🏨 תחילת יום",
+            isHotel: true,
+            hours: "10:00 בוקר",
+            duration: "10 דק׳ הליכה",
+            desc: "יציאה רגועה מהדירה והליכה צפונה דרך כיכר רוסיו לעבר שדרת ליברדדה הרחבה.",
+            deepDetails: "מעבר מכיכר רוסיו לכיכר רסטאורדורש ותחילת שדרת ליברדדה המלכותית.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "6 דק׳ ברגל", distance: "500 מ׳", note: "מעבר דרך כיכר רוסיו ותחילת שדרת היוקרה" }
+          },
+          {
+            id: "d6_liberdade",
+            name: "שדרת אוונידה דה ליברדדה (Avenida da Liberdade)",
+            time: "10:30",
+            tag: "🌳 שדרת מותגים",
+            hours: "שדרה פתוחה 24/7; חנויות מותגים: 10:00–19:30",
+            duration: "שעה עד שעה וחצי",
+            desc: "שדרת השאנז-אליזה של ליסבון – מוצלת בעצי דולב ענקיים, מדרכות פסיפס יפהפיות, קיוסקים מסורתיים וחנויות יוקרה.",
+            deepDetails: "השדרה המלכותית של ליסבון באורך של כ-1.5 ק\'מ. מוצלת בעצי דולב עתיקים עם שבילי פסיפס פורטוגזי (Calçada) בעיצובים גליים מרהיבים, מזרקות מים, קיוסקי קפה מסורתיים וחנויות של בתי האופנה הבינלאומיים.",
+            timeGuide: "שיטוט נינוח צפונה לאורך השדרה, עצירה לקפה בקיוסק אדום מסורתי מתחת לעצים.",
+            secret: "עצרו לאספרסו בקיוסק האדום המסורתי (Quiosque) במרכז השדרה מתחת לעצים.",
+            address: "Av. da Liberdade, Lisboa",
+            lat: 38.7205, lng: -9.1461,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "12 דק׳ בהמשך השדרה", distance: "950 מ׳", note: "הליכה ישרה צפונה עד כיכר מרקיז דה פומבל ופארק אדוארדו" }
+          },
+          {
+            id: "d6_park",
+            name: "פארק אדוארדו השביעי (Parque Eduardo VII)",
+            time: "11:45",
+            tag: "🌿 תצפית פתוחה",
+            hours: "פארק פתוח 24/7; חממת Estufa Fria: 10:00–19:00 (חינם בראשון עד 14:00!)",
+            duration: "שעה עד שעה וחצי",
+            desc: "עלייה לראש הפארק לתצפית מרשימה על המדרון המעוצב היורד ישר אל הנהר עם דגל פורטוגל הענק.",
+            deepDetails: "הפארק הגדול במרכז ליסבון, על מדרון ירוק ומעוצב עם שבילי שיחים גזומים בקפידה. בראש הפארק מתנוסס דגל פורטוגל הענק וממנו נשקפת תצפית פנורמית המשכית מרהיבה היורדת ישר לקו המים. בצדו המערבי שוכנת Estufa Fria – חממת ענק טרופית עם מפלים ומערות אבן (כניסה חינם בימי ראשון עד 14:00!).",
+            timeGuide: "20 דקות לתצפית בראש הפארק מול הדגל הענק והנוף לנהר, ו-40 דקות לסיור שליו בתוך חממת Estufa Fria.",
+            secret: "אם מעוניינים בשקט טרופי, בקרו בחממה הבוטנית הנסתרת (Estufa Fria) בתוך הפארק – כניסה חינם בראשון בבוקר!",
+            photoSpot: "ראש הפארק לצד הדגל הענק עם מבט המשכי עד קו המים.",
+            address: "Parque Eduardo VII, Lisboa",
+            lat: 38.7285, lng: -9.1533,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "9 דק׳ ב-Uber", distance: "3.2 ק״מ", note: "נסיעה דרומה בחזרה לקו המים בכיכר קומרסיו" }
+          },
+          {
+            id: "d6_river",
+            name: "רביצה לאורך טיילת Ribeira das Naus",
+            time: "16:00",
+            tag: "🌅 שקיעה מול המים",
+            hours: "שטח פתוח 24/7 (שקיעה היום סביב 18:45)",
+            duration: "שעה וחצי עד שעתיים",
+            desc: "מדרגות עץ רחבות היורדות לנהר, כיסאות נוח, קיוסקים של כוסות יין מקומי ומוזיקאי רחוב המנגנים מול השקיעה.",
+            deepDetails: "טיילת החוף האהובה ביותר בליסבון לשעות אחר הצהריים. מדרגות עץ רחבות המאפשרות ישיבה מול המים, קיוסקים המגישים כוסות יין ירוק (Vinho Verde) צונן או אפרול שפריץ, ומוזיקאי רחוב המנגנים ג'אז ובוסה נובה מול השקיעה.",
+            timeGuide: "תפסו מקום על מדרגות העץ עם כוס יין קר, ותיהנו מהאווירה הנינוחה ביותר בליסבון כשהשמש שוקעת מאחורי הגשר.",
+            secret: "קנו כוס יין ירוק (Vinho Verde) צונן באחד הדוכנים ושבו עם הרגליים קרוב למים.",
+            photoSpot: "צילום השקיעה מול גשר 25 באפריל ופסל ישו המואר ממעבר לנהר.",
+            address: "Av. Ribeira das Naus, Lisboa",
+            lat: 38.7067, lng: -9.1396,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "8 דק׳ ברגל", distance: "650 מ׳", note: "הליכה צפונה דרך רואה אוגוסטה אל כיכר רוסיו" }
+          },
+          {
+            id: "d6_rossio_bar",
+            name: "קוקטייל שקיעה: Rossio Gastrobar",
+            time: "19:30",
+            tag: "🍸 רופטופ במרכז",
+            hours: "12:30–23:00/00:00 (פתוח ברביעי-ראשון)",
+            duration: "שעה וחצי",
+            desc: "בר גג יוקרתי ואלגנטי בקומה העליונה של מלון Altis Avenida המשקיף מלמעלה על כיכר רוסיו – מרחק 3 דקות הליכה מהמלון.",
+            deepDetails: "בר גג אלגנטי בקומה ה-7 של מלון Altis Avenida הצופה מלמעלה על כיכר רוסיו המוארת, שדרת ליברדדה ותחנת הרכבת ההיסטורית. מציע קוקטיילי שף יצירתיים ותפריט נשנושים מעולה באווירה רומנטית ושקטה.",
+            timeGuide: "דרינק רגוע של שעת ערב מול האורות של הכיכר המרכזית, מרחק הליכה קצר ביותר חזרה למיטה.",
+            address: "R. 1º de Dezembro 118, Lisboa",
+            lat: 38.7144, lng: -9.1415,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "4 דק׳ ברגל", distance: "350 מ׳", note: "חזרה קלה למלון בסיום הקוקטייל" }
+          },
+          {
+            id: "d6_hotel_end",
+            name: "🏨 חזרה למלון: Grape Harbor Prata Apartments",
+            time: "22:00",
+            tag: "🏨 חזרה למלון",
+            isHotel: true,
+            hours: "לילה טוב",
+            duration: "מנוחה",
+            desc: "לילה רגוע בלב העיר. שימו לב: הלילה השעון בפורטוגל זז שעה אחת אחורה (שעון חורף)!",
+            deepDetails: "חזרה לדירה. תזכורת חשובה: הלילה עוברים לשעון חורף – השעון זז שעה אחת אחורה ומרוויחים עוד שעת שינה! ממחר השקיעה תקדים ל-17:45.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng
+          }
+        ]
+      },
+      {
+        day: 7,
+        date: "26.10 (ב')",
+        title: "סמטאות שיאדו, קניות אחרונות וערב סיום",
+        area: "רובע שיאדו ובאיישה (הכל ברגל)",
+        brief: "יום אחרון מלא: הריסות מנזר קרמו הגותי הפתוח לשמיים, ארוחה פאן-אסייתית מעולה ב-Boa-Bao, קניית מזכרות ויינות בסמטאות שיאדו וארוחת ערב חגיגית לסיום הטיול.",
+        spots: [
+          {
+            id: "d7_hotel_start",
+            name: "🏨 יציאה מהמלון לסמטאות שיאדו",
+            time: "10:00",
+            tag: "🏨 תחילת יום",
+            isHotel: true,
+            hours: "10:00 בוקר",
+            duration: "10 דק׳ הליכה",
+            desc: "בוקר רגוע בדירה ויציאה רגלית של 6 דקות למנזר קרמו.",
+            deepDetails: "עלייה רגלית קלה מרובע באיישה במעלה המדרגות או המעבר לעבר כיכר קרמו הרומנטית ברובע שיאדו.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "6 דק׳ ברגל", distance: "450 מ׳", note: "עלייה קלה לכיכר קרמו" }
+          },
+          {
+            id: "d7_carmo",
+            name: "הריסות מנזר קרמו (Convento do Carmo)",
+            time: "10:30",
+            tag: "🏛️ גותיקה פתוחה",
+            hours: "10:00–19:00 (כניסה אחרונה 18:40, פתוח בשני! סגור בראשון)",
+            duration: "45–60 דק׳",
+            desc: "כנסייה גותית שגגה קרס ברעידת האדמה הגדולה של 1755 וקשתות האבן שלה נותרו פתוחות לשמיים בצורה דרמטית.",
+            deepDetails: "כנסיית מנזר קרמו הגותית נבנתה במאה ה-14. ברעידת האדמה הגדולה של 1755 קרס הגג וקשתות האבן הענקיות נותרו פתוחות לחלוטין מול השמיים הכחולים – מהמראות הפיוטיים והמרשימים ביותר בליסבון. בחלל הפנימי פועל מוזיאון ארכיאולוגי קטן ומעניין.",
+            timeGuide: "סיור בין קשתות האבן החשופות (צילום מרהיב כלפי מעלה מול השמיים!), ביקור במוזיאון, ומעבר לתצפית העליונה של מעלית סנטה ז'וסטה מאחורי המנזר (חינם!).",
+            secret: "מאחורי המנזר נמצא מעבר הגשר המוביל לתצפית העליונה של מעלית סנטה ז'וסטה – ללא צורך לשלם על המעלית או לעמוד בתור!",
+            photoSpot: "קשתות האבן הגותיות החשופות על רקע השמיים הכחולים.",
+            address: "Largo do Carmo, Lisboa",
+            lat: 38.7121, lng: -9.1404,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "2 דק׳ ברגל", distance: "160 מ׳", note: "חציית הכיכר הקטנה לעבר המסעדה" }
+          },
+          {
+            id: "d7_boabao",
+            name: "ארוחה אסייתית: Boa-Bao",
+            time: "13:30",
+            tag: "🥢 פאן-אסייתי מנצח",
+            hours: "12:00–15:30 ו-18:30–22:30 (פתוח בצהריים)",
+            duration: "שעה עד שעה ורבע",
+            desc: "מסעדה אסייתית סופר מעוצבת ברובע שיאדו: באו באנס רכים, דים סאם, פאד תאי וקארי בקר עשיר. עובדים ב-Walk-in.",
+            deepDetails: "מסעדה אסייתית אופנתית ברובע שיאדו עם עיצוב בהשראת שווקי המזרח הרחוק ותפריט בצורת דרכון. מנות אותנטיות מרחבי אסיה: באו באנס בקר רכים, דים סאם עוף, קארי צהוב עשיר ונודלס טריים (ללא פירות ים).",
+            timeGuide: "פועלים בשיטת Walk-in. הגיעו סביב 13:00–13:30. הזמינו את ה-Bao Buns בקר וקארי צהוב.",
+            secret: "הזמינו את ה-Bao Buns עם בקר ואת הקארי הצהוב – מנות עשירות ומנחמות.",
+            address: "Largo Rafael Bordalo Pinheiro 30, Lisboa",
+            lat: 38.7118, lng: -9.1425,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "4 דק׳ ברגל", distance: "300 מ׳", note: "שיטוט נינוח לאורך רחוב גארט (Rua Garrett)" }
+          },
+          {
+            id: "d7_gifts",
+            name: "קניות אחרונות ומזכרות ברובע שיאדו ובאיישה",
+            time: "16:00",
+            tag: "🎁 מזכרות ויין",
+            hours: "חנויות פתוחות עד 19:30–20:00",
+            duration: "שעה וחצי עד שעתיים",
+            desc: "זמן חופשי לקניית סבונים יוקרתיים מ-Claus Porto, מארזי שוקולד, בקבוקי יין פורט ושמן זית איכותי הביתה.",
+            deepDetails: "סמטאות רובע שיאדו ורחוב אוגוסטה בבאיישה מציעים את מיטב המזכרות האיכותיות של פורטוגל: סבוני בוטיק ונרות מ-Claus Porto (מוסד מ-1887), מארזי שוקולד, בקבוקי יין פורט איכותיים מחנויות היין המקומיות, ושמן זית כתית מעולה.",
+            timeGuide: "שיטוט נינוח ברחוב גארט (Rua Garrett), כניסה לחנות הספרים Bertrand (חנות הספרים הפעילה הוותיקה בעולם מ-1732) לקבלת חותמת מיוחדת בספר.",
+            secret: "בחנות Bertrand ברובע שיאדו (חנות הספרים הפעילה העתיקה בעולם מ-1732) מחתימים את הספר שקניתם בחותמת מיוחדת.",
+            address: "Rua Garrett, Lisboa",
+            lat: 38.7108, lng: -9.1410,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "4 דק׳ ברגל", distance: "300 מ׳", note: "חזרה לדירה למנוחה קלה והתארגנות לערב האחרון" }
+          },
+          {
+            id: "d7_hotel_rest",
+            name: "🏨 מנוחה והתארגנות במלון: Grape Harbor",
+            time: "18:30",
+            tag: "🏨 מנוחה בדירה",
+            isHotel: true,
+            hours: "ערב",
+            duration: "שעה וחצי",
+            desc: "התרעננות בדירה לפני ארוחת הפרידה החגיגית של הטיול.",
+            deepDetails: "התארגנות בנחת בדירה, סגירה ראשונית של המזוודות והתרעננות לקראת ערב הפרידה החגיגי של הטיול.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "5 דק׳ ברגל", distance: "400 מ׳", note: "הליכה קצרה למסעדה החגיגית" }
+          },
+          {
+            id: "d7_dinner_farewell",
+            name: "ארוחת ערב חגיגית לסיום הטיול",
+            time: "20:30",
+            tag: "🍷 סיום חגיגי",
+            hours: "19:00–00:00",
+            duration: "שעתיים עד שעתיים וחצי",
+            desc: "ארוחה זוגית מעולה באחת המסעדות האהובות עליכם (Rocco האיטלקית המפוארת או סטייק נוסף ב-Sala de Corte).",
+            deepDetails: "ארוחת פרידה חגיגית ורומנטית לסיום הטיול. אפשרות לחוויה איטלקית נוצצת במסעדת Rocco ברובע שיאדו (קוקטיילים מעולים, פסטה טרפיה וכמהין ועיצוב מפואר) או נתח בשר מיושן נוסף ב-Sala de Corte.",
+            timeGuide: "ערב בלתי נשכח לסיום החופשה. הליכה קצרה של 5 דקות ברגל מהדירה.",
+            address: "Rua Ivens 14, Lisboa",
+            lat: 38.7102, lng: -9.1401,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "2 דק׳ ברגל", distance: "150 מ׳", note: "חזרה למלון לסגירת מזוודות אחרונה" }
+          },
+          {
+            id: "d7_hotel_end",
+            name: "🏨 חזרה למלון: Grape Harbor Prata Apartments",
+            time: "23:00",
+            tag: "🏨 חזרה למלון",
+            isHotel: true,
+            hours: "לילה טוב",
+            duration: "מנוחה",
+            desc: "לילה אחרון בדירה בליסבון.",
+            deepDetails: "חזרה לדירה, סגירת מזוודות לקראת הצ'ק אאוט מחר בבוקר.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng
+          }
+        ]
+      },
+      {
+        day: 8,
+        date: "27.10 (ג')",
+        title: "פרידה מליסבון וטיסה הביתה",
+        area: "רוסיו ונמל התעופה",
+        brief: "בוקר אחרון: צ'ק אאוט ושמירת חפצים בדירה, הרמת כוסית פרידה מסורתית ב-A Ginjinha, איסוף מזוודות ואובר ישיר לנמל התעופה לטיסת אל על LY376.",
+        spots: [
+          {
+            id: "d8_hotel_checkout",
+            name: "🏨 צ'ק-אאוט ושמירת חפצים במלון",
+            time: "10:00",
+            tag: "🧳 התארגנות",
+            isHotel: true,
+            hours: "צ'ק-אאוט עד 11:00",
+            duration: "30 דק׳",
+            desc: "משאירים את המזוודות בקבלה של Grape Harbor ויוצאים לעיר חופשיים ללא משקל.",
+            deepDetails: "צ'ק אאוט נוח בדירה. משאירים את כל המזוודות והשקיות בחדר שמירת החפצים של המלון ויוצאים ליהנות מהשעות האחרונות בעיר חופשיים לגמרי.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "4 דק׳ ברגל", distance: "350 מ׳", note: "הליכה צפונה לכיכר סאו דומינגוס הצמודה לרוסיו" }
+          },
+          {
+            id: "d8_ginja",
+            name: "הרמת כוסית פרידה ב-A Ginjinha",
+            time: "12:00",
+            tag: "🍒 מסורת מקומית",
+            hours: "09:00–22:00 (פתוח מדי יום)",
+            duration: "15–20 דק׳",
+            desc: "לגימה קלאסית של ליקר דובדבנים מקומי בעמידה בכוסית שוקולד או זכוכית בכיכר סאו דומינגוס (מוסד מ-1840).",
+            deepDetails: "המוסד הוותיק ביותר בליסבון לליקר הדובדבנים המסורתי Ginjinha, הפועל ברציפות מאז 1840. בר זעיר של עמידה בלבד מול כיכר סאו דומינגוס.",
+            timeGuide: "מזמינים כוסית קטנה (1.5 אירו בלבד במזומן!), בוחרים Com elas (עם דובדבן ספוג אלכוהול בפנים) או Sem elas (בלי), שותים בלגימה אחת בעמידה בכיכר.",
+            secret: "המקומיים מבקשים 'Com elas' (עם דובדבן בתוך הכוסית) או 'Sem elas' (בלי דובדבן). עלות כוסית: כ-1.50 אירו בלבד במזומן.",
+            address: "Largo São Domingos 8, Lisboa",
+            lat: 38.7149, lng: -9.1387,
+            transitionToNext: { mode: "walk", icon: "🚶‍♂️", text: "4 דק׳ ברגל", distance: "350 מ׳", note: "חזרה למלון לאיסוף המזוודות" }
+          },
+          {
+            id: "d8_hotel_pickup",
+            name: "🏨 איסוף מזוודות מ-Grape Harbor",
+            time: "16:00",
+            tag: "🏨 איסוף מזוודות",
+            isHotel: true,
+            hours: "16:00",
+            duration: "15 דק׳",
+            desc: "איסוף המזוודות מהקבלה והזמנת אובר ישירות לטרמינל 1 בנמל התעופה.",
+            deepDetails: "חזרה למלון, איסוף המזוודות מהקבלה, שימוש בשירותים של המלון והזמנת Uber ישירות לטרמינל 1.",
+            address: HOTEL.address,
+            lat: HOTEL.lat, lng: HOTEL.lng,
+            transitionToNext: { mode: "uber", icon: "🚕", text: "18 דק׳ באובר", distance: "7.2 ק״מ", note: "נסיעה חלקה ישירות לטרמינל 1" }
+          },
+          {
+            id: "d8_airport",
+            name: "נמל התעופה ליסבון (טיסת אל על LY376 ב-19:15)",
+            time: "16:30",
+            tag: "✈️ המראה הביתה",
+            hours: "המראה: 19:15",
+            duration: "3 שעות לפני ההמראה",
+            desc: "צ'ק-אין, בידוק ביטחוני וטיסה חזרה לישראל (נחיתה בארץ לפנות בוקר ב-02:30).",
+            deepDetails: "הגעה לטרמינל 1 שלוש שעות לפני ההמראה. בידוק כבודה של אל על, מעבר בידוק ביטחוני, ביקורת דרכונים ודיוטי פרי. יש מאפיות לרכישת מארזי פסטל דה נאטה חמים לטיסה.",
+            secret: "אחרי הבידוק הביטחוני בדיוטי פרי יש חנות שוקולד ומאפיות אחרונות לפסטל דה נאטה חם לטיסה.",
+            address: "Aeroporto de Lisboa, Terminal 1",
+            lat: 38.7742, lng: -9.1342
+          }
+        ]
+      }
+    ];
+
+    // טעינת מסלול מותאם אישית מ-localStorage אם קיים
+    let tripData = [];
+    try {
+      const savedSchedule = localStorage.getItem('portugal_custom_schedule');
+      if (savedSchedule) {
+        tripData = JSON.parse(savedSchedule);
+      } else {
+        tripData = JSON.parse(JSON.stringify(defaultTripData));
+      }
+    } catch(e) {
+      tripData = JSON.parse(JSON.stringify(defaultTripData));
+    }
+    
+    const diningDatabase = [
+      {
+        id: "d_viniportugal",
+        name: "Sala Ogival – ViniPortugal (טעימות יין רשמיות)",
+        category: "wine",
+        tag: "🍷 מרכז טעימות יין רשמי",
+        alert: "בכיכר קומרסיו",
+        price: "€ (1–3 אירו לטעימה!)",
+        dishes: "כרטיס טעימות נטען, יינות מכל אזורי פורטוגל (דואורו, אלנטז'ו, דאו, ויניו ורדה)",
+        desc: "אולם הטעימות הרשמי של ענף היין הפורטוגלי בכיכר קומרסיו. רוכשים כרטיס נטען וטועמים עשרות יינות מובחרים בעזרת עמדות מזיגה אוטומטיות עם הדרכת סומלייה.",
+        address: "Praça do Comércio, Ala Poente, Lisboa",
+        lat: 38.7078, lng: -9.1378
+      },
+      {
+        id: "d_bythewine",
+        name: "By The Wine – José Maria da Fonseca",
+        category: "wine",
+        tag: "🍷 בר יין עם תקרת אלפי בקבוקים",
+        alert: "פתוח רציף מ-12:00 עד חצות",
+        price: "€€",
+        dishes: "פלטות גבינות ונקניקים מובחרים, סטייק טרטר, יינות מובחרים של יקב José Maria da Fonseca",
+        desc: "בר יין מרהיב ברובע שיאדו עם תקרת קשתות המצופה באלפי בקבוקי יין ירוקים. מקום מושלם לכוס יין ונשנוש איכותי בערב.",
+        address: "Rua das Flores 41-43, Lisboa",
+        lat: 38.7095, lng: -9.1436
+      },
+      {
+        id: "d_senhora_monte",
+        name: "Miradouro da Senhora do Monte (השקיעה היפה בעיר)",
+        category: "sunset",
+        tag: "🌅 תצפית השקיעה הגבוהה בליסבון",
+        alert: "חופשי • להגיע שעה לפני השקיעה",
+        price: "חינם",
+        dishes: "קיוסקי בירה ויין מקומיים על שפת החומה",
+        desc: "הנקודה הגבוהה והרומנטית ביותר בליסבון לצפייה בשקיעה. מבט פנורמי מלא של 180 מעלות על טירת סאו ז'ורז', העיר התחתית וגשר 25 באפריל המוארים בזהב. שקיעה באוקטובר: סביב 18:50 (ומ-25.10 סביב 17:45).",
+        address: "Largo Monte, Lisboa",
+        lat: 38.7191, lng: -9.1328
+      },
+      {
+        id: "d_pedro_alcantara",
+        name: "Miradouro de São Pedro de Alcântara & Quiosque",
+        category: "sunset",
+        tag: "🌅 גן שקיעה, קיוסק ודרינק",
+        alert: "פתוח עד שעות הלילה",
+        price: "€",
+        dishes: "בירה מקומית (Imperial), כוס יין ירוק, קוקטיילים קלים, נשנושים",
+        desc: "מרפסת גן דו-מפלסית מרהיבה המשקיפה ישירות על טירת סאו ז'ורז' וגגות העיר העתיקה. על המרפסת פועל קיוסק מסורתי מלא חיים עם שולחנות תחת העצים ומוזיקאי רחוב.",
+        address: "Rua de São Pedro de Alcântara, Lisboa",
+        lat: 38.7150, lng: -9.1443
+      },
+      {
+        id: "d_parkbar",
+        name: "PARK Bar (רופטופ גן תלוי)",
+        category: "rooftop",
+        tag: "🍸 גן תלוי על גג חניון",
+        alert: "פתוח מ-13:00 עד 02:00",
+        price: "€€",
+        dishes: "קוקטיילי שקיעה, המבורגרים ומוזיקת DJ",
+        desc: "בר גג ייחודי וסודי השוכן בקומה ה-7 של חניון רכבים רגיל בבאיירו אלטו. כולו מכוסה בצמחייה טרופית עשירה, עציצים ודק עץ עם נוף ישיר לנהר ולמגדלי כנסיית סנטה קתרינה.",
+        address: "Calçada do Combro 58, 7th Floor, Lisboa",
+        lat: 38.7111, lng: -9.1465
+      },
+      {
+        id: "d_sala",
+        name: "Sala de Corte",
+        category: "meat",
+        tag: "🥩 היכל הבשרים המוביל",
+        alert: "חובה להזמין מראש",
+        price: "€€€",
+        dishes: "Chuleton מיושן 30 יום, פירה כמהין, צ'יפס דק מעולה",
+        desc: "מסעדת הבשרים הנחשבת ביותר בליסבון. נתחי בקר מובחרים מגזעים פורטוגזיים וספרדיים המיושנים במקום וניצלים על גריל פחמים מיוחד.",
+        address: "Praça Dom Luís I 7, Lisboa",
+        lat: 38.7067, lng: -9.1465,
+        bookingUrl: "https://saladecorte.pt/"
+      },
+      {
+        id: "d_atalho",
+        name: "Atalho Real",
+        category: "meat",
+        tag: "🥩 בשרים בגן קסום",
+        alert: "מומלץ להזמין מראש",
+        price: "€€",
+        dishes: "פיקאניה ברזילאית, סטייק אנטרקוט בלאק אנגוס, סלט הבית",
+        desc: "מסעדת בשרים מצוינת היושבת בחצר גן פנימית ירוקה ברובע פרינסיפה ריאל. אווירה רומנטית מיוחדת תחת העצים בערב.",
+        address: "Calçada Engenheiro Miguel Pais 67, Lisboa",
+        lat: 38.7175, lng: -9.1502,
+        bookingUrl: "https://oatalho.pt/atalho-real/"
+      },
+      {
+        id: "d_rocco",
+        name: "Rocco",
+        category: "italian",
+        tag: "🍝 איטלקי יוקרתי ומפואר",
+        alert: "מומלץ להזמין מראש",
+        price: "€€€",
+        dishes: "פסטה טרפיה וכמהין, קרפצ'יו בקר, פיצות נפוליטניות",
+        desc: "מסעדה איטלקית מהיפות והמפוארות באירופה ברובע שיאדו. עיצוב גלאם עוצר נשימה, בר קוקטיילים מרכזי ופסטות טריות מדהימות.",
+        address: "Rua Ivens 14, Lisboa",
+        lat: 38.7102, lng: -9.1401,
+        bookingUrl: "https://www.rocco.pt/"
+      },
+      {
+        id: "d_lupita",
+        name: "Lupita Pizzaria",
+        category: "italian",
+        tag: "🍕 פיצת שף מחמצת",
+        alert: "Walk-in בלבד",
+        price: "€€",
+        dishes: "פיצת מרגריטה קלאסית, פיצת ארבע גבינות, בירה מקומית",
+        desc: "פיצריית בוטיק היפסטרית ומצוינת מול שוק טיים אאוט. בצק מחמצת שתפח 48 שעות, תוספות איטלקיות מובחרות ונאפה בתנור אבן לוהט.",
+        address: "Rua de S. Paulo 79, Lisboa",
+        lat: 38.7073, lng: -9.1455
+      },
+      {
+        id: "d_boabao",
+        name: "Boa-Bao",
+        category: "asian",
+        tag: "🍜 פאן-אסייתי אופנתי",
+        alert: "Walk-in בלבד",
+        price: "€€",
+        dishes: "באו באנס בקר, פאד תאי עוף, קארי מסמאן בקר נימוח",
+        desc: "מסעדה אסייתית מעוצבת ברובע שיאדו עם תפריט בצורת דרכון. מנות אותנטיות מרחבי אסיה עם דגש על בקר, עוף וטעמים עשירים.",
+        address: "Largo Rafael Bordalo Pinheiro 30, Lisboa",
+        lat: 38.7118, lng: -9.1425
+      },
+      {
+        id: "d_panda",
+        name: "Panda Cantina",
+        category: "asian",
+        tag: "🍜 נודלס ראמן טרי",
+        alert: "מהיר ליד המלון",
+        price: "€",
+        dishes: "מרק נודלס בקר (Beef Noodles), רמת חריפות 2, טופו ועשבי תיבול",
+        desc: "מוסד מקומי ברחוב של המלון. קערות נודלס בעבודת יד בציר בקר עמוק עם נתחי בקר רכים ורמות חריפות לבחירה. מהיר, משביע ומושלם.",
+        address: "Rua da Prata 252, Lisboa",
+        lat: 38.7115, lng: -9.1375
+      },
+      {
+        id: "d_java",
+        name: "Javá Rooftop",
+        category: "rooftop",
+        tag: "🍸 רופטופ ונוף לנהר",
+        alert: "מומלץ להזמין לערב",
+        price: "€€€",
+        dishes: "קוקטיילים יצירתיים, מנות נשנוש בשריות, יין מקומי",
+        desc: "בר גג אופנתי ותוסס באזור קאיש דו סודרה המשקיף על נהר הטז'ו וגשר 25 באפריל. מוזיקה טובה, קוקטיילים מעולים ואווירה צעירה.",
+        address: "Praça Dom Luís I 30, Lisboa",
+        lat: 38.7065, lng: -9.1468
+      },
+      {
+        id: "d_rossio",
+        name: "Rossio Gastrobar",
+        category: "rooftop",
+        tag: "🍸 רופטופ במרכז העיר",
+        alert: "קוקטיילים ושקיעה",
+        price: "€€€",
+        dishes: "קוקטיילי שקיעה, טאפאס יוקרתי, יין פורטוגזי משובח",
+        desc: "בר גג אלגנטי בקומה העליונה של מלון Altis Avenida הצופה מלמעלה על כיכר רוסיו – מרחק 3 דקות הליכה מהמלון שלכם.",
+        address: "R. 1º de Dezembro 118, Lisboa",
+        lat: 38.7144, lng: -9.1415
+      },
+      {
+        id: "d_pasteis",
+        name: "Pastéis de Belém",
+        category: "sweet",
+        tag: "🥧 מוסד מ-1837",
+        alert: "לשבת בפנים",
+        price: "€",
+        dishes: "פסטל דה בלן חם מהתנור, אבקת סוכר וקינמון, קפה Galão",
+        desc: "המקום שבו נולד הפסטל דה נאטה המקורי. חם, מתפצח ועשיר בקרם וניל מנחם. שבו באולמות הפנימיים ליהנות מהשירות.",
+        address: "Rua de Belém 84-92, Lisboa",
+        lat: 38.6975, lng: -9.2032
+      },
+      {
+        id: "d_manteigaria",
+        name: "Manteigaria",
+        category: "sweet",
+        tag: "☕ פסטל חם מהתנור",
+        alert: "בעמידה על הבר",
+        price: "€",
+        dishes: "פסטל דה נאטה חם, אספרסו Bica קצר",
+        desc: "סניף הדגל בכיכר לואיש דה קמואש בשיאדו. פסטלים חמים שיוצאים כל כמה דקות מהתנור לצד אספרסו חזק בעמידה על הבר.",
+        address: "Rua do Loreto 2, Lisboa",
+        lat: 38.7109, lng: -9.1437
+      }
+    ];
+
+    // מאגר ביטויים בפורטוגזית עם הגייה בעברית והשמעה קולית
+    const phrasebookData = [
+      { pt: "A conta, por favor", heP: "אָה קוֹנְטָה, פּוּר פָבוֹר", he: "החשבון בבקשה", cat: "dining" },
+      { pt: "Tem mesa para dois?", heP: "טֵיינְג מֵזָה פָּארָה דוֹאִישׁ?", he: "יש שולחן לשניים?", cat: "dining" },
+      { pt: "Sem frutos do mar, por favor", heP: "סֵיינְג פְרוּטוֹשׁ דוּ מָאר, פּוּר פָבוֹר", he: "ללא פירות ים בבקשה (חשוב!)", cat: "dining" },
+      { pt: "Não queremos o couvert, obrigado", heP: "נָאוּ קֵרֵמוּשׁ אוּ קוּבֵרְט, אוֹבְּרִיגָאדוּ", he: "אנחנו לא מעוניינים במנות הפתיחה, תודה", cat: "dining" },
+      { pt: "Uma bica, por favor", heP: "אוּמָה בִּיקָה, פּוּר פָבוֹר", he: "אספרסו קצר בבקשה", cat: "cafe" },
+      { pt: "Um galão", heP: "אוּם גָלָאוּ", he: "קפה הפוך בכוס זכוכית גבוהה", cat: "cafe" },
+      { pt: "Dois pastéis de nata", heP: "דוֹאִישׁ פָּשְׁטֵישׁ דֶה נָאטָה", he: "שני מאפי פסטל דה נאטה", cat: "cafe" },
+      { pt: "Uma água sem gás", heP: "אוּמָה אָגְוָוה סֵיינְג גָאשׁ", he: "בקבוק מים ללא גז", cat: "dining" },
+      { pt: "Onde fica...?", heP: "אוֹנְדֶה פִיקָה...?", he: "איפה נמצא...?", cat: "nav" },
+      { pt: "Onde fica a casa de banho?", heP: "אוֹנְדֶה פִיקָה אָה קָאזָה דֶה בָּאנְיוּ?", he: "איפה השירותים?", cat: "nav" },
+      { pt: "Quanto custa?", heP: "קְוָואנְטוּ קוּשְׁטָה?", he: "כמה זה עולה?", cat: "nav" },
+      { pt: "Aceitam cartão?", heP: "אָסֵייטָאוּ קָארְטָאוּ?", he: "אתם מקבלים כרטיס אשראי?", cat: "dining" },
+      { pt: "Obrigado (גבר) / Obrigada (אישה)", heP: "אוֹבְּרִיגָאדוּ / אוֹבְּרִיגָאדָה", he: "תודה רבה", cat: "courtesy" },
+      { pt: "Por favor", heP: "פּוּר פָבוֹר", he: "בבקשה", cat: "courtesy" },
+      { pt: "Bom dia", heP: "בּוֹם דִיאָה", he: "בוקר טוב", cat: "courtesy" },
+      { pt: "Boa tarde / Boa noite", heP: "בּוֹאָה טָארְדֶה / בּוֹאָה נוֹיְטֶה", he: "צהריים טובים / לילה טוב", cat: "courtesy" },
+      { pt: "Com licença / Desculpe", heP: "קוֹם לִיסֵנְסָה / דֶשְׁקוּלְפֶּה", he: "סליחה / סליחה שעובר", cat: "courtesy" },
+      { pt: "Fala inglês?", heP: "פָאלָה אִינְגְלֵישׁ?", he: "האם את/ה מדבר/ת אנגלית?", cat: "courtesy" }
+    ];
+
+    // צ'ק ליסט בדיקות לקראת היציאה
+    const checklistData = [
+      { id: "c1", text: "דרכונים בתוקף (מעל 6 חודשים) + צילום בטלפון" },
+      { id: "c2", text: "כרטיסי טיסה באפליקציית אל על (LY371 / LY376)" },
+      { id: "c3", text: "אישור הזמנת דירה ב-Grape Harbor Prata" },
+      { id: "c4", text: "הזמנת כרטיסים שעה מראש לארמון פנה בסינטרה" },
+      { id: "c5", text: "הזמנת מקום במסעדת הבשרים Sala de Corte" },
+      { id: "c6", text: "אפליקציות Uber ו-Bolt מותקנות עם כרטיס אשראי" },
+      { id: "c7", text: "נעלי הליכה נוחות עם סוליה אוחזת נגד החלקה" },
+      { id: "c8", text: "ביטוח נסיעות לחו\"ל כולל כבודה ובריאות" }
+    ];
+
+    let currentDayIdx = 0;
+    let mapInstance = null;
+    let markersLayer = null;
+    let routeLine = null;
+    let mapMode = 'day';
+    let currentSpeechUtterance = null;
+    let selectedTipPercent = 0;
+
+    // ==========================================
+    // 2. ניהול מצב לילה / יום
+    // ==========================================
+    function initTheme() {
+      const saved = localStorage.getItem('portugal_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+      document.getElementById('theme-icon').innerText = saved === 'dark' ? '☀️' : '🌓';
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('portugal_theme', next);
+      document.getElementById('theme-icon').innerText = next === 'dark' ? '☀️' : '🌓';
+    }
+
+    // ==========================================
+    // 3. שעון ליסבון חי (UTC+1)
+    // ==========================================
+    function updateLisbonClock() {
+      const now = new Date();
+      // ליסבון נמצאת ב-UTC+1 (שעון קיץ WEST)
+      const options = { timeZone: 'Europe/Lisbon', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+      const timeStr = new Intl.DateTimeFormat('en-GB', options).format(now);
+      const el = document.getElementById('lisbonClock');
+      if (el) el.innerText = timeStr;
+    }
+    setInterval(updateLisbonClock, 1000);
+    updateLisbonClock();
+
+    // ==========================================
+    // 4. עזרי ניווט וקישורים
+    // ==========================================
+    function buildUberUrl(name, address, lat, lng) {
+      const dropData = {
+        addressLine1: name,
+        addressLine2: address,
+        fullAddress: address + ", Portugal",
+        title: name,
+        latitude: lat,
+        longitude: lng
+      };
+      return `https://m.uber.com/go/home?drop[0]=${encodeURIComponent(JSON.stringify(dropData))}`;
+    }
+
+    function buildBoltUrl(lat, lng) {
+      return `https://bolt.eu/ride?destination_lat=${lat}&destination_lng=${lng}`;
+    }
+
+    function buildGmapsUrl(lat, lng) {
+      return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+    }
+
+    function copyText(text, msg = 'הועתק בהצלחה!') {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(msg);
+      }).catch(() => {
+        showToast('הטקסט: ' + text);
+      });
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast-msg');
+      t.innerText = msg;
+      t.classList.add('visible');
+      setTimeout(() => t.classList.remove('visible'), 2400);
+    }
+
+    // ==========================================
+    // 5. ניהול מעקב ביקור (LocalStorage)
+    // ==========================================
+    function isVisited(id) {
+      return localStorage.getItem('visited_' + id) === 'true';
+    }
+    function toggleVisited(id) {
+      const state = !isVisited(id);
+      localStorage.setItem('visited_' + id, state);
+      renderTimeline();
+      updateProgress();
+      initDayPills();
+    }
+
+    // ==========================================
+    // 6. ניווט טאבים תחתון
+    // ==========================================
+    function navigateTab(tabKey) {
+      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-item').forEach(el => el.classList.remove('active'));
+
+      const activeSection = document.getElementById('view-' + tabKey);
+      if (activeSection) activeSection.classList.add('active');
+
+      const tabs = ['schedule', 'map', 'dining', 'guide', 'tools'];
+      const btnIdx = tabs.indexOf(tabKey);
+      if (btnIdx >= 0) {
+        document.querySelectorAll('.nav-tab-item')[btnIdx].classList.add('active');
+      }
+
+      if (tabKey === 'map') {
+        if (!mapInstance) initMap();
+        setTimeout(() => {
+          mapInstance.invalidateSize();
+          renderMapContent();
+        }, 120);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ==========================================
+    // 7. איתחול סרגל ימים ובאנר
+    // ==========================================
+    function initDayPills() {
+      const bar = document.getElementById('dayPillsBar');
+      bar.innerHTML = '';
+      tripData.forEach((d, idx) => {
+        const isAllDone = d.spots.every(s => isVisited(s.id));
+        const pill = document.createElement('div');
+        pill.className = `day-pill ${idx === currentDayIdx ? 'active' : ''}`;
+        pill.innerHTML = `
+          ${isAllDone ? '<span class="pill-badge-done">✓</span>' : ''}
+          <div class="pill-title">יום ${d.day}</div>
+          <div class="pill-date">${d.date}</div>
+        `;
+        pill.onclick = () => selectDay(idx);
+        bar.appendChild(pill);
+      });
+    }
+
+    function selectDay(idx) {
+      currentDayIdx = idx;
+      initDayPills();
+      renderDayBanner();
+      renderTimeline();
+      if (document.getElementById('view-map').classList.contains('active')) {
+        renderMapContent();
+      }
+    }
+
+    function renderDayBanner() {
+      const d = tripData[currentDayIdx];
+      const banner = document.getElementById('dayCardBanner');
+      banner.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <h2>יום ${d.day}: ${d.title}</h2>
+          <button class="reset-schedule-btn" id="resetScheduleBtn" onclick="resetScheduleToDefault()" title="איפוס ללוח הזמנים המקורי">↩️ אפס מסלול למקור</button>
+        </div>
+        <div class="banner-tags-row">
+          <span class="banner-area-pill">📍 ${d.area}</span>
+          <span class="banner-area-pill" style="color:var(--accent); background:var(--accent-soft);">📅 ${d.date}</span>
+        </div>
+        ${d.brief ? `<div class="banner-guide-brief">💡 <strong>דגשי המדריך:</strong> ${d.brief}</div>` : ''}
+        <div class="day-progress">
+          <div class="progress-meta">
+            <span id="progLabel">0 מתוך ${d.spots.length} הושלמו</span>
+            <span id="progPct">0%</span>
+          </div>
+          <div class="progress-rail">
+            <div class="progress-fill" id="progFill"></div>
+          </div>
+        </div>
+      `;
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const spots = tripData[currentDayIdx].spots;
+      const count = spots.filter(s => isVisited(s.id)).length;
+      const pct = Math.round((count / spots.length) * 100);
+
+      const fill = document.getElementById('progFill');
+      const label = document.getElementById('progLabel');
+      const pctEl = document.getElementById('progPct');
+
+      if (fill) fill.style.width = pct + '%';
+      if (label) label.innerText = `${count} מתוך ${spots.length} מקומות סומנו`;
+      if (pctEl) pctEl.innerText = `${pct}%`;
+    }
+
+    // ==========================================
+    // 8. רינדור ציר הזמן והכרטיסים (Timeline)
+    // ==========================================
+    function renderTimeline() {
+      const container = document.getElementById('timelineCards');
+      container.innerHTML = '';
+      const spots = tripData[currentDayIdx].spots;
+
+      spots.forEach((s) => {
+        const visited = isVisited(s.id);
+        const isAlert = s.tag.includes('חובה') || s.tag.includes('כרטיס');
+        const isHotel = s.isHotel;
+
+        const gmapsUrl = buildGmapsUrl(s.lat, s.lng);
+        const uberUrl = buildUberUrl(s.name, s.address, s.lat, s.lng);
+        const boltUrl = buildBoltUrl(s.lat, s.lng);
+
+        const card = document.createElement('div');
+        card.className = `spot-card ${isHotel ? 'hotel-anchor' : ''} ${visited ? 'completed' : ''}`;
+        card.id = `card-${s.id}`;
+
+        let insightsHtml = '';
+        if (s.secret || s.photoSpot || s.warning) {
+          insightsHtml = `
+            <div class="guide-insight-box">
+              ${s.secret ? `<div class="insight-row"><strong>🔍 סוד המדריך:</strong> <span>${s.secret}</span></div>` : ''}
+              ${s.photoSpot ? `<div class="insight-row"><strong>📸 צילום מושלם:</strong> <span>${s.photoSpot}</span></div>` : ''}
+              ${s.warning ? `<div class="insight-row" style="color:var(--danger);"><strong>⚠️ שימו לב:</strong> <span>${s.warning}</span></div>` : ''}
+            </div>
+          `;
+        }
+
+        const metaRow = (s.hours || s.duration) ? `
+          <div class="spot-meta-row">
+            ${s.hours ? `<span class="meta-tag hours">🕒 ${s.hours}</span>` : ''}
+            ${s.duration ? `<span class="meta-tag duration">⏱️ משך מומלץ: ${s.duration}</span>` : ''}
+          </div>
+        ` : '';
+
+        const extraBtns = !isHotel && !s.id.includes('airport') ? `
+          <div class="spot-extra-btns">
+            <button class="btn-detail-link" onclick="openSpotDetails('${s.id}')">
+              📖 פרטים נוספים והמלצות ▾
+            </button>
+            <button class="btn-move-spot" onclick="openMoveSpotModal('${s.id}')" title="העבר אטרקציה זו ליום אחר">
+              🔀 העבר יום
+            </button>
+          </div>
+        ` : '';
+
+        card.innerHTML = `
+          <div class="spot-header-row">
+            <span class="time-badge">⏰ ${s.time}</span>
+            <div class="chips-group">
+              <span class="category-chip ${isAlert ? 'alert' : ''} ${isHotel ? 'hotel' : ''}">${s.tag}</span>
+            </div>
+          </div>
+
+          <div class="spot-title-row">
+            <div class="spot-headline">${s.name}</div>
+            <button class="audio-btn" id="audio-btn-${s.id}" onclick="playSpotAudioGuide('${s.id}')" title="האזנה להסבר מדריך קולי">
+              <span>🎙️</span>
+            </button>
+          </div>
+
+          ${metaRow}
+          
+          <div class="address-chip" onclick="copyText('${s.address}', 'הכתובת הועתקה!')" title="לחצו להעתקת הכתובת">
+            <span>📍 ${s.address}</span>
+            <span style="font-size:0.7rem; opacity:0.75;">📋</span>
+          </div>
+
+          <div class="spot-body-desc">${s.desc}</div>
+
+          ${insightsHtml}
+          ${extraBtns}
+
+          <div class="actions-grid">
+            <a class="btn-action maps" href="${gmapsUrl}" target="_blank">📍 מפות</a>
+            <a class="btn-action uber" href="${uberUrl}" target="_blank">🚕 Uber</a>
+            <a class="btn-action bolt" href="${boltUrl}" target="_blank">⚡ Bolt</a>
+            ${s.ticketUrl ? `<a class="btn-action ticket" href="${s.ticketUrl}" target="_blank">🎟️ כרטיסים</a>` : ''}
+          </div>
+
+          <div class="card-footer-row">
+            <label class="complete-label">
+              <input type="checkbox" ${visited ? 'checked' : ''} onchange="toggleVisited('${s.id}')">
+              <span>${visited ? 'ביקרנו כאן ✓' : 'סמן ביקור'}</span>
+            </label>
+            <span style="font-size:0.72rem; color:var(--text-subtle);">לחצו על הכתובת להעתקה</span>
+          </div>
+        `;
+        container.appendChild(card);
+
+        // מחבר מעבר בין נקודות
+        if (s.transitionToNext) {
+          const t = s.transitionToNext;
+          const tr = document.createElement('div');
+          tr.className = 'transit-block';
+          tr.innerHTML = `
+            <div class="transit-rail"></div>
+            <div class="transit-pill" title="${t.note || ''}">
+              <span>${t.icon}</span>
+              <span>${t.text}</span>
+              <span class="dot">•</span>
+              <span style="color:var(--text-muted); font-family:var(--font-num);">${t.distance}</span>
+            </div>
+          `;
+          container.appendChild(tr);
+        }
+      });
+    }
+
+    
+    // ==========================================
+    // פיצ'רים אינטראקטיביים: פרטים מעמיקים והזזת אטרקציות
+    // ==========================================
+    let currentSelectedSpotForMove = null;
+
+    function findSpotById(id) {
+      for (let dayIdx = 0; dayIdx < tripData.length; dayIdx++) {
+        const spot = tripData[dayIdx].spots.find(s => s.id === id);
+        if (spot) return { spot, dayIdx };
+      }
+      return null;
+    }
+
+    function openSpotDetails(spotId) {
+      const res = findSpotById(spotId);
+      if (!res) return;
+      const s = res.spot;
+
+      document.getElementById('modalSpotName').innerText = s.name;
+      
+      const metaBox = document.getElementById('modalSpotMeta');
+      metaBox.innerHTML = `
+        <span class="category-chip">${s.tag}</span>
+        ${s.hours ? `<span class="meta-tag hours">🕒 ${s.hours}</span>` : ''}
+        ${s.duration ? `<span class="meta-tag duration">⏱️ משך מומלץ: ${s.duration}</span>` : ''}
+        <span class="meta-tag" style="background:var(--bg-subtle);">📅 יום ${tripData[res.dayIdx].day} (${tripData[res.dayIdx].date})</span>
+      `;
+
+      document.getElementById('modalSpotDeepDesc').innerText = s.deepDetails || s.desc;
+      
+      const timeGuideSec = document.getElementById('modalSpotTimeSec');
+      if (s.timeGuide) {
+        timeGuideSec.style.display = 'block';
+        document.getElementById('modalSpotTimeGuide').innerText = s.timeGuide;
+      } else {
+        timeGuideSec.style.display = 'none';
+      }
+
+      const secretSec = document.getElementById('modalSpotSecretSec');
+      if (s.secret) {
+        secretSec.style.display = 'block';
+        document.getElementById('modalSpotSecret').innerText = s.secret;
+      } else {
+        secretSec.style.display = 'none';
+      }
+
+      const warnSec = document.getElementById('modalSpotWarningSec');
+      if (s.warning) {
+        warnSec.style.display = 'block';
+        document.getElementById('modalSpotWarning').innerText = s.warning;
+      } else {
+        warnSec.style.display = 'none';
+      }
+
+      const actionsBox = document.getElementById('modalSpotActions');
+      actionsBox.innerHTML = `
+        <a class="btn-action maps" href="${buildGmapsUrl(s.lat, s.lng)}" target="_blank">📍 מפות</a>
+        <a class="btn-action uber" href="${buildUberUrl(s.name, s.address, s.lat, s.lng)}" target="_blank">🚕 Uber</a>
+        <a class="btn-action bolt" href="${buildBoltUrl(s.lat, s.lng)}" target="_blank">⚡ Bolt</a>
+        ${s.ticketUrl ? `<a class="btn-action ticket" href="${s.ticketUrl}" target="_blank">🎟️ כרטיסים</a>` : ''}
+      `;
+
+      currentSelectedSpotForMove = s.id;
+      document.getElementById('spotDetailModal').style.display = 'flex';
+    }
+
+    function closeSpotDetailModal() {
+      document.getElementById('spotDetailModal').style.display = 'none';
+    }
+
+    function openMoveFromDetail() {
+      closeSpotDetailModal();
+      if (currentSelectedSpotForMove) {
+        openMoveSpotModal(currentSelectedSpotForMove);
+      }
+    }
+
+    function openMoveSpotModal(spotId) {
+      currentSelectedSpotForMove = spotId;
+      const res = findSpotById(spotId);
+      if (!res) return;
+
+      document.getElementById('moveSpotTitleNotice').innerText = `העברת "${res.spot.name}" (נמצא כרגע ביום ${tripData[res.dayIdx].day}):`;
+
+      const grid = document.getElementById('daySelectorGrid');
+      grid.innerHTML = '';
+
+      tripData.forEach((d, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `day-select-btn ${idx === res.dayIdx ? 'current' : ''}`;
+        btn.innerHTML = `יום ${d.day} <br><span style="font-size:0.7rem; opacity:0.8;">${d.date}</span>`;
+        if (idx !== res.dayIdx) {
+          btn.onclick = () => executeMoveSpot(spotId, res.dayIdx, idx);
+        }
+        grid.appendChild(btn);
+      });
+
+      document.getElementById('moveSpotModal').style.display = 'flex';
+    }
+
+    function closeMoveSpotModal() {
+      document.getElementById('moveSpotModal').style.display = 'none';
+    }
+
+    function executeMoveSpot(spotId, fromDayIdx, toDayIdx) {
+      const spotIdx = tripData[fromDayIdx].spots.findIndex(s => s.id === spotId);
+      if (spotIdx === -1) return;
+
+      const [spot] = tripData[fromDayIdx].spots.splice(spotIdx, 1);
+
+      // הכנסה ליום היעד (לפני החזרה למלון אם יש)
+      const targetSpots = tripData[toDayIdx].spots;
+      const hotelEndIdx = targetSpots.findIndex(s => s.isHotel && s.id.includes('end'));
+      if (hotelEndIdx !== -1) {
+        targetSpots.splice(hotelEndIdx, 0, spot);
+      } else {
+        targetSpots.push(spot);
+      }
+
+      // שמירה ב-localStorage
+      saveCustomSchedule();
+
+      closeMoveSpotModal();
+      showToast(`"${spot.name}" הועבר בהצלחה ליום ${tripData[toDayIdx].day}!`);
+      
+      selectDay(toDayIdx);
+    }
+
+    function saveCustomSchedule() {
+      localStorage.setItem('portugal_custom_schedule', JSON.stringify(tripData));
+      updateResetButtonVisibility();
+    }
+
+    function resetScheduleToDefault() {
+      if (confirm('האם לאפס את כל השינויים שבוצעו בלוח הזמנים ולחזור למסלול המקורי?')) {
+        localStorage.removeItem('portugal_custom_schedule');
+        tripData = JSON.parse(JSON.stringify(defaultTripData));
+        selectDay(currentDayIdx);
+        showToast('המסלול אופס בהצלחה לתכנון המקורי!');
+      }
+    }
+
+    function updateResetButtonVisibility() {
+      const btn = document.getElementById('resetScheduleBtn');
+      if (btn) {
+        const hasCustom = !!localStorage.getItem('portugal_custom_schedule');
+        btn.style.display = hasCustom ? 'inline-block' : 'none';
+      }
+    }
+    
+    // ==========================================
+    // 9. מדריך קולי חכם (SpeechSynthesis Audio Guide)
+    // ==========================================
+    function playSpotAudioGuide(spotId) {
+      let foundSpot = null;
+      for (const d of tripData) {
+        const s = d.spots.find(x => x.id === spotId);
+        if (s) { foundSpot = s; break; }
+      }
+      if (!foundSpot) return;
+
+      // אם כבר משמיע, נעצור או נחליף
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        resetAllAudioButtons();
+      }
+
+      // טקסט הקראה מקיף של מדריך
+      let speechText = `${foundSpot.name}. ${foundSpot.desc}. `;
+      if (foundSpot.secret) speechText += `סוד המדריך: ${foundSpot.secret}. `;
+      if (foundSpot.warning) speechText += `שימו לב: ${foundSpot.warning}. `;
+
+      const utterance = new SpeechSynthesisUtterance(speechText);
+      utterance.lang = 'he-IL';
+      utterance.rate = 1.0;
+
+      const btn = document.getElementById(`audio-btn-${spotId}`);
+      if (btn) btn.classList.add('speaking');
+
+      showMiniPlayer(foundSpot.name);
+
+      utterance.onend = () => {
+        resetAllAudioButtons();
+        hideMiniPlayer();
+      };
+      utterance.onerror = () => {
+        resetAllAudioButtons();
+        hideMiniPlayer();
+      };
+
+      currentSpeechUtterance = utterance;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function resetAllAudioButtons() {
+      document.querySelectorAll('.audio-btn').forEach(b => b.classList.remove('speaking'));
+    }
+
+    function showMiniPlayer(title) {
+      const p = document.getElementById('audio-mini-player');
+      document.getElementById('playerTitle').innerText = title;
+      p.style.display = 'flex';
+      document.getElementById('playerPlayPauseBtn').innerText = '⏸️';
+    }
+
+    function hideMiniPlayer() {
+      document.getElementById('audio-mini-player').style.display = 'none';
+    }
+
+    function toggleAudioPlayback() {
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+        document.getElementById('playerPlayPauseBtn').innerText = '⏸️';
+      } else if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.pause();
+        document.getElementById('playerPlayPauseBtn').innerText = '▶️';
+      }
+    }
+
+    function stopAudioGuide() {
+      window.speechSynthesis.cancel();
+      resetAllAudioButtons();
+      hideMiniPlayer();
+    }
+
+    // ==========================================
+    // 10. השמעת שיחון פורטוגזית (Portuguese Speech)
+    // ==========================================
+    function speakPortuguese(phrase) {
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      }
+      const u = new SpeechSynthesisUtterance(phrase);
+      u.lang = 'pt-PT';
+      u.rate = 0.9;
+      window.speechSynthesis.speak(u);
+      showToast(`משמיע: "${phrase}"`);
+    }
+
+    // ==========================================
+    // 11. מפה אינטראקטיבית (Leaflet Map)
+    // ==========================================
+    function initMap() {
+      mapInstance = L.map('map-box', { zoomControl: true }).setView([HOTEL.lat, HOTEL.lng], 13);
+      
+      // שכבת מפה מבוססת CartoDB Voyager
+      L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`, {
+        maxZoom: 19,
+        subdomains: 'abcd',
+        attribution: '© OpenStreetMap, © CARTO'
+      }).addTo(mapInstance);
+
+      markersLayer = L.layerGroup().addTo(mapInstance);
+    }
+
+    function setMapMode(mode) {
+      mapMode = mode;
+      document.querySelectorAll('.map-ctl-btn').forEach(b => b.classList.remove('active'));
+      if (mode === 'day') document.getElementById('mapBtnDay').classList.add('active');
+      if (mode === 'all') document.getElementById('mapBtnAll').classList.add('active');
+      if (mode === 'dining') document.getElementById('mapBtnDining').classList.add('active');
+      renderMapContent();
+    }
+
+    function renderMapContent() {
+      if (!mapInstance || !markersLayer) return;
+      markersLayer.clearLayers();
+      if (routeLine) { mapInstance.removeLayer(routeLine); }
+
+      const d = tripData[currentDayIdx];
+      const coords = [];
+      const quickList = document.getElementById('mapQuickList');
+      quickList.innerHTML = '';
+
+      if (mapMode === 'day') {
+        document.getElementById('mapDayTitle').innerText = `מפת יום ${d.day}: ${d.title}`;
+        document.getElementById('mapDayArea').innerText = d.area;
+
+        d.spots.forEach((s, idx) => {
+          coords.push([s.lat, s.lng]);
+          const isHotel = s.isHotel;
+          const icon = L.divIcon({
+            className: '',
+            html: `<div class="map-marker-pin ${isHotel ? 'hotel-pin' : ''}">${isHotel ? '🏨' : idx + 1}</div>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 14]
+          });
+
+          const m = L.marker([s.lat, s.lng], { icon }).addTo(markersLayer);
+          m.bindPopup(buildPopupHtml(s.name, `${s.time} • ${s.tag}`, s.address, s.lat, s.lng));
+
+          addQuickListItem(quickList, isHotel ? '🏨' : (idx + 1) + '.', s.name, `${s.time} • ${s.tag}`, s.lat, s.lng);
+        });
+
+        if (coords.length > 1) {
+          routeLine = L.polyline(coords, {
+            color: '#1e40af',
+            weight: 3.5,
+            opacity: 0.85,
+            dashArray: '7, 8'
+          }).addTo(mapInstance);
+        }
+
+      } else if (mapMode === 'all') {
+        document.getElementById('mapDayTitle').innerText = 'כל היעדים בכל ימי הטיול';
+        document.getElementById('mapDayArea').innerText = '8 ימי טיול בליסבון וסינטרה';
+
+        tripData.forEach(day => {
+          day.spots.forEach(s => {
+            coords.push([s.lat, s.lng]);
+            const isHotel = s.isHotel;
+            const icon = L.divIcon({
+              className: '',
+              html: `<div class="map-marker-pin ${isHotel ? 'hotel-pin' : ''}">${isHotel ? '🏨' : 'D' + day.day}</div>`,
+              iconSize: [26, 26],
+              iconAnchor: [13, 13]
+            });
+            const m = L.marker([s.lat, s.lng], { icon }).addTo(markersLayer);
+            m.bindPopup(buildPopupHtml(s.name, `יום ${day.day} • ${s.time}`, s.address, s.lat, s.lng));
+          });
+        });
+
+      } else if (mapMode === 'dining') {
+        document.getElementById('mapDayTitle').innerText = 'מפת מסעדות מובחרות (ללא פירות ים)';
+        document.getElementById('mapDayArea').innerText = 'סטייקים, פסטות, ראמן וברים';
+
+        diningDatabase.forEach(r => {
+          coords.push([r.lat, r.lng]);
+          const icon = L.divIcon({
+            className: '',
+            html: `<div class="map-marker-pin" style="background:#10b981;">🍴</div>`,
+            iconSize: [28, 28],
+            iconAnchor: [14, 14]
+          });
+          const m = L.marker([r.lat, r.lng], { icon }).addTo(markersLayer);
+          m.bindPopup(buildPopupHtml(r.name, `${r.tag} • ${r.alert}`, r.address, r.lat, r.lng));
+
+          addQuickListItem(quickList, '🍴', r.name, r.tag, r.lat, r.lng);
+        });
+      }
+
+      if (coords.length > 0) {
+        mapInstance.fitBounds(coords, { padding: [35, 35] });
+      }
+    }
+
+    function buildPopupHtml(title, subtitle, address, lat, lng) {
+      const gmapsUrl = buildGmapsUrl(lat, lng);
+      const uberUrl = buildUberUrl(title, address, lat, lng);
+      const boltUrl = buildBoltUrl(lat, lng);
+      return `
+        <div style="font-family: inherit; text-align: right; direction: rtl; min-width: 170px;">
+          <strong style="color:#0a1e38; font-size: 0.95rem;">${title}</strong><br>
+          <span style="font-size: 0.74rem; color: #64748b;">${subtitle}</span>
+          <div style="display: flex; gap: 5px; margin-top: 8px;">
+            <a href="${gmapsUrl}" target="_blank" style="background:#fee2e2; color:#991b1b; padding:4px 8px; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:700;">📍 מפות</a>
+            <a href="${uberUrl}" target="_blank" style="background:#000; color:#fff; padding:4px 8px; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:700;">🚕 Uber</a>
+            <a href="${boltUrl}" target="_blank" style="background:#34d186; color:#064e3b; padding:4px 8px; border-radius:6px; text-decoration:none; font-size:0.75rem; font-weight:700;">⚡ Bolt</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function addQuickListItem(container, badge, title, subtitle, lat, lng) {
+      const item = document.createElement('div');
+      item.style.cssText = "background:var(--surface); border-radius:12px; padding:10px 14px; margin-bottom:8px; border:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; box-shadow:var(--shadow-sm);";
+      item.innerHTML = `
+        <div>
+          <strong>${badge} ${title}</strong>
+          <div style="font-size:0.74rem; color:var(--text-muted);">${subtitle}</div>
+        </div>
+        <a href="${buildGmapsUrl(lat, lng)}" target="_blank" style="color:var(--primary-accent); text-decoration:none; font-weight:700; font-size:0.8rem; background:rgba(37,99,235,0.08); padding:5px 10px; border-radius:8px;">נווט ↗</a>
+      `;
+      container.appendChild(item);
+    }
+
+    // מיקום GPS בזמן אמת של המשתמש
+    function locateUser() {
+      if (!navigator.geolocation) {
+        showToast('שירותי מיקום אינם זמינים בדפדפן זה');
+        return;
+      }
+      showToast('מאתר את מיקומך בליסבון...');
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const uLat = pos.coords.latitude;
+        const uLng = pos.coords.longitude;
+        if (!mapInstance) initMap();
+
+        const userIcon = L.divIcon({
+          className: '',
+          html: `<div style="background:#2563eb; width:18px; height:18px; border-radius:50%; border:3px solid #fff; box-shadow:0 0 12px rgba(37,99,235,0.8); animation:pulse 1s infinite alternate;"></div>`,
+          iconSize: [20, 20],
+          iconAnchor: [10, 10]
+        });
+
+        L.marker([uLat, uLng], { icon: userIcon }).addTo(mapInstance)
+          .bindPopup('<strong style="text-align:center;">📍 המיקום הנוכחי שלך</strong>').openPopup();
+
+        mapInstance.setView([uLat, uLng], 15);
+        showToast('המיקום שלך עודכן בהצלחה במפה!');
+      }, (err) => {
+        showToast('לא ניתן לקבל מיקום: ' + err.message);
+      }, { enableHighAccuracy: true, timeout: 10000 });
+    }
+
+    // ==========================================
+    // 12. סינון ורינדור מסעדות
+    // ==========================================
+    function filterDining(cat) {
+      document.querySelectorAll('#diningFilters .filter-tag').forEach(b => b.classList.remove('active'));
+      if (event && event.target) event.target.classList.add('active');
+
+      const container = document.getElementById('diningCardsList');
+      container.innerHTML = '';
+      const filtered = cat === 'all' ? diningDatabase : diningDatabase.filter(r => r.category === cat);
+
+      filtered.forEach(r => {
+        const gmapsUrl = buildGmapsUrl(r.lat, r.lng);
+        const uberUrl = buildUberUrl(r.name, r.address, r.lat, r.lng);
+        const boltUrl = buildBoltUrl(r.lat, r.lng);
+
+        const card = document.createElement('div');
+        card.className = 'rest-card';
+        card.innerHTML = `
+          <div class="rest-top">
+            <h4>${r.name}</h4>
+            <div style="display:flex; align-items:center; gap:5px;">
+              <span style="font-size:0.75rem; font-weight:800; color:var(--text-muted); font-family:var(--font-num);">${r.price}</span>
+              <span class="rest-tag" style="background:var(--danger-light); color:var(--danger);">${r.alert}</span>
+            </div>
+          </div>
+          <div style="font-size:0.76rem; font-weight:700; color:var(--accent); margin-bottom:6px;">${r.tag}</div>
+          
+          <div class="address-chip" onclick="copyText('${r.address}', 'כתובת המסעדה הועתקה!')" title="העתק כתובת">
+            <span>📍 ${r.address}</span>
+            <span style="font-size:0.7rem; opacity:0.75;">📋</span>
+          </div>
+
+          <div style="font-size:0.85rem; color:var(--text-main); line-height:1.5; margin-bottom:8px;">${r.desc}</div>
+
+          <div class="dish-recommendation">
+            🥩 <strong>מנות מומלצות (ללא פירות ים):</strong> ${r.dishes}
+          </div>
+
+          <div class="actions-grid">
+            <a class="btn-action maps" href="${gmapsUrl}" target="_blank">📍 מפות</a>
+            <a class="btn-action uber" href="${uberUrl}" target="_blank">🚕 Uber</a>
+            <a class="btn-action bolt" href="${boltUrl}" target="_blank">⚡ Bolt</a>
+            ${r.bookingUrl ? `<a class="btn-action ticket" href="${r.bookingUrl}" target="_blank">📅 הזמנה</a>` : ''}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // ==========================================
+    // 13. שיחון פורטוגזית אינטראקטיבי
+    // ==========================================
+    function renderPhrasebook(category = 'all') {
+      const container = document.getElementById('phrasebookList');
+      container.innerHTML = '';
+      const list = category === 'all' ? phrasebookData : phrasebookData.filter(p => p.cat === category);
+
+      list.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'phrase-card';
+        item.innerHTML = `
+          <div class="phrase-content">
+            <div class="phrase-pt">${p.pt}</div>
+            <div class="phrase-he-phonetic">${p.heP}</div>
+            <div class="phrase-meaning">${p.he}</div>
+          </div>
+          <button class="phrase-speak-btn" onclick="speakPortuguese('${p.pt.replace(/'/g, "\\'")}')" title="השמע הגייה">
+            🔊
+          </button>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function filterPhraseCategory(cat) {
+      document.querySelectorAll('#view-guide .filter-tag').forEach(b => b.classList.remove('active'));
+      if (event && event.target) event.target.classList.add('active');
+      renderPhrasebook(cat);
+    }
+
+    // ==========================================
+    // 14. מחשבון אירו וטיפים
+    // ==========================================
+    function calcTipAndIls() {
+      const eurInput = parseFloat(document.getElementById('calcEurInput').value) || 0;
+      const rate = 4.02; // שער אירו/שקל ממוצע
+      const ilsTotal = Math.round(eurInput * rate);
+      document.getElementById('calcIlsOutput').innerText = `≈ ${ilsTotal} ₪`;
+
+      const summary = document.getElementById('calcTipSummary');
+      if (selectedTipPercent === 'round') {
+        const rounded = Math.ceil(eurInput / 5) * 5;
+        const tipAmount = Math.max(0, rounded - eurInput);
+        summary.innerHTML = `עיגול ל-<strong>€${rounded}</strong> (תוספת טיפ: €${tipAmount.toFixed(1)} = כ-${Math.round(tipAmount * rate)} ₪)`;
+      } else if (selectedTipPercent > 0) {
+        const tipVal = (eurInput * (selectedTipPercent / 100));
+        const totalWithTip = eurInput + tipVal;
+        summary.innerHTML = `טיפ ${selectedTipPercent}%: <strong>€${tipVal.toFixed(1)}</strong> | סה״כ כולל טיפ: <strong>€${totalWithTip.toFixed(1)}</strong> (כ-${Math.round(totalWithTip * rate)} ₪)`;
+      } else {
+        summary.innerText = 'ללא תוספת טיפ בחשבון.';
+      }
+    }
+
+    function selectTipPct(pct) {
+      selectedTipPercent = pct;
+      document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
+      if (event && event.target) event.target.classList.add('active');
+      calcTipAndIls();
+    }
+
+    // ==========================================
+    // 15. צ'ק ליסט לקראת הטיסה (Checklist)
+    // ==========================================
+    function renderChecklist() {
+      const container = document.getElementById('checklistItems');
+      container.innerHTML = '';
+      let doneCount = 0;
+
+      checklistData.forEach(c => {
+        const isDone = localStorage.getItem('check_' + c.id) === 'true';
+        if (isDone) doneCount++;
+
+        const row = document.createElement('div');
+        row.className = `check-list-item ${isDone ? 'done' : ''}`;
+        row.innerHTML = `
+          <input type="checkbox" ${isDone ? 'checked' : ''} onchange="toggleCheckItem('${c.id}')">
+          <span>${c.text}</span>
+        `;
+        container.appendChild(row);
+      });
+
+      document.getElementById('checklistCount').innerText = `${doneCount}/${checklistData.length}`;
+    }
+
+    function toggleCheckItem(id) {
+      const current = localStorage.getItem('check_' + id) === 'true';
+      localStorage.setItem('check_' + id, !current);
+      renderChecklist();
+    }
+
+    // ==========================================
+    // 16. חיפוש אוניברסלי גלובלי (Global Search)
+    // ==========================================
+    function handleGlobalSearch(query) {
+      const q = query.trim().toLowerCase();
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (q.length > 0) {
+        clearBtn.style.display = 'block';
+      } else {
+        clearBtn.style.display = 'none';
+        renderTimeline();
+        return;
+      }
+
+      // חיפוש בכל הימים
+      const matchedSpots = [];
+      tripData.forEach(d => {
+        d.spots.forEach(s => {
+          const matchName = s.name.toLowerCase().includes(q);
+          const matchDesc = s.desc.toLowerCase().includes(q);
+          const matchAddr = s.address.toLowerCase().includes(q);
+          const matchSecret = (s.secret || '').toLowerCase().includes(q);
+          if (matchName || matchDesc || matchAddr || matchSecret) {
+            matchedSpots.push({ ...s, dayNum: d.day, dayTitle: d.title });
+          }
+        });
+      });
+
+      const container = document.getElementById('timelineCards');
+      container.innerHTML = `
+        <div style="font-size:0.85rem; font-weight:800; color:var(--primary-accent); margin-bottom:12px; padding:6px 0;">
+          נמצאו ${matchedSpots.length} תוצאות עבור "${query}":
+        </div>
+      `;
+
+      if (matchedSpots.length === 0) {
+        container.innerHTML += `<div style="text-align:center; padding:30px; color:var(--text-muted);">לא נמצאו תוצאות. נסו מילה אחרת (למשל: "פסטל", "ראמן", "סינטרה").</div>`;
+        return;
+      }
+
+      matchedSpots.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'spot-card';
+        card.style.marginBottom = '12px';
+        card.innerHTML = `
+          <div class="spot-header-row">
+            <span class="time-badge">יום ${s.dayNum} • ${s.time}</span>
+            <span class="category-chip">${s.tag}</span>
+          </div>
+          <div class="spot-headline">${s.name}</div>
+          <div class="address-chip" onclick="copyText('${s.address}')">📍 ${s.address}</div>
+          <div class="spot-body-desc">${s.desc}</div>
+          ${s.secret ? `<div class="guide-insight-box"><strong>🔍 סוד המדריך:</strong> ${s.secret}</div>` : ''}
+          <div class="actions-grid">
+            <a class="btn-action maps" href="${buildGmapsUrl(s.lat, s.lng)}" target="_blank">📍 מפות</a>
+            <a class="btn-action uber" href="${buildUberUrl(s.name, s.address, s.lat, s.lng)}" target="_blank">🚕 Uber</a>
+            <a class="btn-action bolt" href="${buildBoltUrl(s.lat, s.lng)}" target="_blank">⚡ Bolt</a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('globalSearch');
+      input.value = '';
+      document.getElementById('clearSearchBtn').style.display = 'none';
+      renderTimeline();
+    }
+
+    // ==========================================
+    // 17. מודאל המלון וחירום
+    // ==========================================
+    function openHotelModal() {
+      const actions = document.getElementById('hotelQuickActions');
+      actions.innerHTML = `
+        <a class="btn-action maps" href="${buildGmapsUrl(HOTEL.lat, HOTEL.lng)}" target="_blank">📍 מפות</a>
+        <a class="btn-action uber" href="${buildUberUrl(HOTEL.name, HOTEL.address, HOTEL.lat, HOTEL.lng)}" target="_blank">🚕 Uber למלון</a>
+        <a class="btn-action bolt" href="${buildBoltUrl(HOTEL.lat, HOTEL.lng)}" target="_blank">⚡ Bolt למלון</a>
+      `;
+      document.getElementById('hotelModal').style.display = 'flex';
+    }
+    function closeHotelModal() {
+      document.getElementById('hotelModal').style.display = 'none';
+    }
+
+    function openEmergencyModal() {
+      document.getElementById('emergencyModal').style.display = 'flex';
+    }
+    function closeEmergencyModal() {
+      document.getElementById('emergencyModal').style.display = 'none';
+    }
+
+    // ==========================================
+    // 18. אתחול ראשוני של האפליקציה
+    // ==========================================
+    initTheme();
+    initDayPills();
+    renderDayBanner();
+    renderTimeline();
+    filterDining('all');
+    renderPhrasebook('all');
+    calcTipAndIls();
+    renderChecklist();
+    document.getElementById('toolsHotelUber').href = buildUberUrl(HOTEL.name, HOTEL.address, HOTEL.lat, HOTEL.lng);
+  </script>
+</body>
+</html>
